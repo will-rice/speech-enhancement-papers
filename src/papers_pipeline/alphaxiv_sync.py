@@ -1,160 +1,92 @@
 """Add papers from the repository inventory to an alphaXiv collection."""
 
-from __future__ import annotations
-
-import argparse
+import asyncio
 import csv
+import itertools
 import json
+import logging
 import os
 import re
-import subprocess
-import sys
-from collections.abc import Callable, Sequence
-from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-Runner = Callable[..., subprocess.CompletedProcess[str]]
+import httpx2
+from mcp import Client
+from mcp.client.streamable_http import streamable_http_client
+
+INVENTORY = Path("papers.csv")
+MCP_URL = "https://api.alphaxiv.org/mcp/v1"
+# Matches the MCP SDK's own client defaults; httpx2 alone times out after 5s.
+MCP_TIMEOUT = httpx2.Timeout(30.0, read=300.0)
+# save_papers_to_folder accepts at most 50 papers per call.
+SAVE_BATCH_SIZE = 50
 
 
-@dataclass(frozen=True)
-class SyncResult:
-    inventory_count: int
-    existing_count: int
-    added_count: int
+def main() -> None:
+    logging.basicConfig(level=logging.INFO)
+    api_key = os.environ["ALPHAXIV_API_KEY"]
+    collection = os.environ["ALPHAXIV_COLLECTION"]
+    # Actions passes unset secrets and variables as empty strings.
+    if not api_key or not collection:
+        raise ValueError("ALPHAXIV_API_KEY and ALPHAXIV_COLLECTION must be set")
+    asyncio.run(sync(INVENTORY, collection, api_key))
 
 
-def canonical_arxiv_id(value: str) -> str:
-    return re.sub(r"v\d+$", "", value.strip(), flags=re.IGNORECASE)
+async def sync(inventory: Path, collection: str, api_key: str) -> None:
+    headers = {"Authorization": f"Bearer {api_key}"}
+    async with httpx2.AsyncClient(headers=headers, timeout=MCP_TIMEOUT) as http_client:
+        transport = streamable_http_client(MCP_URL, http_client=http_client)
+        async with Client(transport) as client:
+            await sync_collection(inventory, collection, client)
+
+
+async def sync_collection(inventory: Path, collection: str, client: Client) -> None:
+    """Save every inventory paper to the named folder.
+
+    save_papers_to_folder is idempotent and never removes papers, so the
+    whole inventory is sent on every run.
+    """
+    identifiers = read_arxiv_ids(inventory)
+    folder = await find_folder(client, collection)
+    for batch in itertools.batched(identifiers, SAVE_BATCH_SIZE):
+        await call_tool(
+            client,
+            "save_papers_to_folder",
+            {"folder_id": folder["folder_id"], "paper_ids_or_urls": list(batch)},
+        )
+    logging.info("Saved %d papers to alphaXiv folder %r", len(identifiers), collection)
 
 
 def read_arxiv_ids(path: Path) -> list[str]:
+    """Return unique versionless arXiv IDs from the inventory, in order."""
     with path.open(newline="", encoding="utf-8") as inventory_file:
-        reader = csv.DictReader(inventory_file)
-        if reader.fieldnames is None or "arxiv_id" not in reader.fieldnames:
-            raise ValueError("papers.csv is missing arxiv_id")
-
-        identifiers: list[str] = []
-        seen: set[str] = set()
-        for row in reader:
-            if row.get("source") != "arxiv":
-                continue
-            identifier = (row.get("arxiv_id") or "").strip()
-            canonical_id = canonical_arxiv_id(identifier)
-            if canonical_id and canonical_id not in seen:
-                identifiers.append(identifier)
-                seen.add(canonical_id)
-        return identifiers
-
-
-def _folder_paper_ids(payload: object) -> set[str]:
-    if not isinstance(payload, dict):
-        raise ValueError("invalid alphaXiv folder payload: expected object")
-    papers = payload.get("papers")
-    if not isinstance(papers, list):
-        raise ValueError("invalid alphaXiv folder payload: expected papers list")
-
-    identifiers: set[str] = set()
-    for paper in papers:
-        if not isinstance(paper, dict):
-            raise ValueError("invalid alphaXiv folder payload: expected paper object")
-        preferred_id = paper.get("preferred_id")
-        if not isinstance(preferred_id, str) or not preferred_id.strip():
-            raise ValueError(
-                "invalid alphaXiv folder payload: expected paper preferred_id"
-            )
-        identifiers.add(canonical_arxiv_id(preferred_id))
-    return identifiers
-
-
-def _run(
-    runner: Runner,
-    command: Sequence[str],
-) -> subprocess.CompletedProcess[str]:
-    return runner(
-        command,
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-
-
-def sync_collection(
-    inventory: Path,
-    collection: str,
-    *,
-    runner: Runner = subprocess.run,
-) -> SyncResult:
-    identifiers = read_arxiv_ids(inventory)
-    folder_result = _run(
-        runner,
-        ["alphaxiv", "folders", "show", collection, "--json"],
-    )
-    try:
-        folder_payload: Any = json.loads(folder_result.stdout)
-    except json.JSONDecodeError as error:
-        raise ValueError("alphaXiv folders show returned invalid JSON") from error
-
-    existing_ids = _folder_paper_ids(folder_payload)
-    existing_count = 0
-    added_count = 0
-    for identifier in identifiers:
-        if canonical_arxiv_id(identifier) in existing_ids:
-            existing_count += 1
-            continue
-        _run(
-            runner,
-            [
-                "alphaxiv",
-                "paper",
-                "folders",
-                "add",
-                identifier,
-                collection,
-                "--yes",
-            ],
+        identifiers = (
+            re.sub(r"v\d+$", "", row["arxiv_id"])
+            for row in csv.DictReader(inventory_file)
+            if row["arxiv_id"]
         )
-        existing_ids.add(canonical_arxiv_id(identifier))
-        added_count += 1
-
-    return SyncResult(
-        inventory_count=len(identifiers),
-        existing_count=existing_count,
-        added_count=added_count,
-    )
+        return list(dict.fromkeys(identifiers))
 
 
-def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--inventory", type=Path, default=Path("papers.csv"))
-    args = parser.parse_args(argv)
+async def find_folder(client: Client, name: str) -> dict[str, Any]:
+    library = await call_tool(client, "list_library", {})
+    matches: list[dict[str, Any]] = [
+        folder for folder in library["folders"] if folder["name"] == name
+    ]
+    if len(matches) != 1:
+        raise ValueError(
+            f"expected one alphaXiv folder named {name!r}, found {len(matches)}"
+        )
+    return matches[0]
 
-    if not os.environ.get("ALPHAXIV_API_KEY", "").strip():
-        print("error: ALPHAXIV_API_KEY must be set", file=sys.stderr)
-        return 2
-    collection = os.environ.get("ALPHAXIV_COLLECTION", "").strip()
-    if not collection:
-        print("error: ALPHAXIV_COLLECTION must be set", file=sys.stderr)
-        return 2
 
-    try:
-        result = sync_collection(args.inventory, collection)
-    except subprocess.CalledProcessError as error:
-        detail = error.stderr.strip() if error.stderr else str(error)
-        print(f"error: alphaXiv sync failed: {detail}", file=sys.stderr)
-        return 1
-    except (OSError, ValueError) as error:
-        print(f"error: alphaXiv sync failed: {error}", file=sys.stderr)
-        return 1
-
-    print(
-        "alphaXiv sync complete: "
-        f"inventory={result.inventory_count} "
-        f"existing={result.existing_count} "
-        f"added={result.added_count}"
-    )
-    return 0
+async def call_tool(client: Client, name: str, arguments: dict[str, Any]) -> Any:
+    result = await client.call_tool(name, arguments)
+    text = "".join(block.text for block in result.content if block.type == "text")
+    if result.is_error:
+        raise ValueError(f"alphaXiv {name} failed: {text}")
+    return json.loads(text)
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

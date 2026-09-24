@@ -128,34 +128,29 @@ corpus formatting runs only through the manual sharded workflow.
 
 ## Automation and summaries
 
-The nightly workflow supports its template-owned schedule and
-`workflow_dispatch`. The first manual canary run fetched and committed 30
-papers, then safely stopped when a PDF conversion reached the former
-900-second timeout. The retry is limited to one paper with an 1800-second
-conversion timeout.
-
 The nightly Actions summary reports per-source fetched, accepted,
 deduplicated, and rejected counts; inventory, generated, pending, attempted,
 succeeded, failed, and fixme counts; timings; continuation, cap, retry, and
 deadline events; and fixme paths.
 
+The weekly template workflow runs Copier against an explicit release,
+validates the result, and opens a pull request. It never updates `main`
+directly.
+
 ## alphaXiv collection
 
 The `Sync alphaXiv collection` workflow adds arXiv papers from `papers.csv` to
-an existing alphaXiv collection. Configure the `ALPHAXIV_API_KEY` Actions
-secret with a key authorized for folder writes and the `ALPHAXIV_COLLECTION`
-repository variable with the exact folder name or ID. Use `workflow_dispatch`
-for the initial population.
+an existing alphaXiv collection through the official alphaXiv MCP server
+(`https://api.alphaxiv.org/mcp/v1`). Configure the `ALPHAXIV_API_KEY` Actions
+secret with an API key from alphaXiv Settings > API Keys and the
+`ALPHAXIV_COLLECTION` repository variable with the exact folder name. Use
+`workflow_dispatch` for the initial population.
 
 The workflow also runs after every completed `Nightly papers` workflow,
 including safe partial runs that commit inventory before a later conversion
 failure. Synchronization is additive and idempotent: existing papers and
 manually managed collection entries are preserved, and no remote paper is
 removed.
-
-The weekly template workflow runs Copier against an explicit release,
-validates the result, and opens a pull request. It never updates `main`
-directly.
 
 ## Updating from the template
 
