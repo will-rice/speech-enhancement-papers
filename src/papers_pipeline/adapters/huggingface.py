@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import base64
 import json
 import re
@@ -23,7 +21,6 @@ class _CursorState(TypedDict):
 class HuggingFaceAdapter:
     name = "huggingface"
     record_sources = frozenset({"huggingface"})
-    window_type = FetchWindow
 
     async def fetch(
         self,

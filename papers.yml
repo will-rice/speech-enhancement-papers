@@ -10,6 +10,8 @@ adapters:
     page_size: 50
     max_pages: 3
     max_results: 100
+    backfill_start: 2015-01-01
+    backfill_days: 90
     filters:
       search_query: '(cat:eess.AS OR cat:cs.SD) AND (all:"speech enhancement" OR all:"speech denoising" OR all:"noise suppression" OR all:dereverberation OR all:"speech restoration" OR all:"speech super-resolution")'
 topic:

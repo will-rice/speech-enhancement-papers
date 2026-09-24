@@ -1,5 +1,5 @@
-from __future__ import annotations
-
+import subprocess
+import sys
 from pathlib import Path
 import textwrap
 
@@ -75,6 +75,19 @@ def test_dedupe_prefers_arxiv_then_doi_then_source(source_record: SourceRecord) 
     )
 
     assert deduplicate([semantic, arxiv]) == [arxiv]
+
+
+def test_deduplicate_merges_arxiv_versions_keeping_existing_identifier(
+    source_record: SourceRecord,
+) -> None:
+    existing = normalize(
+        source_record.model_copy(update={"source": "arxiv", "arxiv_id": "2401.12345"})
+    )
+    refetched = normalize(
+        source_record.model_copy(update={"source": "arxiv", "arxiv_id": "2401.12345v2"})
+    )
+
+    assert deduplicate([refetched, existing]) == [existing]
 
 
 def test_deduplicate_merges_bibliographic_fallback_without_strong_ids(
@@ -293,6 +306,18 @@ def test_plugin_gate_accepts_normalized_paper(
         accepted=True,
         reason="normalized title: Neural Speech Recognition",
     )
+
+
+def test_repository_topic_plugin_loads_outside_the_repository(tmp_path: Path) -> None:
+    # The papers-pipeline console script does not run from the repository
+    # root, so the documented plugin must import from any working directory.
+    script = (
+        "from papers_pipeline.config import TopicConfig\n"
+        "from papers_pipeline.topics import build_topic_gate\n"
+        "build_topic_gate(TopicConfig(plugin='topic_plugin:accept_topic'))\n"
+    )
+
+    subprocess.run([sys.executable, "-c", script], cwd=tmp_path, check=True)
 
 
 def _write_plugin(tmp_path: Path, body: str) -> str:

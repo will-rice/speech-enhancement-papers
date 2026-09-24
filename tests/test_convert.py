@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import asyncio
 import os
 import subprocess
@@ -13,18 +11,18 @@ import pytest
 
 
 from papers_pipeline.batching import Batch, expected_markdown, infer_backlog
+from papers_pipeline.front_matter import with_front_matter
 from papers_pipeline.adapters.arxiv import ArxivAdapter
 from papers_pipeline.adapters.base import FetchWindow
 from papers_pipeline.config import AdapterConfig, ConcurrencyConfig
 from papers_pipeline.convert import (
     CommandRunner,
     DownloadingMaterializer,
-    MaterializedInput,
     convert_batch,
 )
 from papers_pipeline.errors import InfrastructureError, PaperError
 from papers_pipeline.http import RequestClient
-from papers_pipeline.models import FailureAttempt, Paper, PipelineState
+from papers_pipeline.models import FailureAttempt, InputFormat, Paper, PipelineState
 from papers_pipeline.remote import HttpResponse, RemoteDownloader
 
 NOW = datetime(2026, 9, 23, 2, 0, tzinfo=timezone.utc)
@@ -32,7 +30,7 @@ FIXTURES = Path(__file__).parent / "fixtures" / "conversion"
 CONCURRENCY = ConcurrencyConfig(html=2, latex=1, pdf=1)
 
 
-def paper(identifier: str, *, input_format: str) -> Paper:
+def paper(identifier: str, *, input_format: InputFormat) -> Paper:
     source = identifier.split(":", 1)[0]
     extension = {"html": "html", "latex": "tex", "pdf": "pdf"}[input_format]
     return Paper(
@@ -43,7 +41,7 @@ def paper(identifier: str, *, input_format: str) -> Paper:
         published=datetime(2024, 1, 2, tzinfo=timezone.utc),
         url=f"https://example.test/{identifier}",
         source=source,
-        input_format=input_format,  # type: ignore[arg-type]
+        input_format=input_format,
         input_url=f"https://example.test/inputs/{identifier.replace(':', '-')}.{extension}",
         categories=("cs.CL",),
     )
@@ -67,7 +65,7 @@ class FakeMaterializer:
         self.behaviors = dict(behaviors or {})
         self.materialized_urls: dict[Path, str] = {}
 
-    async def materialize(self, paper: Paper, root: Path) -> MaterializedInput:
+    async def materialize(self, paper: Paper, root: Path) -> Path:
         behavior = self.behaviors.get(paper.input_url, "success")
         if behavior == "infra_error":
             raise InfrastructureError(
@@ -89,7 +87,7 @@ class FakeMaterializer:
         local_path.parent.mkdir(parents=True, exist_ok=True)
         local_path.write_bytes(source.read_bytes())
         self.materialized_urls[local_path] = paper.input_url
-        return MaterializedInput(local_path=local_path)
+        return local_path
 
     def lookup(self, local_path: Path) -> str:
         return self.materialized_urls[local_path]
@@ -304,13 +302,9 @@ async def test_downloading_materializer_materializes_remote_input_to_local_file(
         target, tmp_path
     )
 
-    assert (
-        result.local_path.read_text(encoding="utf-8")
-        == "<html><body>offline</body></html>"
-    )
-    assert result.local_path.is_absolute()
-    assert result.local_path.parent == tmp_path / "inputs"
-    assert result.cleanup_paths == (result.local_path,)
+    assert result.read_text(encoding="utf-8") == "<html><body>offline</body></html>"
+    assert result.is_absolute()
+    assert result.parent == tmp_path / "inputs"
 
 
 @pytest.mark.asyncio
@@ -339,7 +333,7 @@ async def test_arxiv_adapter_pdf_url_downloads_without_redirect(
     )
 
     assert await successful.download(adapter_url, 1) == b"%PDF fixture"
-    with pytest.raises(InfrastructureError, match="redirect HTTP 302"):
+    with pytest.raises(PaperError, match="redirect without location"):
         await redirected.download(f"{adapter_url}.pdf", 1)
 
 
@@ -368,7 +362,7 @@ async def test_downloading_materializer_maps_disk_errors_to_infrastructure_error
 
 
 @pytest.mark.asyncio
-@pytest.mark.parametrize("status_code", [400, 404, 410, 422])
+@pytest.mark.parametrize("status_code", [400, 401, 403, 404, 410, 422, 429])
 async def test_permanent_download_http_errors_are_paper_errors(
     status_code: int,
 ) -> None:
@@ -399,12 +393,14 @@ class FakeResolver:
 
 
 class FakeConnector:
+    """Return responses in order, repeating the last one."""
+
     def __init__(
         self,
-        response: HttpResponse = HttpResponse(status_code=200, content=b"paper"),
+        *responses: HttpResponse,
         error: OSError | None = None,
     ) -> None:
-        self.response = response
+        self.responses = responses or (HttpResponse(status_code=200, content=b"paper"),)
         self.error = error
         self.calls: list[dict[str, object]] = []
 
@@ -412,7 +408,7 @@ class FakeConnector:
         self.calls.append(kwargs)
         if self.error is not None:
             raise self.error
-        return self.response
+        return self.responses[min(len(self.calls), len(self.responses)) - 1]
 
 
 @pytest.mark.asyncio
@@ -476,6 +472,60 @@ async def test_remote_downloader_pins_public_address_and_preserves_origin() -> N
             "timeout": 12,
         }
     ]
+
+
+@pytest.mark.asyncio
+async def test_remote_downloader_follows_redirects_revalidating_each_hop() -> None:
+    resolver = FakeResolver(("8.8.8.8",))
+    connector = FakeConnector(
+        HttpResponse(302, b"", location="https://publisher.example/paper"),
+        HttpResponse(301, b"", location="/paper.html"),
+        HttpResponse(200, b"paper"),
+    )
+
+    payload = await RemoteDownloader(resolver=resolver, connector=connector).download(
+        "https://doi.org/10.1000/FIXTURE", 1
+    )
+
+    assert payload == b"paper"
+    assert resolver.calls == [
+        ("doi.org", 443),
+        ("publisher.example", 443),
+        ("publisher.example", 443),
+    ]
+    assert [call["target"] for call in connector.calls] == [
+        "/10.1000/FIXTURE",
+        "/paper",
+        "/paper.html",
+    ]
+
+
+@pytest.mark.asyncio
+async def test_remote_downloader_rejects_redirect_to_private_address() -> None:
+    connector = FakeConnector(
+        HttpResponse(302, b"", location="http://10.0.0.1/paper.pdf")
+    )
+
+    with pytest.raises(PaperError, match="non-public address"):
+        await RemoteDownloader(
+            resolver=FakeResolver(("8.8.8.8",)), connector=connector
+        ).download("https://doi.org/10.1000/FIXTURE", 1)
+
+    assert len(connector.calls) == 1
+
+
+@pytest.mark.asyncio
+async def test_remote_downloader_bounds_redirect_chains() -> None:
+    connector = FakeConnector(
+        HttpResponse(302, b"", location="https://doi.org/10.1000/FIXTURE")
+    )
+
+    with pytest.raises(PaperError, match="exceeded 5 redirects"):
+        await RemoteDownloader(
+            resolver=FakeResolver(("8.8.8.8",)), connector=connector
+        ).download("https://doi.org/10.1000/FIXTURE", 1)
+
+    assert len(connector.calls) == 6
 
 
 @pytest.mark.asyncio
@@ -550,11 +600,11 @@ async def test_http_408_aborts_mixed_batch_without_mutating_failure_state(
     )
 
     class MixedMaterializer:
-        async def materialize(self, target: Paper, root: Path) -> MaterializedInput:
-            if target == timed_out:
-                await remote.download(target.input_url, 1)
+        async def materialize(self, paper: Paper, root: Path) -> Path:
+            if paper == timed_out:
+                await remote.download(paper.input_url, 1)
                 raise AssertionError("408 download returned")
-            return await successful_materializer.materialize(target, root)
+            return await successful_materializer.materialize(paper, root)
 
     for _ in range(2):
         with pytest.raises(InfrastructureError, match="HTTP 408"):
@@ -935,7 +985,9 @@ async def test_marker_output_is_moved_from_marker_contract_location(
 
     output = expected_markdown(tmp_path, target)
     assert result.succeeded[0].output == output
-    assert output.read_text(encoding="utf-8") == "# converted .pdf\n"
+    assert output.read_text(encoding="utf-8") == with_front_matter(
+        target, "# converted .pdf\n"
+    )
     assert not any((tmp_path / ".convert-batch").glob("**/*.md"))
 
 

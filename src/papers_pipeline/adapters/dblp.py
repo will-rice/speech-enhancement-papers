@@ -1,21 +1,19 @@
-from __future__ import annotations
-
 import base64
 import json
 import re
 from datetime import datetime, timezone
+from urllib.parse import urlsplit
 
 from papers_pipeline.adapters.base import FetchPage, FetchWindow, collect_records
 from papers_pipeline.config import AdapterConfig
 from papers_pipeline.errors import InfrastructureError, PaperError
 from papers_pipeline.http import RequestClient
-from papers_pipeline.models import SourceRecord
+from papers_pipeline.models import InputFormat, SourceRecord
 
 
 class DblpAdapter:
     name = "dblp"
     record_sources = frozenset({"dblp"})
-    window_type = FetchWindow
 
     async def fetch(
         self,
@@ -77,9 +75,7 @@ class DblpAdapter:
         )
         title = _required_text(info.get("title"), field="title", identifier=identifier)
         published = _required_year(info.get("year"), identifier=identifier)
-        input_url = _electronic_url(
-            info.get("ee"), info.get("url"), identifier=identifier
-        )
+        input_url = _electronic_url(info.get("ee"), identifier=identifier)
         return SourceRecord(
             source=self.name,
             source_id=identifier,
@@ -88,10 +84,15 @@ class DblpAdapter:
             authors=_authors(info.get("authors")),
             published=published,
             url=_scalar_text(info.get("url")) or f"https://dblp.org/rec/{identifier}",
-            input_format="html",
+            input_format=electronic_format(input_url),
             input_url=input_url,
             doi=_first_text(info.get("doi")),
         )
+
+
+def electronic_format(url: str) -> InputFormat:
+    """Electronic editions are HTML pages unless the link is a PDF itself."""
+    return "pdf" if urlsplit(url).path.casefold().endswith(".pdf") else "html"
 
 
 def _within_window(record: SourceRecord, window: FetchWindow) -> bool:
@@ -178,8 +179,9 @@ def _required_year(value: object, *, identifier: str) -> datetime:
         raise PaperError(f"dblp record invalid year: {identifier}") from error
 
 
-def _electronic_url(ee: object, url: object, *, identifier: str) -> str:
-    electronic_url = _first_text(ee) or _first_text(url)
+def _electronic_url(ee: object, *, identifier: str) -> str:
+    # Only "ee" links to the paper; "url" is dblp's own metadata page.
+    electronic_url = _first_text(ee)
     if not electronic_url:
         raise PaperError(f"dblp record missing electronic URL: {identifier}")
     return electronic_url

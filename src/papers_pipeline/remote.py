@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import asyncio
 import http.client
 import ipaddress
@@ -7,15 +5,18 @@ import socket
 import ssl
 from dataclasses import dataclass
 from typing import Protocol, cast
-from urllib.parse import SplitResult, urlsplit
+from urllib.parse import SplitResult, urljoin, urlsplit
 
 from papers_pipeline.errors import InfrastructureError, PaperError
+
+MAX_REDIRECTS = 5
 
 
 @dataclass(frozen=True)
 class HttpResponse:
     status_code: int
     content: bytes
+    location: str | None = None
 
 
 class Resolver(Protocol):
@@ -108,7 +109,9 @@ class PinnedHttpConnector:
                 },
             )
             response = connection.getresponse()
-            return HttpResponse(response.status, response.read())
+            return HttpResponse(
+                response.status, response.read(), response.getheader("Location")
+            )
         finally:
             connection.close()
 
@@ -151,6 +154,18 @@ class RemoteDownloader:
         self._connector = connector or PinnedHttpConnector()
 
     async def download(self, url: str, timeout: float) -> bytes:
+        for _ in range(MAX_REDIRECTS + 1):
+            response = await self._get(url, timeout)
+            if not 300 <= response.status_code < 400:
+                return _classify_response(response, url)
+            if response.location is None:
+                raise PaperError(f"conversion input redirect without location: {url}")
+            # Every hop goes through _get, so redirects are held to the same
+            # origin and public-address checks as the original URL.
+            url = urljoin(url, response.location)
+        raise PaperError(f"conversion input exceeded {MAX_REDIRECTS} redirects: {url}")
+
+    async def _get(self, url: str, timeout: float) -> HttpResponse:
         parts = urlsplit(url)
         host, port = _validate_origin(parts, url)
         try:
@@ -170,7 +185,7 @@ class RemoteDownloader:
         if parts.query:
             target = f"{target}?{parts.query}"
         try:
-            response = await self._connector.get(
+            return await self._connector.get(
                 scheme=parts.scheme,
                 address=str(address),
                 port=port,
@@ -183,7 +198,6 @@ class RemoteDownloader:
             raise InfrastructureError(
                 f"conversion input network failure: {url}"
             ) from error
-        return _classify_response(response, url)
 
 
 def _validate_origin(parts: SplitResult, url: str) -> tuple[str, int]:
@@ -248,13 +262,12 @@ def _host_header(host: str, port: int, scheme: str) -> str:
 
 def _classify_response(response: HttpResponse, url: str) -> bytes:
     status = response.status_code
-    if status in {401, 403}:
-        raise InfrastructureError(f"conversion input authentication failed: {url}")
-    if 300 <= status < 400:
-        raise InfrastructureError(f"conversion input redirect HTTP {status}: {url}")
+    # A host refusing or rate-limiting one paper (paywall, bot check, 429) fails
+    # that paper; failures are counted per paper and reset on success, so a
+    # transient block costs one attempt instead of stalling every run.
     if status == 408:
         raise InfrastructureError(f"conversion input HTTP 408: {url}")
-    if 400 <= status < 500 and status != 429:
+    if 400 <= status < 500:
         raise PaperError(f"conversion input HTTP {status}: {url}")
     if status >= 400:
         raise InfrastructureError(f"conversion input HTTP {status}: {url}")
