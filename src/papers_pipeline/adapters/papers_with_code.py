@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import base64
 import json
 import re
@@ -20,7 +18,6 @@ _BASE_URL = "https://paperswithcode.com/api/v1/papers/"
 class PapersWithCodeAdapter:
     name = "papers_with_code"
     record_sources = frozenset({"papers_with_code"})
-    window_type = FetchWindow
 
     async def fetch(
         self,

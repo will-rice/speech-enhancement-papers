@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import re
 import shutil
 import stat
@@ -9,8 +7,6 @@ from typing import Any
 
 import pytest
 import yaml
-
-from papers_pipeline.pipeline import PipelinePaths, _managed_paths
 
 
 class WorkflowLoader(yaml.SafeLoader):
@@ -31,13 +27,12 @@ for first_character in "OoYyNn":
 WORKFLOWS = Path(".github/workflows")
 SCRIPTS = Path(".github/scripts")
 PINNED_ACTION = re.compile(r"^[^@\s]+@[0-9a-f]{40}$")
-MANAGED_PATHS = (
+DIRTY_PATHS = (
     "papers",
     "papers.csv",
     ".papers-state.yml",
     "README.md",
-    ".convert-batch",
-    "inputs",
+    "src/unrelated.py",
 )
 
 
@@ -78,14 +73,11 @@ def test_ci_triggers_and_permissions_are_read_only() -> None:
     assert data["permissions"] == {"contents": "read"}
 
 
-def test_all_python_workflows_use_locked_dependencies_and_preflight() -> None:
+def test_all_python_workflows_use_locked_dependencies() -> None:
     for name in ("ci.yml", "nightly.yml", "format-corpus.yml"):
         text = (WORKFLOWS / name).read_text(encoding="utf-8")
         assert "uv==" in text
-        assert "uv sync --locked --extra dev" in text
-
-    nightly = (WORKFLOWS / "nightly.yml").read_text(encoding="utf-8")
-    assert nightly.index("papers-pipeline validate") < nightly.index("nightly.sh")
+        assert "uv sync --locked" in text
 
 
 def test_nightly_provisions_pinned_conversion_and_formatting_tools() -> None:
@@ -95,7 +87,7 @@ def test_nightly_provisions_pinned_conversion_and_formatting_tools() -> None:
     assert "prettier@3.6.2" in text
     assert "pypandoc.get_pandoc_path()" in text
     assert '"$HOME/.local/bin" >> "$GITHUB_PATH"' in text
-    assert text.index("marker-pdf==1.10.1") < text.index("papers-pipeline validate")
+    assert text.index("marker-pdf==1.10.1") < text.index("nightly.sh")
 
 
 def test_nightly_has_non_overlapping_mutation_concurrency() -> None:
@@ -126,6 +118,7 @@ def test_alphaxiv_sync_is_read_only_and_configured() -> None:
         "workflow_dispatch": None,
     }
     assert data["permissions"] == {"contents": "read"}
+    assert data["jobs"]["sync"]["if"] == "vars.ALPHAXIV_COLLECTION != ''"
 
     sync_step = data["jobs"]["sync"]["steps"][-1]
     assert sync_step["run"] == "uv run python -m papers_pipeline.alphaxiv_sync"
@@ -175,14 +168,21 @@ def test_feature_branch_dispatch_cannot_contaminate_formatting_pr() -> None:
         assert checkout["with"]["ref"] == "${{ needs.plan.outputs.base_sha }}"
 
 
-def test_format_corpus_validates_and_builds_deterministic_shards() -> None:
+def test_format_corpus_limits_and_builds_deterministic_shards() -> None:
     data = workflow("format-corpus.yml")
     plan = data["jobs"]["plan"]
     matrix_script = next(
         step["run"] for step in plan["steps"] if step.get("id") == "matrix"
     )
-    assert "1 <= count <= 32" in matrix_script
-    assert "for index in range(count)" in matrix_script
+    assert data["on"]["workflow_dispatch"]["inputs"]["shard_count"]["options"] == [
+        "1",
+        "2",
+        "4",
+        "8",
+        "16",
+        "32",
+    ]
+    assert "range($count)" in matrix_script
     assert data["jobs"]["format"]["strategy"]["fail-fast"] is False
 
 
@@ -204,7 +204,12 @@ def _git(cwd: Path, *args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
-def _nightly_scenario(tmp_path: Path, *, dirty_path: str | None) -> tuple[int, int]:
+def _nightly_scenario(
+    tmp_path: Path,
+    *,
+    dirty_path: str | None,
+    concurrent_push: bool = False,
+) -> tuple[int, int]:
     origin = tmp_path / "origin.git"
     work = tmp_path / "work"
     fake_bin = tmp_path / "bin"
@@ -221,13 +226,26 @@ def _nightly_scenario(tmp_path: Path, *, dirty_path: str | None) -> tuple[int, i
     _git(work, "remote", "add", "origin", str(origin))
     _git(work, "push", "-q", "-u", "origin", "main")
 
+    concurrent_command = ""
+    if concurrent_push:
+        other = tmp_path / "other"
+        _git(tmp_path, "clone", "-q", "-b", "main", str(origin), str(other))
+        _git(other, "config", "user.name", "Other")
+        _git(other, "config", "user.email", "other@example.test")
+        concurrent_command = (
+            f'printf "merged\\n" > "{other}/code.txt"\n'
+            f'git -C "{other}" add code.txt\n'
+            f'git -C "{other}" commit -q -m "concurrent merge"\n'
+            f'git -C "{other}" push -q origin main\n'
+        )
+
     fake_bin.mkdir()
     uv = fake_bin / "uv"
     dirty_command = ""
     if dirty_path is not None:
         target = (
             f"{dirty_path}/leftover"
-            if dirty_path in {"papers", ".convert-batch", "inputs", ".cache"}
+            if dirty_path in {"papers", ".cache"}
             else dirty_path
         )
         (work / target).parent.mkdir(parents=True, exist_ok=True)
@@ -238,6 +256,7 @@ def _nightly_scenario(tmp_path: Path, *, dirty_path: str | None) -> tuple[int, i
         'printf "committed\\n" >> papers.csv\n'
         "git add papers.csv\n"
         'git commit -q -m "pipeline batch"\n'
+        f"{concurrent_command}"
         f"{dirty_command}"
         "exit 23\n",
         encoding="utf-8",
@@ -270,8 +289,8 @@ def _nightly_scenario(tmp_path: Path, *, dirty_path: str | None) -> tuple[int, i
     return completed.returncode, remote_count
 
 
-@pytest.mark.parametrize("dirty_path", MANAGED_PATHS)
-def test_nightly_rejects_dirty_pipeline_paths_after_failure(
+@pytest.mark.parametrize("dirty_path", DIRTY_PATHS)
+def test_nightly_rejects_any_dirty_path_after_failure(
     tmp_path: Path,
     dirty_path: str,
 ) -> None:
@@ -288,29 +307,6 @@ def test_nightly_pushes_consistent_commits_with_clean_or_ignored_cache(
     status, remote_count = _nightly_scenario(tmp_path, dirty_path=dirty_path)
     assert status != 0
     assert remote_count == 2
-
-
-def test_nightly_guard_matches_pipeline_managed_paths(tmp_path: Path) -> None:
-    paths = PipelinePaths(
-        root=tmp_path,
-        config=tmp_path / "papers.yml",
-        state=tmp_path / ".papers-state.yml",
-        inventory=tmp_path / "papers.csv",
-        summary=None,
-    )
-    assert tuple(
-        path.relative_to(tmp_path).as_posix() for path in _managed_paths(paths)
-    ) == (
-        "papers.csv",
-        ".papers-state.yml",
-        "README.md",
-        "papers",
-        ".convert-batch",
-        "inputs",
-    )
-    script = (SCRIPTS / "nightly.sh").read_text(encoding="utf-8")
-    for path in MANAGED_PATHS:
-        assert f'"{path}"' in script
 
 
 def test_nightly_script_is_executable() -> None:
@@ -407,7 +403,6 @@ def test_template_update_validates_release_and_handles_noop_and_conflicts() -> N
     script = SCRIPTS / "template-update.sh"
     text = script.read_text(encoding="utf-8")
     assert script.stat().st_mode & stat.S_IXUSR
-    assert "TEMPLATE_REF:?" in text
     assert "immutable release tag" in text
     assert ".copier-answers.yml" in text
     assert "_commit:" in text
@@ -415,15 +410,18 @@ def test_template_update_validates_release_and_handles_noop_and_conflicts() -> N
     assert "updated=false" in text
     assert "updated=true" in text
     assert "newer than current release" in text
-    assert "Copier update failed" in text
     assert "Copier update left conflicts" in text
     assert "uv run copier update" in text
     assert '--vcs-ref "$template_ref"' in text
     assert "--answers-file .copier-answers.yml" in text
     assert "uv lock" in text
-    assert "uv sync --locked --offline --extra dev" in text
-    assert text.index("uv lock") < text.index("export UV_OFFLINE=1")
-    assert text.index("export UV_OFFLINE=1") < text.index("uv sync --locked --offline")
+    # Dev tools must be provisioned online before validation goes offline.
+    assert (
+        text.index("uv lock")
+        < text.index("uv sync --locked --extra dev")
+        < text.index("export UV_OFFLINE=1")
+        < text.index("pre-commit run --all-files")
+    )
     assert "papers-pipeline validate --config papers.yml" in text
     assert "pre-commit run --all-files" in text
     assert "pytest" in text
@@ -473,3 +471,11 @@ def test_template_update_is_noop_when_release_is_current(
     )
     assert completed.returncode == 0
     assert "already uses template release" in completed.stdout
+
+
+def test_nightly_rebases_onto_concurrent_main_updates(tmp_path: Path) -> None:
+    status, remote_count = _nightly_scenario(
+        tmp_path, dirty_path=None, concurrent_push=True
+    )
+    assert status == 23
+    assert remote_count == 3

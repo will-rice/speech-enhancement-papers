@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from collections.abc import Callable, Iterable
 from datetime import datetime
 from typing import Protocol, TypeVar, runtime_checkable
@@ -50,7 +48,6 @@ class FetchPage(BaseModel):
 class Adapter(Protocol):
     name: str
     record_sources: frozenset[str]
-    window_type: type[FetchWindow]
 
     async def fetch(
         self,

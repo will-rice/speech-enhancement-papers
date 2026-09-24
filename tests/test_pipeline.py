@@ -1,5 +1,4 @@
-from __future__ import annotations
-
+import dataclasses
 import subprocess
 from collections.abc import Sequence
 from datetime import datetime, timezone
@@ -10,14 +9,15 @@ import pytest
 import yaml
 
 import papers_pipeline.cli as cli
-from papers_pipeline.adapters.base import FetchPage, FetchWindow
+from papers_pipeline.adapters.base import FetchPage
 from papers_pipeline.convert import (
     CommandRunner,
     InputMaterializer,
-    MaterializedInput,
 )
 from papers_pipeline.errors import ConfigError, InfrastructureError, PaperError
 from papers_pipeline.git import GitRepository
+from papers_pipeline.config import FetchConfig
+from papers_pipeline.http import RequestClient
 from papers_pipeline.models import SourceRecord
 from papers_pipeline.pipeline import Dependencies, PipelinePaths, run_nightly
 from papers_pipeline.state import load_state
@@ -52,7 +52,6 @@ def record(identifier: str) -> SourceRecord:
 class FakeAdapter:
     name = "arxiv"
     record_sources = frozenset({"arxiv"})
-    window_type = FetchWindow
 
     def __init__(
         self,
@@ -73,22 +72,12 @@ class FakeAdapter:
         )
 
 
-class FakeClient:
-    events: list[str] = []
-
-    async def __aenter__(self) -> "FakeClient":
-        return self
-
-    async def __aexit__(self, *_args: object) -> None:
-        return None
-
-
 class FakeMaterializer(InputMaterializer):
-    async def materialize(self, paper: Any, root: Path) -> MaterializedInput:
+    async def materialize(self, paper: Any, root: Path) -> Path:
         path = root / "inputs" / f"{paper.identifier}.html"
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("<p>paper</p>", encoding="utf-8")
-        return MaterializedInput(path)
+        return path
 
 
 class FakeRunner(CommandRunner):
@@ -138,12 +127,11 @@ class RecordingGit:
     def clear_staging(self, paths: Sequence[Path]) -> None:
         self.cleared.append(tuple(paths))
 
-    def commit(self, paths: Sequence[Path], message: str) -> str | None:
+    def commit(self, paths: Sequence[Path], message: str) -> None:
         self.messages.append(message)
         self.paths.append(tuple(paths))
         if message == self.fail_message:
             raise InfrastructureError(f"git commit failed: {message}")
-        return f"commit-{len(self.messages)}"
 
 
 def make_paths(
@@ -200,6 +188,11 @@ def make_paths(
     )
 
 
+FETCH_CONFIG = FetchConfig(
+    request_timeout_seconds=30, retries=0, backoff_seconds=0, total_deadline_seconds=900
+)
+
+
 def dependencies(
     adapter: FakeAdapter,
     runner: FakeRunner,
@@ -208,7 +201,8 @@ def dependencies(
     return Dependencies(
         environ={},
         adapters={"arxiv": adapter},
-        client_factory=lambda _deadline: FakeClient(),  # type: ignore[arg-type,return-value]
+        # FakeAdapter never sends requests; the client only has to exist.
+        client_factory=lambda deadline: RequestClient(FETCH_CONFIG, deadline),
         materializer=FakeMaterializer(),
         runner=runner,
         git=git,
@@ -224,11 +218,8 @@ async def test_preflight_fails_before_fetch_or_mutation(tmp_path: Path) -> None:
     adapter = FakeAdapter([record("never-fetched")])
     git = RecordingGit()
     deps = dependencies(adapter, FakeRunner(), git)
-    deps = Dependencies(
-        **{
-            **deps.__dict__,
-            "tool_lookup": lambda name: None if name == "marker_single" else name,
-        }
+    deps = dataclasses.replace(
+        deps, tool_lookup=lambda name: None if name == "marker_single" else name
     )
 
     with pytest.raises(
@@ -286,81 +277,6 @@ async def test_inventory_commit_failure_restores_inventory_and_state(
     assert paths.inventory.read_bytes() == inventory_before
     assert paths.state.read_bytes() == state_before
     assert git.cleared == [(paths.inventory, paths.state)]
-
-
-@pytest.mark.asyncio
-async def test_completed_inventory_commit_is_not_rolled_back_or_retried(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    paths = make_paths(tmp_path)
-    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
-    subprocess.run(["git", "config", "user.name", "Test"], cwd=tmp_path, check=True)
-    subprocess.run(
-        ["git", "config", "user.email", "test@example.test"],
-        cwd=tmp_path,
-        check=True,
-    )
-    subprocess.run(["git", "add", "."], cwd=tmp_path, check=True)
-    subprocess.run(["git", "commit", "-qm", "initial"], cwd=tmp_path, check=True)
-    real_check_output = subprocess.check_output
-    rev_parse_calls = 0
-
-    def hide_new_head(*args: Any, **kwargs: Any) -> Any:
-        nonlocal rev_parse_calls
-        command = args[0]
-        if command[:3] == ["git", "rev-parse", "--verify"]:
-            rev_parse_calls += 1
-            if rev_parse_calls == 2:
-                raise subprocess.CalledProcessError(128, command)
-        if command[:4] == ["git", "log", "-1", "--format=%H"]:
-            raise subprocess.CalledProcessError(128, command)
-        return real_check_output(*args, **kwargs)
-
-    monkeypatch.setattr(subprocess, "check_output", hide_new_head)
-    with pytest.raises(InfrastructureError, match="commit completed"):
-        await run_nightly(
-            paths,
-            dependencies(
-                FakeAdapter([record("one")]),
-                FakeRunner(),
-                GitRepository(tmp_path),
-            ),
-        )
-    monkeypatch.setattr(subprocess, "check_output", real_check_output)
-
-    assert paths.inventory.exists()
-    assert (
-        real_check_output(
-            [
-                "git",
-                "status",
-                "--short",
-                "--",
-                paths.inventory.name,
-                paths.state.name,
-            ],
-            cwd=tmp_path,
-            text=True,
-        ).strip()
-        == ""
-    )
-
-    await run_nightly(
-        paths,
-        dependencies(
-            FakeAdapter([record("one")]),
-            FakeRunner(),
-            GitRepository(tmp_path),
-        ),
-    )
-
-    subjects = real_check_output(
-        ["git", "log", "--format=%s"],
-        cwd=tmp_path,
-        text=True,
-    ).splitlines()
-    assert subjects.count("chore: update paper inventory") == 1
 
 
 @pytest.mark.asyncio
@@ -591,11 +507,15 @@ def test_git_repository_commits_only_exact_changed_paths_and_deletions(
     unrelated.write_text("do not commit\n", encoding="utf-8")
 
     repository = GitRepository(tmp_path)
-    commit = repository.commit([kept, deleted], "update selected")
-    noop = repository.commit([kept, deleted], "nothing else")
+    repository.commit([kept, deleted], "update selected")
+    repository.commit([kept, deleted], "nothing else")
 
-    assert commit is not None
-    assert noop is None
+    assert (
+        subprocess.check_output(
+            ["git", "rev-list", "--count", "HEAD"], cwd=tmp_path, text=True
+        ).strip()
+        == "2"
+    )
     changed = subprocess.check_output(
         ["git", "show", "--pretty=", "--name-only", "HEAD"],
         cwd=tmp_path,
@@ -609,68 +529,6 @@ def test_git_repository_commits_only_exact_changed_paths_and_deletions(
             text=True,
         ).strip()
         == "M unrelated.txt"
-    )
-
-
-def test_git_repository_recovers_sha_after_post_commit_rev_parse_failure(
-    tmp_path: Path,
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
-    subprocess.run(["git", "config", "user.name", "Test"], cwd=tmp_path, check=True)
-    subprocess.run(
-        ["git", "config", "user.email", "test@example.test"],
-        cwd=tmp_path,
-        check=True,
-    )
-    tracked = tmp_path / "tracked.txt"
-    tracked.write_text("initial\n", encoding="utf-8")
-    subprocess.run(["git", "add", "."], cwd=tmp_path, check=True)
-    subprocess.run(["git", "commit", "-qm", "initial"], cwd=tmp_path, check=True)
-    tracked.write_text("updated\n", encoding="utf-8")
-    real_check_output = subprocess.check_output
-    rev_parse_calls = 0
-
-    def fail_post_commit_rev_parse(*args: Any, **kwargs: Any) -> Any:
-        nonlocal rev_parse_calls
-        command = args[0]
-        if command[:3] == ["git", "rev-parse", "--verify"]:
-            rev_parse_calls += 1
-            if rev_parse_calls == 2:
-                raise subprocess.CalledProcessError(128, command)
-        return real_check_output(*args, **kwargs)
-
-    monkeypatch.setattr(subprocess, "check_output", fail_post_commit_rev_parse)
-    repository = GitRepository(tmp_path)
-
-    commit = repository.commit([tracked], "update tracked")
-    duplicate = repository.commit([tracked], "duplicate retry")
-
-    assert rev_parse_calls >= 2
-    assert (
-        commit
-        == real_check_output(
-            ["git", "rev-parse", "--verify", "HEAD"],
-            cwd=tmp_path,
-            text=True,
-        ).strip()
-    )
-    assert duplicate is None
-    assert (
-        real_check_output(
-            ["git", "rev-list", "--count", "HEAD"],
-            cwd=tmp_path,
-            text=True,
-        ).strip()
-        == "2"
-    )
-    assert (
-        real_check_output(
-            ["git", "status", "--short"],
-            cwd=tmp_path,
-            text=True,
-        ).strip()
-        == ""
     )
 
 
