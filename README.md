@@ -45,8 +45,9 @@ cannot express the repository rule; the plugin accepts `Paper` and returns
 Fetch request timeouts are 1-120 seconds, retries are 0-5, backoff is 0-30
 seconds, and the shared fetch deadline is 60-7200 seconds. Conversion allows
 1-20 batches per run, 1-100 papers per batch, and a total cost budget of
-1-1000. Per-paper HTML and LaTeX costs are 1-100; PDF cost is 1-1000. HTML and
-LaTeX concurrency is 1-4. PDF concurrency is always exactly 1.
+1-1000. Each converter may run for 60-3600 seconds before it is terminated.
+Per-paper HTML and LaTeX costs are 1-100; PDF cost is 1-1000. HTML and LaTeX
+concurrency is 1-4. PDF concurrency is always exactly 1.
 
 ## Run locally
 
@@ -95,8 +96,11 @@ corpus formatting runs only through the manual sharded workflow.
 
 ## Automation and summaries
 
-The nightly workflow is initially available only through `workflow_dispatch`.
-Enable its schedule only after a successful manual run has been reviewed.
+The nightly workflow supports its template-owned schedule and
+`workflow_dispatch`. The first manual canary run fetched and committed 30
+papers, then safely stopped when a PDF conversion reached the former
+900-second timeout. The retry is limited to one paper with an 1800-second
+conversion timeout.
 
 The nightly Actions summary reports per-source fetched, accepted,
 deduplicated, and rejected counts; inventory, generated, pending, attempted,

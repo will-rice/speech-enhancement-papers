@@ -99,7 +99,7 @@ def test_nightly_provisions_pinned_conversion_and_formatting_tools() -> None:
 
 def test_nightly_has_non_overlapping_mutation_concurrency() -> None:
     data = workflow("nightly.yml")
-    assert set(data["on"]) == {"workflow_dispatch"}
+    assert set(data["on"]) == {"schedule", "workflow_dispatch"}
     assert data["concurrency"] == {
         "group": "nightly-papers",
         "cancel-in-progress": False,
