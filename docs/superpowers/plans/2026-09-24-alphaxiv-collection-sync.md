@@ -324,7 +324,7 @@ git commit -m "docs: add alphaxiv sync implementation plan" \
   -m "Co-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
 ```
 
-- [ ] **Step 4: Push and open the pull request**
+- [x] **Step 4: Push and open the pull request**
 
 Push `will-rice-alphaxiv-collection-sync`, open a non-draft pull request to
 `main`, and include required repository setup and exact validation results.
