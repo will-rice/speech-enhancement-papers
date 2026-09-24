@@ -51,6 +51,12 @@ stage. Source continuations retain an opaque cursor and its exact UTC fetch
 window across bounded runs under one shared deadline. Conversion failures are
 isolated by paper; infrastructure failures stop the run.
 
+The corpus is built to be browsed by people and LLMs. Every paper in `papers/`
+starts with YAML front matter (identifier, title, authors, published date, URL,
+source, DOI, arXiv ID, and categories), and the index below links each
+converted paper to its local markdown file. Run `papers-pipeline front-matter`
+to refresh the front matter of every converted paper from `papers.csv`.
+
 ## Configuration
 
 `papers.yml` defines repository identity, enabled adapters, topic gates, fetch
@@ -59,9 +65,22 @@ policy, conversion budgets, and concurrency. Run
 Unknown keys, duplicate adapters, and invalid ranges are rejected.
 
 Adapter `lookback_days` is 1-365, `page_size` is 1-1000, `max_pages` is 1-100,
-and `max_results` is 1-10000. Semantic Scholar reads the API key from the
-environment variable named by `secret_env`; adapters without credentials use
-`secret_env: null`. The supported `filters` are:
+and `max_results` is 1-10000; Semantic Scholar's `page_size` is at most 100.
+Semantic Scholar reads its API key from `SEMANTIC_SCHOLAR_API_KEY` when
+`secret_env` names it (the nightly workflow exports that repository secret);
+with `secret_env: null` it runs unauthenticated at a shared, low rate limit.
+Other adapters use `secret_env: null`.
+
+To fill in a source's history, set `backfill_start` (a date) on an arXiv,
+Semantic Scholar, bioRxiv, or Hugging Face adapter. After its `lookback_days`
+window, each nightly run also fetches one `backfill_days` chunk (default 30)
+further into the past, resuming a capped chunk before moving on, until it
+reaches `backfill_start`. Progress is kept in `.papers-state.yml`. New papers
+join the conversion backlog, so conversion budgets bound how fast history turns
+into markdown. dblp and Papers with Code cannot query past date ranges and
+reject `backfill_start`.
+
+The supported `filters` are:
 
 - `arxiv`: `search_query`
 - `semantic_scholar`: `query`
@@ -94,6 +113,7 @@ npm install --global prettier@3.6.2
 uv run papers-pipeline validate --config papers.yml
 uv run papers-pipeline nightly --config papers.yml
 uv run papers-pipeline format-corpus --shard-index 0 --shard-count 8
+uv run papers-pipeline front-matter
 ```
 
 All tests use checked-in fixtures and run without source APIs or converter

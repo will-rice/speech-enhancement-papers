@@ -15,6 +15,7 @@ from uuid import uuid4
 from papers_pipeline.batching import Batch, expected_markdown
 from papers_pipeline.config import ConcurrencyConfig
 from papers_pipeline.errors import InfrastructureError, PaperError
+from papers_pipeline.front_matter import with_front_matter
 from papers_pipeline.models import FailureAttempt, Paper, PipelineState
 from papers_pipeline.remote import RemoteDownloader
 
@@ -319,7 +320,7 @@ async def convert_batch(
                 continue
 
             marker = expected_markdown(root, result.paper).with_suffix(".fixme.txt")
-            _write_fixme(
+            write_fixme(
                 marker,
                 identifier=result.paper.identifier,
                 latest_error=result.error,
@@ -386,18 +387,25 @@ def _promote_successes(
         if result.error is not None or result.staged_output is None:
             continue
         output = expected_markdown(root, result.paper)
+        result.staged_output.write_text(
+            with_front_matter(
+                result.paper, result.staged_output.read_text(encoding="utf-8")
+            ),
+            encoding="utf-8",
+        )
         _atomic_move(result.staged_output, output)
         succeeded.append(PaperConversion(paper=result.paper, output=output, error=None))
     return tuple(succeeded)
 
 
-def _write_fixme(
+def write_fixme(
     path: Path,
     *,
     identifier: str,
     latest_error: str,
     attempts: list[FailureAttempt],
 ) -> None:
+    """Write the marker that blocks a paper from conversion until removed."""
     _atomic_write_text(
         path,
         "\n".join(
