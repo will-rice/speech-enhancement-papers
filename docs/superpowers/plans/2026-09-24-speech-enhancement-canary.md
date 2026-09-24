@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Publish a validated pull request containing the first standalone canary generated from `will-rice/papers-template` release `v0.1.0`.
+**Goal:** Publish and safely update the first standalone canary generated from versioned `will-rice/papers-template` releases.
 
 **Architecture:** Render the released Copier template into the existing repository, then specialize only declarative discovery policy, bounded conversion limits, and the nightly trigger. Preserve generated pipeline code and the repository-owned corpus/state boundary, while adapting workflow tests and documentation to the canary's intentionally manual launch.
 
@@ -327,3 +327,57 @@ workflow run was dispatched for the feature branch.
 
 Send the pull request URL, every commit SHA, exact command results, and any
 blockers to project session `8cd59274-557d-49a8-9304-120c87989540`.
+
+### Task 5: Apply the v0.1.1 conversion-timeout update
+
+**Files:**
+- Modify: `.github/workflows/nightly.yml`
+- Modify: `.copier-answers.yml`
+- Modify: `papers.yml`
+- Modify: template-owned pipeline files updated by Copier
+- Modify: `README.md`
+- Modify: `docs/superpowers/specs/2026-09-24-speech-enhancement-canary-design.md`
+- Modify: `docs/superpowers/plans/2026-09-24-speech-enhancement-canary.md`
+- Preserve: `papers/`, `papers.csv`, `.papers-state.yml`, and caches
+
+**Interfaces:**
+- Consumes: template release `v0.1.1` and the first manual run result
+- Produces: configurable conversion timeout, one-paper retry limit, restored
+  template-owned schedule, and an auditable update record
+
+- [x] **Step 1: Start from current main**
+
+Create `will-rice-configure-conversion-timeout` from `origin/main` commit
+`ba556e061d98b3c85fc6693a87b5c04a609a8238`, which contains the 30-paper
+inventory commit from the first manual run.
+
+- [x] **Step 2: Restore template workflow ownership**
+
+Restore `.github/workflows/nightly.yml` byte-for-byte to the `v0.1.0`
+scheduled plus `workflow_dispatch` version before running Copier.
+
+- [x] **Step 3: Update from the recorded source**
+
+Run Copier `9.10.2` against the recorded remote source at `v0.1.1`. Resolve
+the expected `papers.yml.rej` by retaining canary source/topic/budget settings
+and accepting `conversion.timeout_seconds`; leave no `.rej` files.
+
+- [x] **Step 4: Configure the hosted-runner retry**
+
+Keep one conversion batch, reduce `conversion.max_papers` from 5 to 1, and set
+`conversion.timeout_seconds: 1800`. Keep cost, concurrency, arXiv, topic, and
+fetch limits unchanged.
+
+- [x] **Step 5: Record first-run evidence**
+
+Document that the first manual run fetched and committed 30 papers, PDF
+conversion stopped safely at the former 900-second timeout, `v0.1.1` makes the
+timeout configurable, schedules are restored because the retry will complete
+well before the next cron, and the retry uses one paper at 1800 seconds.
+
+- [ ] **Step 6: Validate and publish**
+
+Verify protected paths against pre-update hashes, run configuration
+validation, the full offline suite, pre-commit, provenance and configuration
+assertions, and `git diff --check`. Commit conventionally, push, open a pull
+request to `main`, and do not merge or dispatch nightly.
