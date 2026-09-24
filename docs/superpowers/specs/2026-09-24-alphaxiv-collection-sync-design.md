@@ -12,7 +12,7 @@ removes collection entries.
 1. **Separate workflow with a tested repository script (selected).** Trigger
    after every completed `Nightly papers` workflow and allow manual dispatch.
    This still syncs inventory commits when a later conversion step fails, keeps
-   alphaXiv failures isolated from the paper pipeline, and makes parsing and
+   alphaXiv failures isolated from nightly execution, and makes parsing and
    idempotence testable offline.
 2. **A final job in `nightly.yml`.** This gives one workflow view, but a failed
    conversion would prevent collection sync even when the inventory commit was
@@ -31,14 +31,17 @@ Add `.github/workflows/alphaxiv.yml` with two triggers:
   failure.
 - `workflow_dispatch` for initial population and controlled retries.
 
-The job checks out `main`, installs pinned `alphaxiv-py==0.7.0`, and invokes
-`scripts/sync_alphaxiv.py`. It has read-only repository permissions, a bounded
-timeout, and non-cancelling concurrency so two collection writes cannot race.
-The workflow does not modify repository content.
+The job checks out `main`, syncs the locked repository environment, installs
+pinned `alphaxiv-py==0.7.0`, and invokes
+`python -m papers_pipeline.alphaxiv_sync`. It has read-only repository
+permissions, a bounded timeout, and non-cancelling concurrency so two
+collection writes cannot race. The workflow does not modify repository
+content.
 
 Configuration is supplied by:
 
-- GitHub Actions secret `ALPHAXIV_API_KEY`.
+- GitHub Actions secret `ALPHAXIV_API_KEY`, containing a key authorized for
+  folder writes.
 - GitHub Actions variable `ALPHAXIV_COLLECTION`, containing an exact alphaXiv
   folder name or folder ID.
 
@@ -47,7 +50,7 @@ to disk, command output, artifacts, or repository files.
 
 ## Synchronization behavior
 
-`scripts/sync_alphaxiv.py` reads unique, non-empty `arxiv_id` values from
+`papers_pipeline.alphaxiv_sync` reads unique, non-empty `arxiv_id` values from
 `papers.csv`. It asks the alphaXiv CLI for the configured folder as normalized
 JSON, canonicalizes both inventory and collection IDs by removing a trailing
 arXiv version suffix, and adds only missing papers with:
