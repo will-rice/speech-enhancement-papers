@@ -1,0 +1,44 @@
+repository:
+  name: "Speech Enhancement Papers"
+  slug: "speech-enhancement-papers"
+  description: "Research papers on speech enhancement, denoising, dereverberation, and restoration"
+adapters:
+  - name: arxiv
+    enabled: true
+    secret_env: null
+    lookback_days: 30
+    page_size: 50
+    max_pages: 3
+    max_results: 100
+    filters:
+      search_query: '(cat:eess.AS OR cat:cs.SD) AND (all:"speech enhancement" OR all:"speech denoising" OR all:"noise suppression" OR all:dereverberation OR all:"speech restoration" OR all:"speech super-resolution")'
+topic:
+  include_any:
+    - "speech enhancement"
+    - "speech denoising"
+    - "noise suppression"
+    - "dereverberation"
+    - "speech restoration"
+    - "speech super-resolution"
+  include_all: []
+  exclude_any: []
+  categories:
+    - "eess.AS"
+    - "cs.SD"
+  plugin: null
+fetch:
+  request_timeout_seconds: 30
+  retries: 3
+  backoff_seconds: 1
+  total_deadline_seconds: 900
+conversion:
+  max_batches_per_run: 1
+  max_papers: 5
+  max_cost: 50
+  html_cost: 2
+  latex_cost: 4
+  pdf_cost: 20
+concurrency:
+  html: 2
+  latex: 1
+  pdf: 1
