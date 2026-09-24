@@ -3,8 +3,8 @@ name = "speech-enhancement-papers"
 version = "0.1.0"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-  "alphaxiv-py==0.7.0",
   "httpx>=0.28,<0.29",
+  "mcp>=2.2,<3",
   "pydantic>=2.11,<3",
   "PyYAML>=6.0,<7",
 ]
@@ -15,7 +15,6 @@ dev = [
   "pre-commit>=4.3,<5",
   "pytest>=8.4,<9",
   "pytest-asyncio>=1.1,<2",
-  "pytest-httpx>=0.35,<0.36",
   "ruff>=0.12,<0.13",
   "types-PyYAML>=6.0.12,<7",
 ]
@@ -36,11 +35,6 @@ target-version = "py312"
 python_version = "3.12"
 strict = true
 packages = ["papers_pipeline"]
-
-# alphaxiv-py ships inline annotations without a py.typed marker.
-[[tool.mypy.overrides]]
-module = ["alphaxiv", "alphaxiv.*"]
-follow_untyped_imports = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/papers_pipeline"]

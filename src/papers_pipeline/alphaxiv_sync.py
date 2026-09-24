@@ -5,22 +5,30 @@ from __future__ import annotations
 import argparse
 import asyncio
 import csv
+import itertools
+import json
 import os
 import re
 import sys
 from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
-from alphaxiv import AlphaXivClient
-from alphaxiv.exceptions import AlphaXivError
+import httpx2
+from mcp import Client
+from mcp.client.streamable_http import streamable_http_client
+
+MCP_URL = "https://api.alphaxiv.org/mcp/v1"
+# save_papers_to_folder accepts at most 50 papers per call.
+SAVE_BATCH_SIZE = 50
 
 
 @dataclass(frozen=True)
 class SyncResult:
     inventory_count: int
-    existing_count: int
-    added_count: int
+    before_count: int
+    after_count: int
 
 
 def canonical_arxiv_id(value: str) -> str:
@@ -28,53 +36,63 @@ def canonical_arxiv_id(value: str) -> str:
 
 
 def read_arxiv_ids(path: Path) -> list[str]:
+    """Return unique versionless arXiv IDs from the inventory, in order."""
     with path.open(newline="", encoding="utf-8") as inventory_file:
         reader = csv.DictReader(inventory_file)
         if reader.fieldnames is None or "arxiv_id" not in reader.fieldnames:
             raise ValueError("papers.csv is missing arxiv_id")
-
-        identifiers: list[str] = []
-        seen: set[str] = set()
-        for row in reader:
-            if row.get("source") != "arxiv":
-                continue
-            identifier = (row.get("arxiv_id") or "").strip()
-            canonical_id = canonical_arxiv_id(identifier)
-            if canonical_id and canonical_id not in seen:
-                identifiers.append(identifier)
-                seen.add(canonical_id)
-        return identifiers
+        identifiers = (
+            canonical_arxiv_id(row.get("arxiv_id") or "")
+            for row in reader
+            if row.get("source") == "arxiv"
+        )
+        return list(dict.fromkeys(filter(None, identifiers)))
 
 
 async def sync_collection(
     inventory: Path,
     collection: str,
-    client: AlphaXivClient,
+    client: Client,
 ) -> SyncResult:
-    identifiers = read_arxiv_ids(inventory)
-    folder = await client.folders.get(collection)
-    existing_ids = {canonical_arxiv_id(paper.preferred_id) for paper in folder.papers}
-    missing = [
-        identifier
-        for identifier in identifiers
-        if canonical_arxiv_id(identifier) not in existing_ids
-    ]
-    resolved = await asyncio.gather(
-        *(client.papers.resolve(identifier) for identifier in missing)
-    )
-    group_ids: list[str] = []
-    for paper in resolved:
-        if not paper.group_id:
-            raise ValueError(f"alphaXiv has no paper group for {paper.input_id}")
-        group_ids.append(paper.group_id)
-    if group_ids:
-        await client.folders.add_papers(folder.id, group_ids)
+    """Save every inventory paper to the named folder.
 
+    save_papers_to_folder is idempotent and never removes papers, so the
+    whole inventory is sent on every run.
+    """
+    identifiers = read_arxiv_ids(inventory)
+    before = await find_folder(client, collection)
+    for batch in itertools.batched(identifiers, SAVE_BATCH_SIZE):
+        await call_tool(
+            client,
+            "save_papers_to_folder",
+            {"folder_id": before["folder_id"], "paper_ids_or_urls": list(batch)},
+        )
+    after = await find_folder(client, collection)
     return SyncResult(
         inventory_count=len(identifiers),
-        existing_count=len(identifiers) - len(missing),
-        added_count=len(group_ids),
+        before_count=before["paper_count"],
+        after_count=after["paper_count"],
     )
+
+
+async def find_folder(client: Client, name: str) -> dict[str, Any]:
+    library = await call_tool(client, "list_library", {})
+    matches: list[dict[str, Any]] = [
+        folder for folder in library["folders"] if folder["name"] == name
+    ]
+    if len(matches) != 1:
+        raise ValueError(
+            f"expected one alphaXiv folder named {name!r}, found {len(matches)}"
+        )
+    return matches[0]
+
+
+async def call_tool(client: Client, name: str, arguments: dict[str, Any]) -> Any:
+    result = await client.call_tool(name, arguments)
+    text = "".join(block.text for block in result.content if block.type == "text")
+    if result.is_error:
+        raise ValueError(f"alphaXiv {name} failed: {text}")
+    return json.loads(text)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -91,26 +109,21 @@ def main(argv: Sequence[str] | None = None) -> int:
         print("error: ALPHAXIV_COLLECTION must be set", file=sys.stderr)
         return 2
 
-    try:
-        result = asyncio.run(_sync(args.inventory, collection, api_key))
-    except (AlphaXivError, OSError, ValueError) as error:
-        print(f"error: alphaXiv sync failed: {error}", file=sys.stderr)
-        return 1
-
+    result = asyncio.run(sync(args.inventory, collection, api_key))
     print(
         "alphaXiv sync complete: "
         f"inventory={result.inventory_count} "
-        f"existing={result.existing_count} "
-        f"added={result.added_count}"
+        f"folder_papers={result.before_count}->{result.after_count}"
     )
     return 0
 
 
-async def _sync(inventory: Path, collection: str, api_key: str) -> SyncResult:
-    # Pass the key explicitly: alphaxiv-py 0.7.0 ignores ALPHAXIV_API_KEY values
-    # without the legacy axv1_ prefix, but the client accepts any bearer key.
-    async with AlphaXivClient(api_key=api_key) as client:
-        return await sync_collection(inventory, collection, client)
+async def sync(inventory: Path, collection: str, api_key: str) -> SyncResult:
+    headers = {"Authorization": f"Bearer {api_key}"}
+    async with httpx2.AsyncClient(headers=headers) as http_client:
+        transport = streamable_http_client(MCP_URL, http_client=http_client)
+        async with Client(transport) as client:
+            return await sync_collection(inventory, collection, client)
 
 
 if __name__ == "__main__":
