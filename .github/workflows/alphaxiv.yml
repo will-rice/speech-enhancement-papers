@@ -30,13 +30,11 @@ jobs:
         timeout-minutes: 2
         with:
           python-version: "3.12"
-      - name: Install pinned alphaXiv CLI
+      - name: Sync locked environment
         timeout-minutes: 3
         run: |
           python -m pip install uv==0.8.17
           uv sync --locked
-          uv tool install alphaxiv-py==0.7.0
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Sync collection
         timeout-minutes: 20
         env:

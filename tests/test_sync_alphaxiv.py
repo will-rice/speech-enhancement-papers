@@ -1,53 +1,49 @@
 from __future__ import annotations
 
-import json
-import subprocess
 from pathlib import Path
-from typing import Any, Sequence
 
 import pytest
+from pytest_httpx import HTTPXMock
 
-from papers_pipeline.alphaxiv_sync import (
-    canonical_arxiv_id,
-    main,
-    read_arxiv_ids,
-    sync_collection,
-)
+from papers_pipeline.alphaxiv_sync import canonical_arxiv_id, main, read_arxiv_ids
+
+API_KEY = "axv2_test-key"
+COLLECTION = "Speech Enhancement"
+FOLDERS_URL = "https://api.alphaxiv.org/folders/v3"
 
 
-class FakeRunner:
-    def __init__(
-        self,
-        folder_payload: object,
-        *,
-        fail_on_add: bool = False,
-    ) -> None:
-        self.folder_payload = folder_payload
-        self.fail_on_add = fail_on_add
-        self.commands: list[list[str]] = []
+def folder_payload(*canonical_ids: str) -> list[dict[str, object]]:
+    return [
+        {"id": "folder-2", "name": "Other", "papers": []},
+        {
+            "id": "folder-1",
+            "name": COLLECTION,
+            "papers": [
+                {"paperGroupId": f"group-{index}", "canonicalId": canonical_id}
+                for index, canonical_id in enumerate(canonical_ids)
+            ],
+        },
+    ]
 
-    def __call__(
-        self,
-        argv: Sequence[str],
-        **kwargs: Any,
-    ) -> subprocess.CompletedProcess[str]:
-        command = list(argv)
-        self.commands.append(command)
-        assert kwargs == {
-            "capture_output": True,
-            "text": True,
-            "check": True,
+
+def legacy_payload(group_id: str | None) -> dict[str, object]:
+    return {
+        "paper": {
+            "paper_version": {"id": "version-1", "version_label": "v2"},
+            "paper_group": {"id": group_id, "universal_paper_id": "2608.28493"},
         }
-        if command[1:3] == ["folders", "show"]:
-            return subprocess.CompletedProcess(
-                command,
-                0,
-                stdout=json.dumps(self.folder_payload),
-                stderr="",
-            )
-        if self.fail_on_add:
-            raise subprocess.CalledProcessError(1, command, stderr="write failed")
-        return subprocess.CompletedProcess(command, 0, stdout="", stderr="")
+    }
+
+
+def run_main(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> int:
+    inventory = tmp_path / "papers.csv"
+    write_inventory(inventory)
+    monkeypatch.setenv("ALPHAXIV_API_KEY", API_KEY)
+    monkeypatch.setenv("ALPHAXIV_COLLECTION", COLLECTION)
+    return main(["--inventory", str(inventory)])
 
 
 def write_inventory(path: Path) -> None:
@@ -84,89 +80,82 @@ def test_canonical_arxiv_id_removes_version() -> None:
     assert canonical_arxiv_id("hep-th/9901001v2") == "hep-th/9901001"
 
 
-def test_sync_collection_adds_only_missing_papers(tmp_path: Path) -> None:
-    inventory = tmp_path / "papers.csv"
-    write_inventory(inventory)
-    runner = FakeRunner(
-        {
-            "papers": [
-                {"preferred_id": "2608.26403v2"},
-                {"preferred_id": "unrelated"},
-            ]
-        }
-    )
-
-    result = sync_collection(
-        inventory,
-        "Speech Enhancement",
-        runner=runner,
-    )
-
-    assert result.inventory_count == 2
-    assert result.existing_count == 1
-    assert result.added_count == 1
-    assert runner.commands == [
-        [
-            "alphaxiv",
-            "folders",
-            "show",
-            "Speech Enhancement",
-            "--json",
-        ],
-        [
-            "alphaxiv",
-            "paper",
-            "folders",
-            "add",
-            "2608.28493v2",
-            "Speech Enhancement",
-            "--yes",
-        ],
-    ]
-
-
-@pytest.mark.parametrize(
-    "payload",
-    [
-        [],
-        {},
-        {"papers": "not-a-list"},
-        {"papers": ["not-an-object"]},
-        {"papers": [{"title": "missing preferred id"}]},
-    ],
-)
-def test_sync_collection_rejects_invalid_folder_payload(
+def test_main_adds_only_missing_papers_with_explicit_api_key(
     tmp_path: Path,
-    payload: object,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    httpx_mock: HTTPXMock,
 ) -> None:
-    inventory = tmp_path / "papers.csv"
-    write_inventory(inventory)
+    httpx_mock.add_response(
+        url=FOLDERS_URL,
+        json=folder_payload("2608.26403v2", "unrelated"),
+        is_reusable=True,
+    )
+    httpx_mock.add_response(
+        url="https://api.alphaxiv.org/papers/v3/legacy/2608.28493v2",
+        json=legacy_payload("group-new"),
+    )
+    httpx_mock.add_response(
+        method="POST",
+        url=f"{FOLDERS_URL}/folder-1/add-papers",
+        match_json={"paperGroupIds": ["group-new"]},
+        json={},
+    )
 
-    with pytest.raises(ValueError, match="invalid alphaXiv folder payload"):
-        sync_collection(inventory, "Speech Enhancement", runner=FakeRunner(payload))
+    assert run_main(tmp_path, monkeypatch) == 0
+    assert capsys.readouterr().out == (
+        "alphaXiv sync complete: inventory=2 existing=1 added=1\n"
+    )
+    assert {
+        request.headers["Authorization"] for request in httpx_mock.get_requests()
+    } == {f"Bearer {API_KEY}"}
 
 
-def test_sync_collection_rejects_malformed_json(tmp_path: Path) -> None:
-    inventory = tmp_path / "papers.csv"
-    write_inventory(inventory)
+def test_main_skips_writes_when_collection_is_complete(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    httpx_mock: HTTPXMock,
+) -> None:
+    httpx_mock.add_response(
+        url=FOLDERS_URL,
+        json=folder_payload("2608.26403v1", "2608.28493v1"),
+    )
 
-    def malformed_runner(
-        argv: Sequence[str],
-        **kwargs: Any,
-    ) -> subprocess.CompletedProcess[str]:
-        return subprocess.CompletedProcess(list(argv), 0, stdout="{", stderr="")
-
-    with pytest.raises(ValueError, match="alphaXiv folders show returned invalid JSON"):
-        sync_collection(inventory, "Speech Enhancement", runner=malformed_runner)
+    assert run_main(tmp_path, monkeypatch) == 0
+    assert capsys.readouterr().out == (
+        "alphaXiv sync complete: inventory=2 existing=2 added=0\n"
+    )
 
 
-def test_sync_collection_propagates_cli_failure(tmp_path: Path) -> None:
-    inventory = tmp_path / "papers.csv"
-    write_inventory(inventory)
-    runner = FakeRunner({"papers": []}, fail_on_add=True)
+def test_main_rejects_papers_without_group(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    httpx_mock: HTTPXMock,
+) -> None:
+    httpx_mock.add_response(url=FOLDERS_URL, json=folder_payload("2608.26403v1"))
+    httpx_mock.add_response(
+        url="https://api.alphaxiv.org/papers/v3/legacy/2608.28493v2",
+        json=legacy_payload(None),
+    )
 
-    with pytest.raises(subprocess.CalledProcessError):
-        sync_collection(inventory, "Speech Enhancement", runner=runner)
+    assert run_main(tmp_path, monkeypatch) == 1
+    assert capsys.readouterr().err == (
+        "error: alphaXiv sync failed: alphaXiv has no paper group for 2608.28493v2\n"
+    )
+
+
+def test_main_reports_api_failure(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    httpx_mock: HTTPXMock,
+) -> None:
+    httpx_mock.add_response(url=FOLDERS_URL, status_code=401, is_reusable=True)
+
+    assert run_main(tmp_path, monkeypatch) == 1
+    assert capsys.readouterr().err.startswith("error: alphaXiv sync failed: ")
 
 
 def test_main_requires_api_key(
@@ -180,24 +169,11 @@ def test_main_requires_api_key(
     assert capsys.readouterr().err == "error: ALPHAXIV_API_KEY must be set\n"
 
 
-def test_main_rejects_non_api_key(
-    monkeypatch: pytest.MonkeyPatch,
-    capsys: pytest.CaptureFixture[str],
-) -> None:
-    monkeypatch.setenv("ALPHAXIV_API_KEY", "session-token")
-    monkeypatch.setenv("ALPHAXIV_COLLECTION", "Speech Enhancement")
-
-    assert main([]) == 2
-    assert capsys.readouterr().err == (
-        "error: ALPHAXIV_API_KEY must be an alphaXiv API key (axv1_...)\n"
-    )
-
-
 def test_main_requires_collection(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    monkeypatch.setenv("ALPHAXIV_API_KEY", "axv1_test-key")
+    monkeypatch.setenv("ALPHAXIV_API_KEY", API_KEY)
     monkeypatch.delenv("ALPHAXIV_COLLECTION", raising=False)
 
     assert main([]) == 2

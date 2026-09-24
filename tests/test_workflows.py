@@ -140,7 +140,7 @@ def test_alphaxiv_sync_is_read_only_bounded_and_configured() -> None:
     }
     commands = "\n".join(step.get("run", "") for step in job["steps"])
     assert "uv sync --locked" in commands
-    assert "uv tool install alphaxiv-py==0.7.0" in commands
+    assert "uv tool install" not in commands
     assert "uv run python -m papers_pipeline.alphaxiv_sync" in commands
 
     sync_step = job["steps"][-1]
