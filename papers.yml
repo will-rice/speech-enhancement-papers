@@ -7,11 +7,11 @@ adapters:
     enabled: true
     secret_env: null
     lookback_days: 30
-    page_size: 50
-    max_pages: 3
-    max_results: 100
-    backfill_start: 2015-01-01
-    backfill_days: 90
+    page_size: 200
+    max_pages: 10
+    max_results: 2000
+    backfill_start: 1991-08-01
+    backfill_days: 365
     filters:
       search_query: '(cat:eess.AS OR cat:cs.SD) AND (all:"speech enhancement" OR all:"speech denoising" OR all:"noise suppression" OR all:dereverberation OR all:"speech restoration" OR all:"speech super-resolution")'
 topic:
@@ -34,14 +34,15 @@ fetch:
   backoff_seconds: 1
   total_deadline_seconds: 900
 conversion:
-  max_batches_per_run: 1
-  max_papers: 1
-  max_cost: 50
+  max_batches_per_run: 20
+  max_papers: 50
+  max_cost: 1000
   timeout_seconds: 1800
   html_cost: 2
   latex_cost: 4
   pdf_cost: 20
+  deadline_seconds: 10800
 concurrency:
-  html: 2
+  html: 4
   latex: 1
   pdf: 1
