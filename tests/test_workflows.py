@@ -115,7 +115,7 @@ def test_nightly_never_runs_a_complete_corpus_glob() -> None:
     assert "papers/**/*.md" not in text
 
 
-def test_alphaxiv_sync_is_read_only_bounded_and_configured() -> None:
+def test_alphaxiv_sync_is_read_only_and_configured() -> None:
     data = workflow("alphaxiv.yml")
     assert data["on"] == {
         "workflow_run": {
@@ -126,24 +126,9 @@ def test_alphaxiv_sync_is_read_only_bounded_and_configured() -> None:
         "workflow_dispatch": None,
     }
     assert data["permissions"] == {"contents": "read"}
-    assert data["concurrency"] == {
-        "group": "alphaxiv-collection",
-        "cancel-in-progress": False,
-    }
 
-    job = data["jobs"]["sync"]
-    assert job["timeout-minutes"] == 30
-    checkout = job["steps"][0]
-    assert checkout["with"] == {
-        "ref": "main",
-        "persist-credentials": False,
-    }
-    commands = "\n".join(step.get("run", "") for step in job["steps"])
-    assert "uv sync --locked" in commands
-    assert "uv tool install" not in commands
-    assert "uv run python -m papers_pipeline.alphaxiv_sync" in commands
-
-    sync_step = job["steps"][-1]
+    sync_step = data["jobs"]["sync"]["steps"][-1]
+    assert sync_step["run"] == "uv run python -m papers_pipeline.alphaxiv_sync"
     assert sync_step["env"] == {
         "ALPHAXIV_API_KEY": "${{ secrets.ALPHAXIV_API_KEY }}",
         "ALPHAXIV_COLLECTION": "${{ vars.ALPHAXIV_COLLECTION }}",

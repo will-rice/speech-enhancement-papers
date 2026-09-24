@@ -666,6 +666,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "httpx" },
+    { name = "httpx2" },
     { name = "mcp" },
     { name = "pydantic" },
     { name = "pyyaml" },
@@ -684,6 +685,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "httpx", specifier = ">=0.28,<0.29" },
+    { name = "httpx2", specifier = ">=2.5,<3" },
     { name = "mcp", specifier = ">=2.2,<3" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.17,<2" },
     { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=4.3,<5" },

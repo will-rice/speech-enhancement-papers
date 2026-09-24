@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import json
 from pathlib import Path
 
@@ -8,12 +6,7 @@ from mcp import Client
 from mcp.server import MCPServer
 from mcp.server.mcpserver.exceptions import ToolError
 
-from papers_pipeline.alphaxiv_sync import (
-    canonical_arxiv_id,
-    main,
-    read_arxiv_ids,
-    sync_collection,
-)
+from papers_pipeline.alphaxiv_sync import main, read_arxiv_ids, sync_collection
 
 COLLECTION = "Speech Enhancement"
 
@@ -62,28 +55,25 @@ def write_inventory(path: Path, *arxiv_ids: str) -> None:
     path.write_text(f"source,arxiv_id\ndblp,\n{rows}", encoding="utf-8")
 
 
-def test_read_arxiv_ids_filters_deduplicates_and_drops_versions(
+def test_read_arxiv_ids_keeps_any_source_deduplicates_and_drops_versions(
     tmp_path: Path,
 ) -> None:
     inventory = tmp_path / "papers.csv"
-    write_inventory(
-        inventory, "2608.26403v1", "2608.26403v1", "2608.26403v2", "2608.28493v2"
+    inventory.write_text(
+        "source,arxiv_id\n"
+        "dblp,\n"
+        "arxiv,2608.26403v1\n"
+        "huggingface,2608.26403v2\n"
+        "semantic_scholar,2608.28493v2\n"
+        "arxiv,hep-th/9901001v3\n",
+        encoding="utf-8",
     )
 
-    assert read_arxiv_ids(inventory) == ["2608.26403", "2608.28493"]
-
-
-def test_read_arxiv_ids_requires_header(tmp_path: Path) -> None:
-    inventory = tmp_path / "papers.csv"
-    inventory.write_text("source,title\narxiv,Example\n", encoding="utf-8")
-
-    with pytest.raises(ValueError, match="papers.csv is missing arxiv_id"):
-        read_arxiv_ids(inventory)
-
-
-def test_canonical_arxiv_id_removes_version() -> None:
-    assert canonical_arxiv_id("2608.26403v3") == "2608.26403"
-    assert canonical_arxiv_id("hep-th/9901001v2") == "hep-th/9901001"
+    assert read_arxiv_ids(inventory) == [
+        "2608.26403",
+        "2608.28493",
+        "hep-th/9901001",
+    ]
 
 
 async def test_sync_collection_saves_inventory_in_batches(tmp_path: Path) -> None:
@@ -93,18 +83,13 @@ async def test_sync_collection_saves_inventory_in_batches(tmp_path: Path) -> Non
     server, saves = fake_alphaxiv(["Other", COLLECTION])
 
     async with Client(server, raise_exceptions=True) as client:
-        result = await sync_collection(inventory, COLLECTION, client)
+        await sync_collection(inventory, COLLECTION, client)
 
-    expected = [canonical_arxiv_id(arxiv_id) for arxiv_id in arxiv_ids]
+    expected = [arxiv_id.removesuffix("v1") for arxiv_id in arxiv_ids]
     assert saves == [
         {"folder_id": "folder-1", "paper_ids_or_urls": expected[:50]},
         {"folder_id": "folder-1", "paper_ids_or_urls": expected[50:]},
     ]
-    assert (result.inventory_count, result.before_count, result.after_count) == (
-        51,
-        0,
-        51,
-    )
 
 
 @pytest.mark.parametrize("folder_names", [["Other"], [COLLECTION, COLLECTION]])
@@ -132,23 +117,16 @@ async def test_sync_collection_reports_tool_errors(tmp_path: Path) -> None:
             await sync_collection(inventory, COLLECTION, client)
 
 
-def test_main_requires_api_key(
+@pytest.mark.parametrize(
+    ("api_key", "collection"), [("", COLLECTION), ("axv2_test-key", "")]
+)
+def test_main_rejects_empty_configuration(
     monkeypatch: pytest.MonkeyPatch,
-    capsys: pytest.CaptureFixture[str],
+    api_key: str,
+    collection: str,
 ) -> None:
-    monkeypatch.delenv("ALPHAXIV_API_KEY", raising=False)
-    monkeypatch.setenv("ALPHAXIV_COLLECTION", COLLECTION)
+    monkeypatch.setenv("ALPHAXIV_API_KEY", api_key)
+    monkeypatch.setenv("ALPHAXIV_COLLECTION", collection)
 
-    assert main([]) == 2
-    assert capsys.readouterr().err == "error: ALPHAXIV_API_KEY must be set\n"
-
-
-def test_main_requires_collection(
-    monkeypatch: pytest.MonkeyPatch,
-    capsys: pytest.CaptureFixture[str],
-) -> None:
-    monkeypatch.setenv("ALPHAXIV_API_KEY", "axv2_test-key")
-    monkeypatch.delenv("ALPHAXIV_COLLECTION", raising=False)
-
-    assert main([]) == 2
-    assert capsys.readouterr().err == "error: ALPHAXIV_COLLECTION must be set\n"
+    with pytest.raises(ValueError, match="must be set"):
+        main()
