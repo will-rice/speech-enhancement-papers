@@ -293,7 +293,7 @@ git commit -m "docs: add speech enhancement canary plan" \
 
 Expected: a conventional documentation commit.
 
-- [ ] **Step 2: Push the feature branch**
+- [x] **Step 2: Push the feature branch**
 
 Run:
 
@@ -303,7 +303,7 @@ git push --set-upstream origin will-rice-speech-enhancement-canary
 
 Expected: the remote branch is created without dispatching any workflow.
 
-- [ ] **Step 3: Open the pull request**
+- [x] **Step 3: Open the pull request**
 
 Create a non-draft pull request targeting `main` whose body records template
 provenance, the manual-only nightly gate, configuration limits, and exact
@@ -311,7 +311,7 @@ validation results.
 
 Expected: an open pull request URL in `will-rice/speech-enhancement-papers`.
 
-- [ ] **Step 4: Verify publication state**
+- [x] **Step 4: Verify publication state**
 
 Run:
 
@@ -323,7 +323,7 @@ gh run list --workflow nightly.yml --branch will-rice-speech-enhancement-canary 
 Expected: the pull request is open, non-draft, targets `main`, and no nightly
 workflow run was dispatched for the feature branch.
 
-- [ ] **Step 5: Report to the parent session**
+- [x] **Step 5: Report to the parent session**
 
 Send the pull request URL, every commit SHA, exact command results, and any
 blockers to project session `8cd59274-557d-49a8-9304-120c87989540`.
