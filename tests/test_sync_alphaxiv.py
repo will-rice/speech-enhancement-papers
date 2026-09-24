@@ -180,11 +180,24 @@ def test_main_requires_api_key(
     assert capsys.readouterr().err == "error: ALPHAXIV_API_KEY must be set\n"
 
 
+def test_main_rejects_non_api_key(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    monkeypatch.setenv("ALPHAXIV_API_KEY", "session-token")
+    monkeypatch.setenv("ALPHAXIV_COLLECTION", "Speech Enhancement")
+
+    assert main([]) == 2
+    assert capsys.readouterr().err == (
+        "error: ALPHAXIV_API_KEY must be an alphaXiv API key (axv1_...)\n"
+    )
+
+
 def test_main_requires_collection(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    monkeypatch.setenv("ALPHAXIV_API_KEY", "test-key")
+    monkeypatch.setenv("ALPHAXIV_API_KEY", "axv1_test-key")
     monkeypatch.delenv("ALPHAXIV_COLLECTION", raising=False)
 
     assert main([]) == 2

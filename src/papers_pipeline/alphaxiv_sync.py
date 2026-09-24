@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 Runner = Callable[..., subprocess.CompletedProcess[str]]
+API_KEY_PREFIX = "axv1_"
 
 
 @dataclass(frozen=True)
@@ -129,8 +130,16 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--inventory", type=Path, default=Path("papers.csv"))
     args = parser.parse_args(argv)
 
-    if not os.environ.get("ALPHAXIV_API_KEY", "").strip():
+    api_key = os.environ.get("ALPHAXIV_API_KEY", "").strip()
+    if not api_key:
         print("error: ALPHAXIV_API_KEY must be set", file=sys.stderr)
+        return 2
+    # alphaxiv-py silently ignores env keys without this prefix.
+    if not api_key.startswith(API_KEY_PREFIX):
+        print(
+            f"error: ALPHAXIV_API_KEY must be an alphaXiv API key ({API_KEY_PREFIX}...)",
+            file=sys.stderr,
+        )
         return 2
     collection = os.environ.get("ALPHAXIV_COLLECTION", "").strip()
     if not collection:

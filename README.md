@@ -143,7 +143,7 @@ deadline events; and fixme paths.
 
 The `Sync alphaXiv collection` workflow adds arXiv papers from `papers.csv` to
 an existing alphaXiv collection. Configure the `ALPHAXIV_API_KEY` Actions
-secret with a key authorized for folder writes and the `ALPHAXIV_COLLECTION`
+secret with an `axv1_`-prefixed API key authorized for folder writes and the `ALPHAXIV_COLLECTION`
 repository variable with the exact folder name or ID. Use `workflow_dispatch`
 for the initial population.
 
