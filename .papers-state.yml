@@ -7,6 +7,12 @@ backfill:
     covered_from: '2019-08-27T23:26:15.016219Z'
 continuations: {}
 failures:
+  arxiv:1808.10620v2:
+  - error: 'conversion timed out after 1800s: marker_single'
+    occurred_at: '2026-09-25T00:38:59.049386Z'
+  arxiv:1809.07384v1:
+  - error: 'conversion timed out after 1800s: marker_single'
+    occurred_at: '2026-09-25T00:38:59.049386Z'
   arxiv:2210.07749v2:
   - error: 'conversion input HTTP 404: https://arxiv.org/pdf/2210.07749v2'
     occurred_at: '2026-09-24T23:26:32.029891Z'
