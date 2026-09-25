@@ -7,39 +7,19 @@ failures:
   arxiv:0804.4347v2:
   - error: 'conversion timed out after 1800s: marker_single'
     occurred_at: '2026-09-25T08:05:22.647277Z'
+  - error: 'conversion timed out after 1800s: marker_single'
+    occurred_at: '2026-09-25T13:04:48.317824Z'
   arxiv:1106.0846v1:
   - error: 'conversion timed out after 1800s: marker_single'
     occurred_at: '2026-09-25T08:05:22.647277Z'
-  arxiv:1309.2359v1:
   - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T04:10:31.115535Z'
+    occurred_at: '2026-09-25T13:04:48.317824Z'
+  arxiv:1708.07524v2:
   - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T08:05:22.647277Z'
-  arxiv:1409.6554v1:
+    occurred_at: '2026-09-25T13:04:48.317824Z'
+  arxiv:1709.00944v5:
   - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T04:10:31.115535Z'
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T08:05:22.647277Z'
-  arxiv:1502.03784v2:
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T04:10:31.115535Z'
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T08:05:22.647277Z'
-  arxiv:1503.07015v2:
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T04:10:31.115535Z'
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T08:05:22.647277Z'
-  arxiv:1510.00383v1:
-  - error: 'conversion input HTTP 404: https://arxiv.org/pdf/1510.00383v1'
-    occurred_at: '2026-09-25T04:10:31.115535Z'
-  - error: 'conversion input HTTP 404: https://arxiv.org/pdf/1510.00383v1'
-    occurred_at: '2026-09-25T08:05:22.647277Z'
-  arxiv:1703.10893v6:
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T07:04:31.976082Z'
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-09-25T08:05:22.647277Z'
+    occurred_at: '2026-09-25T13:04:48.317824Z'
   arxiv:1808.10620v2:
   - error: 'conversion timed out after 1800s: marker_single'
     occurred_at: '2026-09-25T00:38:59.049386Z'
