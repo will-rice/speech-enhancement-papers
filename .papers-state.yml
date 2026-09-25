@@ -6,4 +6,7 @@ backfill:
       window_start: '2022-08-26T23:26:15.016219Z'
     covered_from: '2023-08-26T23:26:15.016219Z'
 continuations: {}
-failures: {}
+failures:
+  arxiv:2210.07749v2:
+  - error: 'conversion input HTTP 404: https://arxiv.org/pdf/2210.07749v2'
+    occurred_at: '2026-09-24T23:26:32.029891Z'
