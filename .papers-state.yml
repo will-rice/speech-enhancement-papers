@@ -1,10 +1,7 @@
 backfill:
   arxiv:
-    continuation:
-      cursor: eyJjb25zdW1lZCI6MSwicGFnZSI6MSwic3RhcnQiOjF9
-      window_end: '2008-08-29T23:26:15.016219Z'
-      window_start: '2007-08-30T23:26:15.016219Z'
-    covered_from: '2008-08-29T23:26:15.016219Z'
+    continuation: null
+    covered_from: '1998-09-01T23:26:15.016219Z'
 continuations: {}
 failures:
   arxiv:0804.4347v2:
