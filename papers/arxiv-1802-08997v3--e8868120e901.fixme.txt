@@ -1,0 +1,5 @@
+paper: arxiv:1802.08997v3
+latest_error: conversion timed out after 1800s: marker_single
+attempt: 2026-09-25T20:19:56.069496+00:00 conversion timed out after 1800s: marker_single
+attempt: 2026-09-27T13:59:58.469583+00:00 conversion timed out after 1800s: marker_single
+attempt: 2026-09-27T17:00:45.252217+00:00 conversion timed out after 1800s: marker_single
