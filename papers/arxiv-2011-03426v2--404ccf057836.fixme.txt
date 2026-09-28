@@ -1,0 +1,5 @@
+paper: arxiv:2011.03426v2
+latest_error: conversion input HTTP 404: https://arxiv.org/pdf/2011.03426v2
+attempt: 2026-09-28T10:39:31.454742+00:00 conversion input HTTP 404: https://arxiv.org/pdf/2011.03426v2
+attempt: 2026-09-28T11:05:45.556623+00:00 conversion input HTTP 404: https://arxiv.org/pdf/2011.03426v2
+attempt: 2026-09-28T14:06:40.424165+00:00 conversion input HTTP 404: https://arxiv.org/pdf/2011.03426v2
