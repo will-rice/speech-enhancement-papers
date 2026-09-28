@@ -27,6 +27,9 @@ failures:
     occurred_at: '2026-09-28T10:39:31.454742Z'
   - error: 'conversion input HTTP 404: https://arxiv.org/pdf/2011.03426v2'
     occurred_at: '2026-09-28T11:05:45.556623Z'
+  arxiv:2102.02063v4:
+  - error: 'conversion timed out after 1800s: marker_single'
+    occurred_at: '2026-09-28T13:28:06.033469Z'
   arxiv:2210.07749v2:
   - error: 'conversion input HTTP 404: https://arxiv.org/pdf/2210.07749v2'
     occurred_at: '2026-09-24T23:26:32.029891Z'
