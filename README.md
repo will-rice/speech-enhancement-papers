@@ -6,40 +6,40 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1793 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1801 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
-| Published                 | Identifier         | Title                                                                                                                                                        | Source |
-| ------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
-| 2026-09-25T09:33:19+00:00 | arxiv:2609.31041v1 | [Room Impulse Response Embeddings for Speech Enhancement in Noisy and Reverberant Environments](https://arxiv.org/abs/2609.31041v1)                          | arxiv  |
-| 2026-09-24T23:36:16+00:00 | arxiv:2609.30631v1 | [Adapting Personalized Speech Enhancement for Low-Latency Audio-Visual Target-Speaker Extraction](https://arxiv.org/abs/2609.30631v1)                        | arxiv  |
-| 2026-09-24T14:25:00+00:00 | arxiv:2609.29867v1 | [Does per-frame early exit pay? A compute-matched study of dynamic depth for on-device speech enhancement](https://arxiv.org/abs/2609.29867v1)               | arxiv  |
-| 2026-09-24T14:24:43+00:00 | arxiv:2609.29866v1 | [Beyond Model Size: Redesigning LiSenNet for embedded speech enhancement](https://arxiv.org/abs/2609.29866v1)                                                | arxiv  |
-| 2026-09-24T13:01:20+00:00 | arxiv:2609.29749v1 | [DAMSEP: Distance-Aware Monaural Source Separation using Multi-RIR Estimation](https://arxiv.org/abs/2609.29749v1)                                           | arxiv  |
-| 2026-09-24T12:22:23+00:00 | arxiv:2609.29463v1 | [Configurable-Bandwidth Time-Frequency Modeling for Efficient Full-Band Speech Enhancement Across Sampling Rates](https://arxiv.org/abs/2609.29463v1)        | arxiv  |
-| 2026-09-24T11:30:22+00:00 | arxiv:2609.29405v1 | [Transcript-Supervised Post-Training of Generative Speech Enhancement on Real Recordings via Reinforce Adjoint Matching](https://arxiv.org/abs/2609.29405v1) | arxiv  |
-| 2026-09-24T05:17:12+00:00 | arxiv:2609.29040v1 | [The Vulnerability of Neural Audio Watermarks under Speech Enhancement](https://arxiv.org/abs/2609.29040v1)                                                  | arxiv  |
-| 2026-09-22T11:04:44+00:00 | arxiv:2609.26000v1 | [SE-MSB: End-to-End Unpaired Speech Enhancement using Mamba Schrödinger Bridges](https://arxiv.org/abs/2609.26000v1)                                         | arxiv  |
-| 2026-09-22T09:55:11+00:00 | arxiv:2609.25948v1 | [Challenges of Multi-Speaker Extraction for Real Conversational Speech Enhancement](https://arxiv.org/abs/2609.25948v1)                                      | arxiv  |
-| 2026-09-21T05:47:28+00:00 | arxiv:2609.24138v1 | [P2Flow: Phoneme-aware Progressive Flow Matching for Extreme Speech Super-Resolution](https://arxiv.org/abs/2609.24138v1)                                    | arxiv  |
-| 2026-09-19T06:54:32+00:00 | arxiv:2609.22824v1 | [Adaptive Depth and Expert Refinement for Efficient Speech Enhancement](https://arxiv.org/abs/2609.22824v1)                                                  | arxiv  |
-| 2026-09-18T15:26:30+00:00 | arxiv:2609.21898v1 | [BLINC: Blind Calibration For Training-Free Speech Enhancement Adaptation](https://arxiv.org/abs/2609.21898v1)                                               | arxiv  |
-| 2026-09-18T00:33:56+00:00 | arxiv:2609.21171v1 | [HAMMER: Harmonic-Aware Parallel Context Modeling and Discriminator-Free Perceptual Optimization for Speech Enhancement](https://arxiv.org/abs/2609.21171v1) | arxiv  |
-| 2026-09-16T14:19:30+00:00 | arxiv:2609.18714v1 | [Absolute Quality Ratings of Speech Enhancement Systems by Listeners of Different Ages and Degrees of Hearing Loss](https://arxiv.org/abs/2609.18714v1)      | arxiv  |
-| 2026-09-16T12:00:48+00:00 | arxiv:2609.18532v1 | [Mask-Based Speech Enhancement for Spatial Audio: A Comparison of Ambisonics, Beamforming, and Microphone Channels](https://arxiv.org/abs/2609.18532v1)      | arxiv  |
-| 2026-09-16T02:00:09+00:00 | arxiv:2609.18009v2 | [SG-Mamba: Sparse Graph-Guided Mamba for Audio-Visual Speech Enhancement](https://arxiv.org/abs/2609.18009v2)                                                | arxiv  |
-| 2026-09-14T15:46:24+00:00 | arxiv:2609.15760v1 | [Directivity-Conditioned Low-Latency Neural Filtering for Speech Enhancement in Hearing Aids](https://arxiv.org/abs/2609.15760v1)                            | arxiv  |
-| 2026-09-12T12:35:20+00:00 | arxiv:2609.13911v1 | [DualSpecSE: A Dual-Path Speech Enhancement Network Integrating Mel and Complex Spectrograms](https://arxiv.org/abs/2609.13911v1)                            | arxiv  |
-| 2026-09-12T08:11:02+00:00 | arxiv:2609.13792v1 | [The VoiceMOS Challenge 2026: Evaluating Speech Enhancement, Emotional TTS and Accented TTS Systems](https://arxiv.org/abs/2609.13792v1)                     | arxiv  |
-| 2026-09-10T22:17:31+00:00 | arxiv:2609.12252v1 | [DriftSE: Speech Enhancement with Generative Drifting](https://arxiv.org/abs/2609.12252v1)                                                                   | arxiv  |
-| 2026-09-10T05:03:11+00:00 | arxiv:2609.11092v1 | [Downstream-Task-Aware Unified Source Separation](https://arxiv.org/abs/2609.11092v1)                                                                        | arxiv  |
-| 2026-09-09T16:12:16+00:00 | arxiv:2609.10392v1 | [Teacher-Free Self-Distilled Consistency Trajectory Learning for Fast Speech Enhancement](https://arxiv.org/abs/2609.10392v1)                                | arxiv  |
-| 2026-09-07T08:40:12+00:00 | arxiv:2609.07226v1 | [Iterative Audio Separation with Mixture Consistency via MIMO Model Extension](https://arxiv.org/abs/2609.07226v1)                                           | arxiv  |
-| 2026-09-03T22:28:55+00:00 | arxiv:2609.04525v1 | [Discriminative Flow Matching: Beyond Time-Conditioning in Generative Restoration via Flow-State Representations](https://arxiv.org/abs/2609.04525v1)        | arxiv  |
-| 2026-09-03T14:45:42+00:00 | arxiv:2609.03940v1 | [Masked Autoregressive Speech Enhancement with Continuous Neural Audio Codec Representations](https://arxiv.org/abs/2609.03940v1)                            | arxiv  |
-| 2026-09-03T10:10:23+00:00 | arxiv:2609.03622v1 | [Test-time adaptation for speech enhancement with an autoregressive speech prior](https://arxiv.org/abs/2609.03622v1)                                        | arxiv  |
-| 2026-09-03T05:31:08+00:00 | arxiv:2609.03381v1 | [StreamWSR: Streamable and Lightweight Waveform-Domain Neural Speech Super-Resolution](https://arxiv.org/abs/2609.03381v1)                                   | arxiv  |
-| 2026-09-02T11:45:41+00:00 | arxiv:2609.02474v1 | [VAANI Noise Event Dataset: A curated spontaneous speech dataset annotated with timestamps for noise events](https://arxiv.org/abs/2609.02474v1)             | arxiv  |
-| 2026-09-01T09:21:00+00:00 | arxiv:2609.00966v1 | [ABSE-NET: A Lightweight Neural Model for Active Binaural Speech Enhancement in Open-Fit Hearing Aids](https://arxiv.org/abs/2609.00966v1)                   | arxiv  |
+| Published                 | Identifier         | Title                                                                                                                                                              | Source |
+| ------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| 2026-09-28T13:17:10+00:00 | arxiv:2609.35118v1 | [RemixIT-TSE: Progressive Synthetic-to-Real Adaptation for Target Speech Extraction via Target-Aware Supervision and Remixing](https://arxiv.org/abs/2609.35118v1) | arxiv  |
+| 2026-09-28T12:50:06+00:00 | arxiv:2609.35054v1 | [Perceptual Quality Loss or Loss of Perceptual Quality?](https://arxiv.org/abs/2609.35054v1)                                                                       | arxiv  |
+| 2026-09-28T11:06:49+00:00 | arxiv:2609.34901v1 | [Domain-Incremental Learning for Generative Speech Enhancement](https://arxiv.org/abs/2609.34901v1)                                                                | arxiv  |
+| 2026-09-28T09:02:12+00:00 | arxiv:2609.34662v1 | [Unsupervised Speech Enhancement via Drifting](https://arxiv.org/abs/2609.34662v1)                                                                                 | arxiv  |
+| 2026-09-28T07:02:50+00:00 | arxiv:2609.34445v1 | [Prox-Friendly Log-Magnitude Prior on Complex-Valued Signal](https://arxiv.org/abs/2609.34445v1)                                                                   | arxiv  |
+| 2026-09-27T16:53:28+00:00 | arxiv:2609.33755v1 | [Transformer-based Neural Beamforming for Real-Time Speech Enhancement on Smart Low-Power Hearable Devices](https://arxiv.org/abs/2609.33755v1)                    | arxiv  |
+| 2026-09-25T09:33:19+00:00 | arxiv:2609.31041v1 | [Room Impulse Response Embeddings for Speech Enhancement in Noisy and Reverberant Environments](https://arxiv.org/abs/2609.31041v1)                                | arxiv  |
+| 2026-09-24T23:58:23+00:00 | arxiv:2609.31787v1 | [Optimal transport meets speech: a tutorial review](https://arxiv.org/abs/2609.31787v1)                                                                            | arxiv  |
+| 2026-09-24T23:36:16+00:00 | arxiv:2609.30631v1 | [Adapting Personalized Speech Enhancement for Low-Latency Audio-Visual Target-Speaker Extraction](https://arxiv.org/abs/2609.30631v1)                              | arxiv  |
+| 2026-09-24T14:25:00+00:00 | arxiv:2609.29867v1 | [Does per-frame early exit pay? A compute-matched study of dynamic depth for on-device speech enhancement](https://arxiv.org/abs/2609.29867v1)                     | arxiv  |
+| 2026-09-24T14:24:43+00:00 | arxiv:2609.29866v1 | [Beyond Model Size: Redesigning LiSenNet for embedded speech enhancement](https://arxiv.org/abs/2609.29866v1)                                                      | arxiv  |
+| 2026-09-24T13:01:20+00:00 | arxiv:2609.29749v1 | [DAMSEP: Distance-Aware Monaural Source Separation using Multi-RIR Estimation](https://arxiv.org/abs/2609.29749v1)                                                 | arxiv  |
+| 2026-09-24T12:22:23+00:00 | arxiv:2609.29463v1 | [Configurable-Bandwidth Time-Frequency Modeling for Efficient Full-Band Speech Enhancement Across Sampling Rates](https://arxiv.org/abs/2609.29463v1)              | arxiv  |
+| 2026-09-24T11:30:22+00:00 | arxiv:2609.29405v1 | [Transcript-Supervised Post-Training of Generative Speech Enhancement on Real Recordings via Reinforce Adjoint Matching](https://arxiv.org/abs/2609.29405v1)       | arxiv  |
+| 2026-09-24T05:17:12+00:00 | arxiv:2609.29040v1 | [The Vulnerability of Neural Audio Watermarks under Speech Enhancement](https://arxiv.org/abs/2609.29040v1)                                                        | arxiv  |
+| 2026-09-22T11:04:44+00:00 | arxiv:2609.26000v1 | [SE-MSB: End-to-End Unpaired Speech Enhancement using Mamba Schrödinger Bridges](https://arxiv.org/abs/2609.26000v1)                                               | arxiv  |
+| 2026-09-22T09:55:11+00:00 | arxiv:2609.25948v1 | [Challenges of Multi-Speaker Extraction for Real Conversational Speech Enhancement](https://arxiv.org/abs/2609.25948v1)                                            | arxiv  |
+| 2026-09-21T05:47:28+00:00 | arxiv:2609.24138v1 | [P2Flow: Phoneme-aware Progressive Flow Matching for Extreme Speech Super-Resolution](https://arxiv.org/abs/2609.24138v1)                                          | arxiv  |
+| 2026-09-19T19:26:42+00:00 | arxiv:2609.31703v1 | [DiffVQE2: An Efficient Low-delay Diffusion Model for Acoustic Echo and Noise Control](https://arxiv.org/abs/2609.31703v1)                                         | arxiv  |
+| 2026-09-19T06:54:32+00:00 | arxiv:2609.22824v1 | [Adaptive Depth and Expert Refinement for Efficient Speech Enhancement](https://arxiv.org/abs/2609.22824v1)                                                        | arxiv  |
+| 2026-09-18T15:26:30+00:00 | arxiv:2609.21898v1 | [BLINC: Blind Calibration For Training-Free Speech Enhancement Adaptation](https://arxiv.org/abs/2609.21898v1)                                                     | arxiv  |
+| 2026-09-18T00:33:56+00:00 | arxiv:2609.21171v1 | [HAMMER: Harmonic-Aware Parallel Context Modeling and Discriminator-Free Perceptual Optimization for Speech Enhancement](https://arxiv.org/abs/2609.21171v1)       | arxiv  |
+| 2026-09-16T14:19:30+00:00 | arxiv:2609.18714v1 | [Absolute Quality Ratings of Speech Enhancement Systems by Listeners of Different Ages and Degrees of Hearing Loss](https://arxiv.org/abs/2609.18714v1)            | arxiv  |
+| 2026-09-16T12:00:48+00:00 | arxiv:2609.18532v1 | [Mask-Based Speech Enhancement for Spatial Audio: A Comparison of Ambisonics, Beamforming, and Microphone Channels](https://arxiv.org/abs/2609.18532v1)            | arxiv  |
+| 2026-09-16T02:00:09+00:00 | arxiv:2609.18009v2 | [SG-Mamba: Sparse Graph-Guided Mamba for Audio-Visual Speech Enhancement](https://arxiv.org/abs/2609.18009v2)                                                      | arxiv  |
+| 2026-09-14T15:46:24+00:00 | arxiv:2609.15760v1 | [Directivity-Conditioned Low-Latency Neural Filtering for Speech Enhancement in Hearing Aids](https://arxiv.org/abs/2609.15760v1)                                  | arxiv  |
+| 2026-09-12T12:35:20+00:00 | arxiv:2609.13911v1 | [DualSpecSE: A Dual-Path Speech Enhancement Network Integrating Mel and Complex Spectrograms](https://arxiv.org/abs/2609.13911v1)                                  | arxiv  |
+| 2026-09-12T08:11:02+00:00 | arxiv:2609.13792v1 | [The VoiceMOS Challenge 2026: Evaluating Speech Enhancement, Emotional TTS and Accented TTS Systems](https://arxiv.org/abs/2609.13792v1)                           | arxiv  |
+| 2026-09-10T22:17:31+00:00 | arxiv:2609.12252v1 | [DriftSE: Speech Enhancement with Generative Drifting](https://arxiv.org/abs/2609.12252v1)                                                                         | arxiv  |
+| 2026-09-10T05:03:11+00:00 | arxiv:2609.11092v1 | [Downstream-Task-Aware Unified Source Separation](https://arxiv.org/abs/2609.11092v1)                                                                              | arxiv  |
 
 <!-- papers-index:end -->
 
