@@ -14,3 +14,6 @@ failures:
     occurred_at: '2026-09-30T05:36:36.412685Z'
   - error: 'conversion input HTTP 404: https://arxiv.org/pdf/2305.05139v2'
     occurred_at: '2026-09-30T05:45:32.266228Z'
+  arxiv:2309.09270v2:
+  - error: 'conversion input HTTP 404: https://arxiv.org/pdf/2309.09270v2'
+    occurred_at: '2026-09-30T06:53:26.221263Z'
