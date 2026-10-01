@@ -4,9 +4,6 @@ backfill:
     covered_from: '1991-08-01T00:00:00Z'
 continuations: {}
 failures:
-  arxiv:2104.04325v1:
-  - error: 'conversion timed out after 1800s: marker_single'
-    occurred_at: '2026-10-01T15:31:26.916813Z'
   arxiv:2409.15335v1:
   - error: 'conversion timed out after 1800s: marker_single'
     occurred_at: '2026-09-30T11:47:05.208409Z'
