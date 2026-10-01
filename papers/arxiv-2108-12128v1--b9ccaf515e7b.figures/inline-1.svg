@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="41.51" height="20.76" overflow="visible"><g transform="translate(0,20.76) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,8.65) scale(1,-1)"><foreignobject width="13.74" height="8.65" overflow="visible"><math mode="inline" tex="\gamma_{v}" text="gamma _ v" xml:id="S4.T4.pic1.m1">
+                                <xmath xml:id="S4.T4.pic1.m1.1">
+                                  <xmapp xml:id="S4.T4.pic1.m1.1.1">
+                                    <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                                    <xmtok font="italic" name="gamma" role="UNKNOWN">γ</xmtok>
+                                    <xmtok font="italic" fontsize="70%" role="UNKNOWN">v</xmtok>
+                                  </xmapp>
+                                </xmath>
+                              </math></foreignobject></g></g><g transform="translate(27.17,10.84)"><g transform="translate(0,9.92) scale(1,-1)"><foreignobject width="14.34" height="9.92" overflow="visible"><math mode="inline" tex="\gamma_{f}" text="gamma _ f" xml:id="S4.T4.pic1.m2">
+                                <xmath xml:id="S4.T4.pic1.m2.1">
+                                  <xmapp xml:id="S4.T4.pic1.m2.1.1">
+                                    <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                                    <xmtok font="italic" name="gamma" role="UNKNOWN">γ</xmtok>
+                                    <xmtok font="italic" fontsize="70%" role="UNKNOWN">f</xmtok>
+                                  </xmapp>
+                                </xmath>
+                              </math></foreignobject></g></g></g></svg>
