@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="321.26" height="256.61" overflow="visible"><g transform="translate(0,256.61) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,256.64) scale(1,-1)"><foreignobject width="321.33" height="256.64" overflow="visible"><img src="arxiv-2106-09008v1--06a647a8ae6c.figures/figure-1.webp" id="S1.F1.pic1.g1" class="ltx_graphics ltx_img_landscape" style="width:100%;height:100%;object-fit:contain" width="334" height="267" alt="Refer to caption"></foreignobject></g></g><g transform="translate(27.05,187.78)"></g><g transform="translate(26.68,114.75)"></g><g transform="translate(255.35,143.03)"></g><g transform="translate(254.77,72.76)"></g><g transform="translate(239.78,202.7)"></g><g transform="translate(13.59,62.93)"></g><g transform="translate(107.17,17.87)"><g transform="scale(1,-1)"><text class="ltx_markedasmath" font="bold" xml:id="S1.F1.pic1.7.1.1.1">x</text></g></g><g transform="translate(148.4,130.56)"><g transform="scale(1,-1)"><text class="ltx_markedasmath" font="bold" xml:id="S1.F1.pic1.8.1.1.1">y</text></g></g><g transform="translate(175.66,17.73)"><g transform="scale(1,-1)"><text font="bold" xml:id="S1.F1.pic1.m3.1.1.2.1">x</text></g><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="74.52" height="11.16" overflow="visible"><math mode="inline" tex="\hat{\textbf{x}}" text="hat@([x])" xml:id="S1.F1.pic1.m3">
+                        <xmath xml:id="S1.F1.pic1.m3.1">
+                          <xmapp xml:id="S1.F1.pic1.m3.1.1">
+                            <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                            <xmtext xml:id="S1.F1.pic1.m3.1.1.2"><text font="bold" xml:id="S1.F1.pic1.m3.1.1.2.1">x</text></xmtext>
+                          </xmapp>
+                        </xmath>
+                      </math></foreignobject></g></g><g transform="translate(131.68,210.33)"><g transform="scale(1,-1)"><text font="bold" xml:id="S1.F1.pic1.m4.4.1.2.1">z</text></g><g transform="scale(1,-1)"><text font="bold" xml:id="S1.F1.pic1.m4.1.1">z</text></g><g transform="scale(1,-1)"><text font="bold" xml:id="S1.F1.pic1.m4.3.1">I</text></g><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="75.05" height="11.16" overflow="visible"><math mode="inline" tex="\textbf{z}\sim\mathcal{N}(\textbf{z};0,\textbf{I})" text="[z] similar-to N@(vector@([z], 0, [I]))" xml:id="S1.F1.pic1.m4">
+                        <xmath xml:id="S1.F1.pic1.m4.4">
+                          <xmapp xml:id="S1.F1.pic1.m4.4.1">
+                            <xmtok meaning="similar-to" name="sim" role="RELOP">∼</xmtok>
+                            <xmtext xml:id="S1.F1.pic1.m4.4.1.2"><text font="bold" xml:id="S1.F1.pic1.m4.4.1.2.1">z</text></xmtext>
+                            <xmapp xml:id="S1.F1.pic1.m4.4.1.3">
+                              <xmtok font="caligraphic" role="UNKNOWN">N</xmtok>
+                              <xmdual xml:id="S1.F1.pic1.m4.4.1.3.2">
+                                <xmapp xml:id="S1.F1.pic1.m4.4.1.3.2.1">
+                                  <xmtok meaning="vector"></xmtok>
+                                  <xmref idref="S1.F1.pic1.m4.1" xml:id="S1.F1.pic1.m4.4.1.3.2.1.2"></xmref>
+                                  <xmref idref="S1.F1.pic1.m4.2" xml:id="S1.F1.pic1.m4.4.1.3.2.1.3"></xmref>
+                                  <xmref idref="S1.F1.pic1.m4.3" xml:id="S1.F1.pic1.m4.4.1.3.2.1.4"></xmref>
+                                </xmapp>
+                                <xmwrap xml:id="S1.F1.pic1.m4.4.1.3.2.2">
+                                  <xmtok role="OPEN" stretchy="false">(</xmtok>
+                                  <xmtext xml:id="S1.F1.pic1.m4.1"><text font="bold" xml:id="S1.F1.pic1.m4.1.1">z</text></xmtext>
+                                  <xmtok role="PUNCT">,</xmtok>
+                                  <xmtok meaning="0" role="NUMBER" xml:id="S1.F1.pic1.m4.2">0</xmtok>
+                                  <xmtok role="PUNCT">,</xmtok>
+                                  <xmtext xml:id="S1.F1.pic1.m4.3"><text font="bold" xml:id="S1.F1.pic1.m4.3.1">I</text></xmtext>
+                                  <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                                </xmwrap>
+                              </xmdual>
+                            </xmapp>
+                          </xmapp>
+                        </xmath>
+                      </math></foreignobject></g></g></g></svg>
