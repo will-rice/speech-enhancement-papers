@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1.33" height="1.01" overflow="visible"><g transform="translate(0,1.01) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,483.92) scale(1,-1)"><foreignobject width="639.07" height="483.92" overflow="visible"><object type="image/svg+xml" data="2210.03363v1/x5.svg" id="S2.F2.pic1.g1" class="ltx_graphics ltx_img_landscape" width="664" height="503" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.2,0.6)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="28.43" height="11.16" overflow="visible"><math mode="inline" tex="H_{\mathrm{d},{0}}" text="H _ (list@(d, 0))" xml:id="S2.F2.pic1.m1">
+                      <xmath xml:id="S2.F2.pic1.m1.3">
+                        <xmapp xml:id="S2.F2.pic1.m1.3.1">
+                          <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                          <xmtok font="italic" fontsize="80%" role="UNKNOWN">H</xmtok>
+                          <xmdual xml:id="S2.F2.pic1.m1.3.1.3">
+                            <xmapp xml:id="S2.F2.pic1.m1.3.1.3.1">
+                              <xmtok meaning="list"></xmtok>
+                              <xmref idref="S2.F2.pic1.m1.1" xml:id="S2.F2.pic1.m1.3.1.3.1.2"></xmref>
+                              <xmref idref="S2.F2.pic1.m1.2" xml:id="S2.F2.pic1.m1.3.1.3.1.3"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S2.F2.pic1.m1.3.1.3.2">
+                              <xmtok fontsize="56%" role="UNKNOWN" xml:id="S2.F2.pic1.m1.1">d</xmtok>
+                              <xmtok fontsize="56%" role="PUNCT">,</xmtok>
+                              <xmtok fontsize="56%" meaning="0" role="NUMBER" xml:id="S2.F2.pic1.m1.2">0</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,483.92) scale(1,-1)"><foreignobject width="639.07" height="483.92" overflow="visible"><object type="image/svg+xml" data="2210.03363v1/x6.svg" id="S2.F2.pic1.g2" class="ltx_graphics ltx_img_landscape" width="664" height="502" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.41,0.44)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="28.83" height="11.16" overflow="visible"><math mode="inline" tex="H_{\!L,0}" text="H _ (list@(L, 0))" xml:id="S2.F2.pic1.m2">
+                      <xmath xml:id="S2.F2.pic1.m2.3">
+                        <xmapp xml:id="S2.F2.pic1.m2.3.1">
+                          <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                          <xmtok font="italic" fontsize="80%" role="UNKNOWN">H</xmtok>
+                          <xmdual xml:id="S2.F2.pic1.m2.3.1.3">
+                            <xmapp xml:id="S2.F2.pic1.m2.3.1.3.1">
+                              <xmtok meaning="list"></xmtok>
+                              <xmref idref="S2.F2.pic1.m2.1" xml:id="S2.F2.pic1.m2.3.1.3.1.2"></xmref>
+                              <xmref idref="S2.F2.pic1.m2.2" xml:id="S2.F2.pic1.m2.3.1.3.1.3"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S2.F2.pic1.m2.3.1.3.2">
+                              <xmtok font="italic" fontsize="56%" role="UNKNOWN" xml:id="S2.F2.pic1.m2.1">L</xmtok>
+                              <xmtok fontsize="56%" role="PUNCT">,</xmtok>
+                              <xmtok fontsize="56%" meaning="0" role="NUMBER" xml:id="S2.F2.pic1.m2.2">0</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0.58,0.23)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="12.89" height="11.16" overflow="visible"><math mode="inline" tex="U" text="U" xml:id="S2.F2.pic1.m3">
+                      <xmath xml:id="S2.F2.pic1.m3.1">
+                        <xmtok font="italic" fontsize="80%" role="UNKNOWN">U</xmtok>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,483.92) scale(1,-1)"><foreignobject width="639.07" height="483.92" overflow="visible"><object type="image/svg+xml" data="2210.03363v1/x7.svg" id="S2.F2.pic1.g3" class="ltx_graphics ltx_img_landscape" width="664" height="502" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.6,0.44)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="28.83" height="11.16" overflow="visible"><math mode="inline" tex="H_{\!L,1}" text="H _ (list@(L, 1))" xml:id="S2.F2.pic1.m4">
+                      <xmath xml:id="S2.F2.pic1.m4.3">
+                        <xmapp xml:id="S2.F2.pic1.m4.3.1">
+                          <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                          <xmtok font="italic" fontsize="80%" role="UNKNOWN">H</xmtok>
+                          <xmdual xml:id="S2.F2.pic1.m4.3.1.3">
+                            <xmapp xml:id="S2.F2.pic1.m4.3.1.3.1">
+                              <xmtok meaning="list"></xmtok>
+                              <xmref idref="S2.F2.pic1.m4.1" xml:id="S2.F2.pic1.m4.3.1.3.1.2"></xmref>
+                              <xmref idref="S2.F2.pic1.m4.2" xml:id="S2.F2.pic1.m4.3.1.3.1.3"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S2.F2.pic1.m4.3.1.3.2">
+                              <xmtok font="italic" fontsize="56%" role="UNKNOWN" xml:id="S2.F2.pic1.m4.1">L</xmtok>
+                              <xmtok fontsize="56%" role="PUNCT">,</xmtok>
+                              <xmtok fontsize="56%" meaning="1" role="NUMBER" xml:id="S2.F2.pic1.m4.2">1</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,483.92) scale(1,-1)"><foreignobject width="639.07" height="483.92" overflow="visible"><object type="image/svg+xml" data="2210.03363v1/x8.svg" id="S2.F2.pic1.g4" class="ltx_graphics ltx_img_landscape" width="664" height="502" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.83,0.2)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="27.50" height="11.16" overflow="visible"><math mode="inline" tex="{G}_{\!L,0}" text="G _ (list@(L, 0))" xml:id="S2.F2.pic1.m5">
+                      <xmath xml:id="S2.F2.pic1.m5.3">
+                        <xmapp xml:id="S2.F2.pic1.m5.3.1">
+                          <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                          <xmtok font="italic" fontsize="80%" role="UNKNOWN">G</xmtok>
+                          <xmdual xml:id="S2.F2.pic1.m5.3.1.3">
+                            <xmapp xml:id="S2.F2.pic1.m5.3.1.3.1">
+                              <xmtok meaning="list"></xmtok>
+                              <xmref idref="S2.F2.pic1.m5.1" xml:id="S2.F2.pic1.m5.3.1.3.1.2"></xmref>
+                              <xmref idref="S2.F2.pic1.m5.2" xml:id="S2.F2.pic1.m5.3.1.3.1.3"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S2.F2.pic1.m5.3.1.3.2">
+                              <xmtok font="italic" fontsize="56%" role="UNKNOWN" xml:id="S2.F2.pic1.m5.1">L</xmtok>
+                              <xmtok fontsize="56%" role="PUNCT">,</xmtok>
+                              <xmtok fontsize="56%" meaning="0" role="NUMBER" xml:id="S2.F2.pic1.m5.2">0</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,483.92) scale(1,-1)"><foreignobject width="639.07" height="483.92" overflow="visible"><object type="image/svg+xml" data="2210.03363v1/x9.svg" id="S2.F2.pic1.g5" class="ltx_graphics ltx_img_landscape" width="664" height="502" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.9,0.06)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="26.04" height="11.16" overflow="visible"><math mode="inline" tex="H_{\mathrm{{ICC}}}" text="H _ ICC" xml:id="S2.F2.pic1.m6">
+                      <xmath xml:id="S2.F2.pic1.m6.1">
+                        <xmapp xml:id="S2.F2.pic1.m6.1.1">
+                          <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                          <xmtok font="italic" fontsize="80%" role="UNKNOWN">H</xmtok>
+                          <xmtok fontsize="47%" role="UNKNOWN">ICC</xmtok>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0.73,0.06)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="11.29" height="11.16" overflow="visible"><math mode="inline" tex="\alpha" text="alpha" xml:id="S2.F2.pic1.m7">
+                      <xmath xml:id="S2.F2.pic1.m7.1">
+                        <xmtok font="italic" fontsize="80%" name="alpha" role="UNKNOWN">α</xmtok>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(1.21,0.41)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="15.14" height="11.16" overflow="visible"><math mode="inline" tex="\alpha" text="alpha" xml:id="S2.F2.pic1.m8">
+                      <xmath xml:id="S2.F2.pic1.m8.1">
+                        <xmtok font="italic" fontsize="80%" name="alpha" role="UNKNOWN">α</xmtok>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,483.92) scale(1,-1)"><foreignobject width="639.07" height="483.92" overflow="visible"><object type="image/svg+xml" data="2210.03363v1/x10.svg" id="S2.F2.pic1.g6" class="ltx_graphics ltx_img_landscape" width="664" height="502" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.85,0.44)"><g transform="scale(1,-1)"><text fontsize="56%" xml:id="S2.F2.pic1.m9.2.3.1">-</text></g><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="39.98" height="11.16" overflow="visible"><math mode="inline" tex="H_{\!L\hskip-0.5pt,\hskip-0.5ptM\hskip-0.5pt\textrm{-}\hskip-0.5pt1}" text="H _ (list@(L, M * [-] * 1))" xml:id="S2.F2.pic1.m9">
+                      <xmath xml:id="S2.F2.pic1.m9.3">
+                        <xmapp xml:id="S2.F2.pic1.m9.3.1">
+                          <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                          <xmtok font="italic" fontsize="80%" role="UNKNOWN">H</xmtok>
+                          <xmdual xml:id="S2.F2.pic1.m9.3.1.3">
+                            <xmapp xml:id="S2.F2.pic1.m9.3.1.3.1">
+                              <xmtok meaning="list"></xmtok>
+                              <xmref idref="S2.F2.pic1.m9.1" xml:id="S2.F2.pic1.m9.3.1.3.1.2"></xmref>
+                              <xmref idref="S2.F2.pic1.m9.2" xml:id="S2.F2.pic1.m9.3.1.3.1.3"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S2.F2.pic1.m9.3.1.3.2">
+                              <xmtok font="italic" fontsize="56%" role="UNKNOWN" xml:id="S2.F2.pic1.m9.1">L</xmtok>
+                              <xmtok fontsize="56%" role="PUNCT">,</xmtok>
+                              <xmapp xml:id="S2.F2.pic1.m9.2">
+                                <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                                <xmtok font="italic" fontsize="56%" role="UNKNOWN">M</xmtok>
+                                <xmtext xml:id="S2.F2.pic1.m9.2.3"><text fontsize="56%" xml:id="S2.F2.pic1.m9.2.3.1">-</text></xmtext>
+                                <xmtok fontsize="56%" meaning="1" role="NUMBER">1</xmtok>
+                              </xmapp>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(1.23,0.78)"><g transform="scale(1,-1)"><text font="sansserif bold" fontsize="80%" xml:id="S2.F2.pic1.pic1.1.1.1.1">Zone Detection</text></g></g></g></svg>
