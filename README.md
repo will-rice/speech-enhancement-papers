@@ -6,10 +6,13 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1801 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1804 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                              | Source |
 | ------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
+| 2026-09-30T08:05:42+00:00 | arxiv:2609.39237v1 | [DuSpaR: Dual-State Sparsifying Recurrent Unit with Feedback Modulation for Compute-Efficient Speech Processing](https://arxiv.org/abs/2609.39237v1)               | arxiv  |
+| 2026-09-30T05:35:30+00:00 | arxiv:2609.39032v1 | [How Reliable Are Predicted MOS for Reproducing Human System-Level Preferences in Speech Enhancement?](https://arxiv.org/abs/2609.39032v1)                         | arxiv  |
+| 2026-09-30T05:33:40+00:00 | arxiv:2609.39028v1 | [Improving Predicted MOS Scores, Not Perceived Quality: Multi-Predictor Test-Time Optimization of Enhanced Speech](https://arxiv.org/abs/2609.39028v1)             | arxiv  |
 | 2026-09-28T13:17:10+00:00 | arxiv:2609.35118v1 | [RemixIT-TSE: Progressive Synthetic-to-Real Adaptation for Target Speech Extraction via Target-Aware Supervision and Remixing](https://arxiv.org/abs/2609.35118v1) | arxiv  |
 | 2026-09-28T12:50:06+00:00 | arxiv:2609.35054v1 | [Perceptual Quality Loss or Loss of Perceptual Quality?](https://arxiv.org/abs/2609.35054v1)                                                                       | arxiv  |
 | 2026-09-28T11:06:49+00:00 | arxiv:2609.34901v1 | [Domain-Incremental Learning for Generative Speech Enhancement](https://arxiv.org/abs/2609.34901v1)                                                                | arxiv  |
@@ -37,9 +40,6 @@ The 30 most recent of 1801 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-16T02:00:09+00:00 | arxiv:2609.18009v2 | [SG-Mamba: Sparse Graph-Guided Mamba for Audio-Visual Speech Enhancement](https://arxiv.org/abs/2609.18009v2)                                                      | arxiv  |
 | 2026-09-14T15:46:24+00:00 | arxiv:2609.15760v1 | [Directivity-Conditioned Low-Latency Neural Filtering for Speech Enhancement in Hearing Aids](https://arxiv.org/abs/2609.15760v1)                                  | arxiv  |
 | 2026-09-12T12:35:20+00:00 | arxiv:2609.13911v1 | [DualSpecSE: A Dual-Path Speech Enhancement Network Integrating Mel and Complex Spectrograms](https://arxiv.org/abs/2609.13911v1)                                  | arxiv  |
-| 2026-09-12T08:11:02+00:00 | arxiv:2609.13792v1 | [The VoiceMOS Challenge 2026: Evaluating Speech Enhancement, Emotional TTS and Accented TTS Systems](https://arxiv.org/abs/2609.13792v1)                           | arxiv  |
-| 2026-09-10T22:17:31+00:00 | arxiv:2609.12252v1 | [DriftSE: Speech Enhancement with Generative Drifting](https://arxiv.org/abs/2609.12252v1)                                                                         | arxiv  |
-| 2026-09-10T05:03:11+00:00 | arxiv:2609.11092v1 | [Downstream-Task-Aware Unified Source Separation](https://arxiv.org/abs/2609.11092v1)                                                                              | arxiv  |
 
 <!-- papers-index:end -->
 
