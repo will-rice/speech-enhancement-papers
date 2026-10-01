@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1.33" height="0.49" overflow="visible"><g transform="translate(0,0.49) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,139.21) scale(1,-1)"><foreignobject width="374.46" height="139.21" overflow="visible"><img src="arxiv-2307-13423v3--d0d97316b01a.figures/figure-1.webp" id="S2.F1.pic1.g1" class="ltx_graphics ltx_img_landscape" width="389" height="145" alt="Refer to caption"></foreignobject></g></g><g transform="translate(0.67,0.45)"></g><g transform="translate(0,0)"><g transform="translate(0,139.21) scale(1,-1)"><foreignobject width="374.46" height="139.21" overflow="visible"><img src="arxiv-2307-13423v3--d0d97316b01a.figures/figure-2.webp" id="S2.F1.pic1.g2" class="ltx_graphics ltx_img_landscape" width="389" height="145" alt="Refer to caption"></foreignobject></g></g><g transform="translate(1.27,0.38)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="32.68" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{S}_{\mathrm{OL}}" text="S _ OL" xml:id="S2.F1.pic1.m1">
+                        <xmath xml:id="S2.F1.pic1.m1.1">
+                          <xmapp xml:id="S2.F1.pic1.m1.1.1">
+                            <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                            <xmtok font="bold" role="UNKNOWN">S</xmtok>
+                            <xmtok fontsize="70%" role="UNKNOWN">OL</xmtok>
+                          </xmapp>
+                        </xmath>
+                      </math></foreignobject></g></g><g transform="translate(0.22,0.38)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="31.75" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{s}[n]" text="s@(delimited-[]@(n))" xml:id="S2.F1.pic1.m2">
+                        <xmath xml:id="S2.F1.pic1.m2.2">
+                          <xmapp xml:id="S2.F1.pic1.m2.2.1">
+                            <xmtok font="bold" role="UNKNOWN">s</xmtok>
+                            <xmdual xml:id="S2.F1.pic1.m2.2.1.2">
+                              <xmapp xml:id="S2.F1.pic1.m2.2.1.2.1">
+                                <xmtok meaning="delimited-[]"></xmtok>
+                                <xmref idref="S2.F1.pic1.m2.1" xml:id="S2.F1.pic1.m2.2.1.2.1.2"></xmref>
+                              </xmapp>
+                              <xmwrap xml:id="S2.F1.pic1.m2.2.1.2.2">
+                                <xmtok role="OPEN" stretchy="false">[</xmtok>
+                                <xmtok font="italic" role="UNKNOWN" xml:id="S2.F1.pic1.m2.1">n</xmtok>
+                                <xmtok role="CLOSE" stretchy="false">]</xmtok>
+                              </xmwrap>
+                            </xmdual>
+                          </xmapp>
+                        </xmath>
+                      </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,139.21) scale(1,-1)"><foreignobject width="374.46" height="139.21" overflow="visible"><img src="arxiv-2307-13423v3--d0d97316b01a.figures/figure-3.webp" id="S2.F1.pic1.g3" class="ltx_graphics ltx_img_landscape" width="389" height="145" alt="Refer to caption"></foreignobject></g></g><g transform="translate(0.42,0.35)"></g><g transform="translate(0.42,0.29)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="30.29" height="11.16" overflow="visible"><math mode="inline" tex="\mathcal{G}_{\mathrm{FE}}" text="G _ FE" xml:id="S2.F1.pic1.m3">
+                        <xmath xml:id="S2.F1.pic1.m3.1">
+                          <xmapp xml:id="S2.F1.pic1.m3.1.1">
+                            <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                            <xmtok font="caligraphic" role="UNKNOWN">G</xmtok>
+                            <xmtok fontsize="70%" role="UNKNOWN">FE</xmtok>
+                          </xmapp>
+                        </xmath>
+                      </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,139.21) scale(1,-1)"><foreignobject width="374.46" height="139.21" overflow="visible"><img src="arxiv-2307-13423v3--d0d97316b01a.figures/figure-4.webp" id="S2.F1.pic1.g4" class="ltx_graphics ltx_img_landscape" width="389" height="145" alt="Refer to caption"></foreignobject></g></g><g transform="translate(0.93,0.35)"></g><g transform="translate(0.93,0.29)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="30.95" height="11.16" overflow="visible"><math mode="inline" tex="\mathcal{G}_{\mathrm{OL}}" text="G _ OL" xml:id="S2.F1.pic1.m4">
+                        <xmath xml:id="S2.F1.pic1.m4.1">
+                          <xmapp xml:id="S2.F1.pic1.m4.1.1">
+                            <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                            <xmtok font="caligraphic" role="UNKNOWN">G</xmtok>
+                            <xmtok fontsize="70%" role="UNKNOWN">OL</xmtok>
+                          </xmapp>
+                        </xmath>
+                      </math></foreignobject></g></g><g transform="translate(0.66,0.38)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="28.29" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{S}_{\mathrm{FE}}" text="S _ FE" xml:id="S2.F1.pic1.m5">
+                        <xmath xml:id="S2.F1.pic1.m5.1">
+                          <xmapp xml:id="S2.F1.pic1.m5.1.1">
+                            <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                            <xmtok font="bold" role="UNKNOWN">S</xmtok>
+                            <xmtok fontsize="70%" role="UNKNOWN">FE</xmtok>
+                          </xmapp>
+                        </xmath>
+                      </math></foreignobject></g></g></g></svg>

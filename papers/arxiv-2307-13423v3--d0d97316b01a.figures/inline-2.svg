@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1.33" height="1.20" overflow="visible"><g transform="translate(0,1.20) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,286.13) scale(1,-1)"><foreignobject width="316.01" height="286.13" overflow="visible"><object type="image/svg+xml" data="2307.13423v3/x5.svg" id="S4.F2.pic1.g1" class="ltx_graphics ltx_img_square" width="328" height="297" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.75,1.17)"></g><g transform="translate(0.75,0.6)"></g><g transform="translate(1.14,0.94)"></g><g transform="translate(0,0)"><g transform="translate(0,286.13) scale(1,-1)"><foreignobject width="316.01" height="286.13" overflow="visible"><object type="image/svg+xml" data="2307.13423v3/x6.svg" id="S4.F2.pic1.g2" class="ltx_graphics ltx_img_square" width="328" height="298" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(1.12,0.26)"></g><g transform="translate(0.25,0.95)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="33.74" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{v}[n]" text="v@(delimited-[]@(n))" xml:id="S4.F2.pic1.m1">
+                      <xmath xml:id="S4.F2.pic1.m1.2">
+                        <xmapp xml:id="S4.F2.pic1.m1.2.1">
+                          <xmtok font="bold" role="UNKNOWN">v</xmtok>
+                          <xmdual xml:id="S4.F2.pic1.m1.2.1.2">
+                            <xmapp xml:id="S4.F2.pic1.m1.2.1.2.1">
+                              <xmtok meaning="delimited-[]"></xmtok>
+                              <xmref idref="S4.F2.pic1.m1.1" xml:id="S4.F2.pic1.m1.2.1.2.1.2"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S4.F2.pic1.m1.2.1.2.2">
+                              <xmtok role="OPEN" stretchy="false">[</xmtok>
+                              <xmtok font="italic" role="UNKNOWN" xml:id="S4.F2.pic1.m1.1">n</xmtok>
+                              <xmtok role="CLOSE" stretchy="false">]</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0.25,1.02)"></g><g transform="translate(0.25,0.82)"></g><g transform="translate(0.84,1.01)"><g transform="translate(0,19.93) scale(1,-1)"><foreignobject width="59.38" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{x}_{\{l,r\}}[n]" text="x _ (set@(l, r)) * delimited-[]@(n)" xml:id="S4.F2.pic1.m2">
+                      <xmath xml:id="S4.F2.pic1.m2.4">
+                        <xmapp xml:id="S4.F2.pic1.m2.4.1">
+                          <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                          <xmapp xml:id="S4.F2.pic1.m2.4.1.2">
+                            <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                            <xmtok font="bold" role="UNKNOWN">x</xmtok>
+                            <xmdual xml:id="S4.F2.pic1.m2.4.1.2.3">
+                              <xmapp xml:id="S4.F2.pic1.m2.4.1.2.3.1">
+                                <xmtok meaning="set"></xmtok>
+                                <xmref idref="S4.F2.pic1.m2.1" xml:id="S4.F2.pic1.m2.4.1.2.3.1.2"></xmref>
+                                <xmref idref="S4.F2.pic1.m2.2" xml:id="S4.F2.pic1.m2.4.1.2.3.1.3"></xmref>
+                              </xmapp>
+                              <xmwrap xml:id="S4.F2.pic1.m2.4.1.2.3.2">
+                                <xmtok role="OPEN" stretchy="false">{</xmtok>
+                                <xmtok font="italic" fontsize="70%" role="UNKNOWN" xml:id="S4.F2.pic1.m2.1">l</xmtok>
+                                <xmtok fontsize="70%" role="PUNCT">,</xmtok>
+                                <xmtok font="italic" fontsize="70%" role="UNKNOWN" xml:id="S4.F2.pic1.m2.2">r</xmtok>
+                                <xmtok role="CLOSE" stretchy="false">}</xmtok>
+                              </xmwrap>
+                            </xmdual>
+                          </xmapp>
+                          <xmdual xml:id="S4.F2.pic1.m2.4.1.3">
+                            <xmapp xml:id="S4.F2.pic1.m2.4.1.3.1">
+                              <xmtok meaning="delimited-[]"></xmtok>
+                              <xmref idref="S4.F2.pic1.m2.3" xml:id="S4.F2.pic1.m2.4.1.3.1.2"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S4.F2.pic1.m2.4.1.3.2">
+                              <xmtok role="OPEN" stretchy="false">[</xmtok>
+                              <xmtok font="italic" role="UNKNOWN" xml:id="S4.F2.pic1.m2.3">n</xmtok>
+                              <xmtok role="CLOSE" stretchy="false">]</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(1.21,0.59)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="31.61" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{\hat{s}}[n]" text="hat@(s) * delimited-[]@(n)" xml:id="S4.F2.pic1.m3">
+                      <xmath xml:id="S4.F2.pic1.m3.2">
+                        <xmapp xml:id="S4.F2.pic1.m3.2.1">
+                          <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                          <xmapp xml:id="S4.F2.pic1.m3.2.1.2">
+                            <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                            <xmtok font="bold" role="UNKNOWN">s</xmtok>
+                          </xmapp>
+                          <xmdual xml:id="S4.F2.pic1.m3.2.1.3">
+                            <xmapp xml:id="S4.F2.pic1.m3.2.1.3.1">
+                              <xmtok meaning="delimited-[]"></xmtok>
+                              <xmref idref="S4.F2.pic1.m3.1" xml:id="S4.F2.pic1.m3.2.1.3.1.2"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S4.F2.pic1.m3.2.1.3.2">
+                              <xmtok role="OPEN" stretchy="false">[</xmtok>
+                              <xmtok font="italic" role="UNKNOWN" xml:id="S4.F2.pic1.m3.1">n</xmtok>
+                              <xmtok role="CLOSE" stretchy="false">]</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(1.14,0.01)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="35.33" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{\hat{s}^{\prime}}[n]" text="(hat@(s)) ^ prime * delimited-[]@(n)" xml:id="S4.F2.pic1.m4">
+                      <xmath xml:id="S4.F2.pic1.m4.2">
+                        <xmapp xml:id="S4.F2.pic1.m4.2.1">
+                          <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                          <xmapp xml:id="S4.F2.pic1.m4.2.1.2">
+                            <xmtok role="SUPERSCRIPTOP" scriptpos="post2"></xmtok>
+                            <xmapp xml:id="S4.F2.pic1.m4.2.1.2.2">
+                              <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                              <xmtok font="bold" role="UNKNOWN">s</xmtok>
+                            </xmapp>
+                            <xmtok fontsize="70%" name="prime" role="SUPOP">′</xmtok>
+                          </xmapp>
+                          <xmdual xml:id="S4.F2.pic1.m4.2.1.3">
+                            <xmapp xml:id="S4.F2.pic1.m4.2.1.3.1">
+                              <xmtok meaning="delimited-[]"></xmtok>
+                              <xmref idref="S4.F2.pic1.m4.1" xml:id="S4.F2.pic1.m4.2.1.3.1.2"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S4.F2.pic1.m4.2.1.3.2">
+                              <xmtok role="OPEN" stretchy="false">[</xmtok>
+                              <xmtok font="italic" role="UNKNOWN" xml:id="S4.F2.pic1.m4.1">n</xmtok>
+                              <xmtok role="CLOSE" stretchy="false">]</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(1.27,0.19)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="12.49" height="11.16" overflow="visible"><math mode="inline" tex="\mathcal{S}" text="S" xml:id="S4.F2.pic1.m5">
+                      <xmath xml:id="S4.F2.pic1.m5.1">
+                        <xmtok font="caligraphic" role="UNKNOWN">S</xmtok>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,286.13) scale(1,-1)"><foreignobject width="316.01" height="286.13" overflow="visible"><object type="image/svg+xml" data="2307.13423v3/x7.svg" id="S4.F2.pic1.g3" class="ltx_graphics ltx_img_square" width="328" height="298" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(0.88,0.52)"><g transform="translate(0,19.93) scale(1,-1)"><foreignobject width="38.12" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{a}_{\{l,r\}}" text="a _ (set@(l, r))" xml:id="S4.F2.pic1.m6">
+                      <xmath xml:id="S4.F2.pic1.m6.3">
+                        <xmapp xml:id="S4.F2.pic1.m6.3.1">
+                          <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                          <xmtok font="bold" role="UNKNOWN">a</xmtok>
+                          <xmdual xml:id="S4.F2.pic1.m6.3.1.3">
+                            <xmapp xml:id="S4.F2.pic1.m6.3.1.3.1">
+                              <xmtok meaning="set"></xmtok>
+                              <xmref idref="S4.F2.pic1.m6.1" xml:id="S4.F2.pic1.m6.3.1.3.1.2"></xmref>
+                              <xmref idref="S4.F2.pic1.m6.2" xml:id="S4.F2.pic1.m6.3.1.3.1.3"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S4.F2.pic1.m6.3.1.3.2">
+                              <xmtok role="OPEN" stretchy="false">{</xmtok>
+                              <xmtok font="italic" fontsize="70%" role="UNKNOWN" xml:id="S4.F2.pic1.m6.1">l</xmtok>
+                              <xmtok fontsize="70%" role="PUNCT">,</xmtok>
+                              <xmtok font="italic" fontsize="70%" role="UNKNOWN" xml:id="S4.F2.pic1.m6.2">r</xmtok>
+                              <xmtok role="CLOSE" stretchy="false">}</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0.26,0.76)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="31.75" height="11.16" overflow="visible"><math mode="inline" tex="\mathbf{s}[n]" text="s@(delimited-[]@(n))" xml:id="S4.F2.pic1.m7">
+                      <xmath xml:id="S4.F2.pic1.m7.2">
+                        <xmapp xml:id="S4.F2.pic1.m7.2.1">
+                          <xmtok font="bold" role="UNKNOWN">s</xmtok>
+                          <xmdual xml:id="S4.F2.pic1.m7.2.1.2">
+                            <xmapp xml:id="S4.F2.pic1.m7.2.1.2.1">
+                              <xmtok meaning="delimited-[]"></xmtok>
+                              <xmref idref="S4.F2.pic1.m7.1" xml:id="S4.F2.pic1.m7.2.1.2.1.2"></xmref>
+                            </xmapp>
+                            <xmwrap xml:id="S4.F2.pic1.m7.2.1.2.2">
+                              <xmtok role="OPEN" stretchy="false">[</xmtok>
+                              <xmtok font="italic" role="UNKNOWN" xml:id="S4.F2.pic1.m7.1">n</xmtok>
+                              <xmtok role="CLOSE" stretchy="false">]</xmtok>
+                            </xmwrap>
+                          </xmdual>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(0,0)"><g transform="translate(0,286.13) scale(1,-1)"><foreignobject width="316.01" height="286.13" overflow="visible"><object type="image/svg+xml" data="2307.13423v3/x8.svg" id="S4.F2.pic1.g4" class="ltx_graphics ltx_img_square" width="328" height="298" aria-label="Refer to caption"></object></foreignobject></g></g></g></svg>
