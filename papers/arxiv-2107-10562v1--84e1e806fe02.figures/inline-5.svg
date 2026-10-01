@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="458.28" height="256.94" overflow="visible"><g transform="translate(0,256.94) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,256.90) scale(1,-1)"><foreignobject width="458.28" height="256.90" overflow="visible"><object type="image/svg+xml" data="2107.10562v1/x2.svg" id="S3.F5.pic1.g1" class="ltx_graphics ltx_img_landscape" style="width:100%;height:100%;object-fit:contain" width="476" height="267" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(52.51,27.75)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.1.1.1.1">Overall</text></g></g><g transform="translate(184.23,107.97)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S3.F5.pic1.m1.1.1.3.3.1">dB</text></g><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="51.54" height="11.16" overflow="visible"><math mode="inline" tex="\hat{h}+6\,\mbox{dB}" text="hat@(h) + 6 * [dB]" xml:id="S3.F5.pic1.m1">
+                      <xmath xml:id="S3.F5.pic1.m1.1">
+                        <xmapp xml:id="S3.F5.pic1.m1.1.1">
+                          <xmtok fontsize="90%" meaning="plus" role="ADDOP">+</xmtok>
+                          <xmapp xml:id="S3.F5.pic1.m1.1.1.2">
+                            <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                            <xmtok font="italic" fontsize="90%" role="UNKNOWN">h</xmtok>
+                          </xmapp>
+                          <xmapp xml:id="S3.F5.pic1.m1.1.1.3">
+                            <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                            <xmtok fontsize="90%" meaning="6" role="NUMBER" rpadding="1.7pt">6</xmtok>
+                            <xmtext xml:id="S3.F5.pic1.m1.1.1.3.3"><text fontsize="90%" xml:id="S3.F5.pic1.m1.1.1.3.3.1">dB</text></xmtext>
+                          </xmapp>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(184.23,86.69)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S3.F5.pic1.3.1.1.1">Proposed </text></g><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="69.07" height="11.16" overflow="visible"><math mode="inline" tex="\hat{h}" text="hat@(h)" xml:id="S3.F5.pic1.m2">
+                      <xmath xml:id="S3.F5.pic1.m2.1">
+                        <xmapp xml:id="S3.F5.pic1.m2.1.1">
+                          <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                          <xmtok font="italic" fontsize="90%" role="UNKNOWN">h</xmtok>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(184.23,65.41)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S3.F5.pic1.m3.1.1.3.3.1">dB</text></g><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="46.09" height="11.16" overflow="visible"><math mode="inline" tex="\hat{h}-6\,\mbox{dB}" text="hat@(h) - 6 * [dB]" xml:id="S3.F5.pic1.m3">
+                      <xmath xml:id="S3.F5.pic1.m3.1">
+                        <xmapp xml:id="S3.F5.pic1.m3.1.1">
+                          <xmtok fontsize="90%" meaning="minus" role="ADDOP">-</xmtok>
+                          <xmapp xml:id="S3.F5.pic1.m3.1.1.2">
+                            <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                            <xmtok font="italic" fontsize="90%" role="UNKNOWN">h</xmtok>
+                          </xmapp>
+                          <xmapp xml:id="S3.F5.pic1.m3.1.1.3">
+                            <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                            <xmtok fontsize="90%" meaning="6" role="NUMBER" rpadding="1.7pt">6</xmtok>
+                            <xmtext xml:id="S3.F5.pic1.m3.1.1.3.3"><text fontsize="90%" xml:id="S3.F5.pic1.m3.1.1.3.3.1">dB</text></xmtext>
+                          </xmapp>
+                        </xmapp>
+                      </xmath>
+                    </math></foreignobject></g></g><g transform="translate(138.51,33.42)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.5.1.1.1">0</text></g></g><g transform="translate(239.42,33.42)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.6.1.1.1">10</text></g></g><g transform="translate(346.59,33.42)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.7.1.1.1">20</text></g></g><g transform="translate(452.96,33.42)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.8.1.1.1">30</text></g></g><g transform="translate(32.54,46.69)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.9.1.1.1">1</text></g></g><g transform="translate(32.08,94.16)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.10.1.1.1">2</text></g></g><g transform="translate(31.91,141.74)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.11.1.1.1">3</text></g></g><g transform="translate(32.2,189.13)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.12.1.1.1">4</text></g></g><g transform="translate(31.87,236.79)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.13.1.1.1">5</text></g></g><g transform="translate(23.87,62.06)"><g transform="scale(1,-1)"><text color="#262626" fontsize="90%" xml:id="S3.F5.pic1.pic1.1.1.1.1">Annoyance scale [MOS]</text></g></g></g></svg>

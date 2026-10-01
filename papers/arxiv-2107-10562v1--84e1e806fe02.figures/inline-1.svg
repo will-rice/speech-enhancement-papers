@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="343.71" height="92.45" overflow="visible"><g transform="translate(0,92.45) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,92.45) scale(1,-1)"><foreignobject width="343.78" height="92.45" overflow="visible"><object type="image/svg+xml" data="2107.10562v1/x1.svg" id="S1.F1.pic1.g1" class="ltx_graphics ltx_img_landscape" style="width:100%;height:100%;object-fit:contain" width="357" height="96" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(228.07,51.91)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S1.F1.pic1.1.1.1.1">Parameter</text></g></g><g transform="translate(228.07,42.96)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S1.F1.pic1.2.1.1.1">estimation</text></g></g><g transform="translate(159.32,77.13)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S1.F1.pic1.3.1.1.1">Speech</text></g></g><g transform="translate(221.98,17.24)"><g transform="scale(1,-1)"><text color="#C91B00" fontsize="90%" xml:id="S1.F1.pic1.4.1.1.1">Quality model and</text></g></g><g transform="translate(218.4,8.3)"><g transform="scale(1,-1)"><text color="#C91B00" fontsize="90%" xml:id="S1.F1.pic1.5.1.1.1">parameter derivation</text></g></g><g transform="translate(281.89,78.89)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S1.F1.pic1.6.1.1.1">Post-</text></g></g><g transform="translate(272.1,70.53)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S1.F1.pic1.7.1.1.1">processing</text></g></g><g transform="translate(148.58,68.03)"><g transform="scale(1,-1)"><text fontsize="90%" xml:id="S1.F1.pic1.8.1.1.1">Enhancement</text></g></g><g transform="translate(22.83,77.37)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="34.94" height="11.16" overflow="visible"><math mode="inline" tex="s(n)" text="s@(n)" xml:id="S1.F1.pic1.m1">
+                    <xmath xml:id="S1.F1.pic1.m1.2">
+                      <xmapp color="#C91B00" xml:id="S1.F1.pic1.m1.2.1">
+                        <xmtok font="italic" role="UNKNOWN">s</xmtok>
+                        <xmdual xml:id="S1.F1.pic1.m1.2.1.2">
+                          <xmref idref="S1.F1.pic1.m1.1" xml:id="S1.F1.pic1.m1.2.1.2.1"></xmref>
+                          <xmwrap xml:id="S1.F1.pic1.m1.2.1.2.2">
+                            <xmtok role="OPEN" stretchy="false">(</xmtok>
+                            <xmtok font="italic" role="UNKNOWN" xml:id="S1.F1.pic1.m1.1">n</xmtok>
+                            <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                          </xmwrap>
+                        </xmdual>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(23.16,68.54)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="34.40" height="11.16" overflow="visible"><math mode="inline" tex="b(n)" text="b@(n)" xml:id="S1.F1.pic1.m2">
+                    <xmath xml:id="S1.F1.pic1.m2.2">
+                      <xmapp color="#C91B00" xml:id="S1.F1.pic1.m2.2.1">
+                        <xmtok font="italic" role="UNKNOWN">b</xmtok>
+                        <xmdual xml:id="S1.F1.pic1.m2.2.1.2">
+                          <xmref idref="S1.F1.pic1.m2.1" xml:id="S1.F1.pic1.m2.2.1.2.1"></xmref>
+                          <xmwrap xml:id="S1.F1.pic1.m2.2.1.2.2">
+                            <xmtok role="OPEN" stretchy="false">(</xmtok>
+                            <xmtok font="italic" role="UNKNOWN" xml:id="S1.F1.pic1.m2.1">n</xmtok>
+                            <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                          </xmwrap>
+                        </xmdual>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(112.57,79.32)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="31.08" height="11.16" overflow="visible"><math mode="inline" tex="x(n)" text="x@(n)" xml:id="S1.F1.pic1.m3">
+                    <xmath xml:id="S1.F1.pic1.m3.2">
+                      <xmapp xml:id="S1.F1.pic1.m3.2.1">
+                        <xmtok font="italic" role="UNKNOWN">x</xmtok>
+                        <xmdual xml:id="S1.F1.pic1.m3.2.1.2">
+                          <xmref idref="S1.F1.pic1.m3.1" xml:id="S1.F1.pic1.m3.2.1.2.1"></xmref>
+                          <xmwrap xml:id="S1.F1.pic1.m3.2.1.2.2">
+                            <xmtok role="OPEN" stretchy="false">(</xmtok>
+                            <xmtok font="italic" role="UNKNOWN" xml:id="S1.F1.pic1.m3.1">n</xmtok>
+                            <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                          </xmwrap>
+                        </xmdual>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(219.6,85.93)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="34.54" height="11.16" overflow="visible"><math mode="inline" tex="\hat{b}(n)" text="hat@(b) * n" xml:id="S1.F1.pic1.m4">
+                    <xmath xml:id="S1.F1.pic1.m4.2">
+                      <xmapp xml:id="S1.F1.pic1.m4.2.1">
+                        <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                        <xmapp xml:id="S1.F1.pic1.m4.2.1.2">
+                          <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                          <xmtok font="italic" role="UNKNOWN">b</xmtok>
+                        </xmapp>
+                        <xmdual xml:id="S1.F1.pic1.m4.2.1.3">
+                          <xmref idref="S1.F1.pic1.m4.1" xml:id="S1.F1.pic1.m4.2.1.3.1"></xmref>
+                          <xmwrap xml:id="S1.F1.pic1.m4.2.1.3.2">
+                            <xmtok role="OPEN" stretchy="false">(</xmtok>
+                            <xmtok font="italic" role="UNKNOWN" xml:id="S1.F1.pic1.m4.1">n</xmtok>
+                            <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                          </xmwrap>
+                        </xmdual>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(219.93,64.45)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="34.54" height="11.16" overflow="visible"><math mode="inline" tex="\hat{s}(n)" text="hat@(s) * n" xml:id="S1.F1.pic1.m5">
+                    <xmath xml:id="S1.F1.pic1.m5.2">
+                      <xmapp xml:id="S1.F1.pic1.m5.2.1">
+                        <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                        <xmapp xml:id="S1.F1.pic1.m5.2.1.2">
+                          <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                          <xmtok font="italic" role="UNKNOWN">s</xmtok>
+                        </xmapp>
+                        <xmdual xml:id="S1.F1.pic1.m5.2.1.3">
+                          <xmref idref="S1.F1.pic1.m5.1" xml:id="S1.F1.pic1.m5.2.1.3.1"></xmref>
+                          <xmwrap xml:id="S1.F1.pic1.m5.2.1.3.2">
+                            <xmtok role="OPEN" stretchy="false">(</xmtok>
+                            <xmtok font="italic" role="UNKNOWN" xml:id="S1.F1.pic1.m5.1">n</xmtok>
+                            <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                          </xmwrap>
+                        </xmdual>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(279.52,50.9)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="12.49" height="11.16" overflow="visible"><math mode="inline" tex="\hat{h}" text="hat@(h)" xml:id="S1.F1.pic1.m6">
+                    <xmath xml:id="S1.F1.pic1.m6.1">
+                      <xmapp xml:id="S1.F1.pic1.m6.1.1">
+                        <xmtok name="hat" role="OVERACCENT" stretchy="false">^</xmtok>
+                        <xmtok font="italic" role="UNKNOWN">h</xmtok>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(250.27,28.55)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="16.47" height="11.16" overflow="visible"><math mode="inline" tex="h" text="h" xml:id="S1.F1.pic1.m7">
+                    <xmath xml:id="S1.F1.pic1.m7.1">
+                      <xmtok color="#C91B00" font="italic" role="UNKNOWN">h</xmtok>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(323.6,12.61)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="16.21" height="11.16" overflow="visible"><math mode="inline" tex="\tilde{q}" text="tilde@(q)" xml:id="S1.F1.pic1.m8">
+                    <xmath xml:id="S1.F1.pic1.m8.1">
+                      <xmapp xml:id="S1.F1.pic1.m8.1.1">
+                        <xmtok name="tilde" role="OVERACCENT" stretchy="false">~</xmtok>
+                        <xmtok color="#C90000" font="italic" role="UNKNOWN">q</xmtok>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g><g transform="translate(322.59,80.75)"><g transform="translate(0,15.94) scale(1,-1)"><foreignobject width="30.42" height="11.16" overflow="visible"><math mode="inline" tex="y(n)" text="y@(n)" xml:id="S1.F1.pic1.m9">
+                    <xmath xml:id="S1.F1.pic1.m9.2">
+                      <xmapp xml:id="S1.F1.pic1.m9.2.1">
+                        <xmtok font="italic" role="UNKNOWN">y</xmtok>
+                        <xmdual xml:id="S1.F1.pic1.m9.2.1.2">
+                          <xmref idref="S1.F1.pic1.m9.1" xml:id="S1.F1.pic1.m9.2.1.2.1"></xmref>
+                          <xmwrap xml:id="S1.F1.pic1.m9.2.1.2.2">
+                            <xmtok role="OPEN" stretchy="false">(</xmtok>
+                            <xmtok font="italic" role="UNKNOWN" xml:id="S1.F1.pic1.m9.1">n</xmtok>
+                            <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                          </xmwrap>
+                        </xmdual>
+                      </xmapp>
+                    </xmath>
+                  </math></foreignobject></g></g></g></svg>
