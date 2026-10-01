@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="340.12" height="75.58" overflow="visible"><g transform="translate(0,75.58) scale(1,-1)"><g transform="translate(0,0)"><g transform="translate(0,109.46) scale(1,-1)"><foreignobject width="458.28" height="109.46" overflow="visible"><object type="image/svg+xml" data="2406.11376v1/COSPA_Compandor_arch_3.svg" id="S2.F2.pic1.g1" class="ltx_graphics ltx_img_landscape" style="width:100%;height:100%;object-fit:contain" width="476" height="114" aria-label="Refer to caption"></object></foreignobject></g></g><g transform="translate(141.72,72.83)"><g transform="scale(1,-1)"><text xml:id="S2.F2.pic1.1">Compandor</text></g></g><g transform="translate(0,49.21)"><g transform="translate(0,9.43) scale(1,-1)"><foreignobject width="45.03" height="7.04" overflow="visible"><math mode="inline" tex="\mathbf{X}_{1}(\tau)" text="X _ 1 * tau" xml:id="S2.F2.pic1.m1">
+                  <xmath xml:id="S2.F2.pic1.m1.2">
+                    <xmapp xml:id="S2.F2.pic1.m1.2.1">
+                      <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                      <xmapp xml:id="S2.F2.pic1.m1.2.1.2">
+                        <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                        <xmtok font="bold" fontsize="70%" role="UNKNOWN">X</xmtok>
+                        <xmtok fontsize="49%" meaning="1" role="NUMBER">1</xmtok>
+                      </xmapp>
+                      <xmdual xml:id="S2.F2.pic1.m1.2.1.3">
+                        <xmref idref="S2.F2.pic1.m1.1" xml:id="S2.F2.pic1.m1.2.1.3.1"></xmref>
+                        <xmwrap xml:id="S2.F2.pic1.m1.2.1.3.2">
+                          <xmtok fontsize="70%" role="OPEN" stretchy="false">(</xmtok>
+                          <xmtok font="italic" fontsize="70%" name="tau" role="UNKNOWN" xml:id="S2.F2.pic1.m1.1">τ</xmtok>
+                          <xmtok fontsize="70%" role="CLOSE" stretchy="false">)</xmtok>
+                        </xmwrap>
+                      </xmdual>
+                    </xmapp>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(0,11.02)"><g transform="translate(0,9.43) scale(1,-1)"><foreignobject width="48.75" height="7.04" overflow="visible"><math mode="inline" tex="\mathbf{X}_{M}(\tau)" text="X _ M * tau" xml:id="S2.F2.pic1.m2">
+                  <xmath xml:id="S2.F2.pic1.m2.2">
+                    <xmapp xml:id="S2.F2.pic1.m2.2.1">
+                      <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                      <xmapp xml:id="S2.F2.pic1.m2.2.1.2">
+                        <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                        <xmtok font="bold" fontsize="70%" role="UNKNOWN">X</xmtok>
+                        <xmtok font="italic" fontsize="49%" role="UNKNOWN">M</xmtok>
+                      </xmapp>
+                      <xmdual xml:id="S2.F2.pic1.m2.2.1.3">
+                        <xmref idref="S2.F2.pic1.m2.1" xml:id="S2.F2.pic1.m2.2.1.3.1"></xmref>
+                        <xmwrap xml:id="S2.F2.pic1.m2.2.1.3.2">
+                          <xmtok fontsize="70%" role="OPEN" stretchy="false">(</xmtok>
+                          <xmtok font="italic" fontsize="70%" name="tau" role="UNKNOWN" xml:id="S2.F2.pic1.m2.1">τ</xmtok>
+                          <xmtok fontsize="70%" role="CLOSE" stretchy="false">)</xmtok>
+                        </xmwrap>
+                      </xmdual>
+                    </xmapp>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(43.3,9.84)"><g transform="scale(1,-1)"><text xml:id="S2.F2.pic1.4">Enc.</text></g></g><g transform="translate(43.3,47.63)"><g transform="scale(1,-1)"><text xml:id="S2.F2.pic1.5">Enc.</text></g></g><g transform="translate(76.37,12.79)"></g><g transform="translate(99.99,14.17)"><g transform="translate(0,9.03) scale(1,-1)"><foreignobject width="55.53" height="9.03" overflow="visible"><math mode="inline" tex="\mathbb{C}" text="C" xml:id="S2.F2.pic1.m3">
+                  <xmath xml:id="S2.F2.pic1.m3.1">
+                    <xmtok font="blackboard" role="UNKNOWN">C</xmtok>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(116.92,12.99)"><g transform="translate(0,9.03) scale(1,-1)"><foreignobject width="58.71" height="9.03" overflow="visible"><math mode="inline" tex="\mathbb{C}" text="C" xml:id="S2.F2.pic1.m4">
+                  <xmath xml:id="S2.F2.pic1.m4.1">
+                    <xmtok font="blackboard" role="UNKNOWN">C</xmtok>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(129.52,37.4)"><g transform="scale(1,-1)"><text fontsize="70%" xml:id="S2.F2.pic1.m5.2.1.2.3.1">in</text></g><g transform="translate(0,13.28) scale(1,-1)"><foreignobject width="61.10" height="9.96" overflow="visible"><math mode="inline" tex="\widetilde{\mathbf{h}}_{\text{in}}(\tau)" text="(widetilde@(h)) _ [in] * tau" xml:id="S2.F2.pic1.m5">
+                  <xmath xml:id="S2.F2.pic1.m5.2">
+                    <xmapp xml:id="S2.F2.pic1.m5.2.1">
+                      <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                      <xmapp xml:id="S2.F2.pic1.m5.2.1.2">
+                        <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                        <xmapp xml:id="S2.F2.pic1.m5.2.1.2.2">
+                          <xmtok name="widetilde" role="OVERACCENT">~</xmtok>
+                          <xmtok font="bold" role="UNKNOWN">h</xmtok>
+                        </xmapp>
+                        <xmtext xml:id="S2.F2.pic1.m5.2.1.2.3"><text fontsize="70%" xml:id="S2.F2.pic1.m5.2.1.2.3.1">in</text></xmtext>
+                      </xmapp>
+                      <xmdual xml:id="S2.F2.pic1.m5.2.1.3">
+                        <xmref idref="S2.F2.pic1.m5.1" xml:id="S2.F2.pic1.m5.2.1.3.1"></xmref>
+                        <xmwrap xml:id="S2.F2.pic1.m5.2.1.3.2">
+                          <xmtok role="OPEN" stretchy="false">(</xmtok>
+                          <xmtok font="italic" name="tau" role="UNKNOWN" xml:id="S2.F2.pic1.m5.1">τ</xmtok>
+                          <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                        </xmwrap>
+                      </xmdual>
+                    </xmapp>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(173.61,10.63)"><g transform="translate(0,9.03) scale(1,-1)"><foreignobject width="67.48" height="9.03" overflow="visible"><math mode="inline" tex="\mathbb{C}" text="C" xml:id="S2.F2.pic1.m6">
+                  <xmath xml:id="S2.F2.pic1.m6.1">
+                    <xmtok font="blackboard" role="UNKNOWN">C</xmtok>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(187.78,37.4)"><g transform="scale(1,-1)"><text fontsize="70%" xml:id="S2.F2.pic1.m7.2.1.2.3.1">out</text></g><g transform="translate(0,13.28) scale(1,-1)"><foreignobject width="63.10" height="9.96" overflow="visible"><math mode="inline" tex="\widetilde{\mathbf{h}}_{\text{out}}(\tau)" text="(widetilde@(h)) _ [out] * tau" xml:id="S2.F2.pic1.m7">
+                  <xmath xml:id="S2.F2.pic1.m7.2">
+                    <xmapp xml:id="S2.F2.pic1.m7.2.1">
+                      <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                      <xmapp xml:id="S2.F2.pic1.m7.2.1.2">
+                        <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                        <xmapp xml:id="S2.F2.pic1.m7.2.1.2.2">
+                          <xmtok name="widetilde" role="OVERACCENT">~</xmtok>
+                          <xmtok font="bold" role="UNKNOWN">h</xmtok>
+                        </xmapp>
+                        <xmtext xml:id="S2.F2.pic1.m7.2.1.2.3"><text fontsize="70%" xml:id="S2.F2.pic1.m7.2.1.2.3.1">out</text></xmtext>
+                      </xmapp>
+                      <xmdual xml:id="S2.F2.pic1.m7.2.1.3">
+                        <xmref idref="S2.F2.pic1.m7.1" xml:id="S2.F2.pic1.m7.2.1.3.1"></xmref>
+                        <xmwrap xml:id="S2.F2.pic1.m7.2.1.3.2">
+                          <xmtok role="OPEN" stretchy="false">(</xmtok>
+                          <xmtok font="italic" name="tau" role="UNKNOWN" xml:id="S2.F2.pic1.m7.1">τ</xmtok>
+                          <xmtok role="CLOSE" stretchy="false">)</xmtok>
+                        </xmwrap>
+                      </xmdual>
+                    </xmapp>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(229.11,14.17)"><g transform="translate(0,9.03) scale(1,-1)"><foreignobject width="55.53" height="9.03" overflow="visible"><math mode="inline" tex="\mathbb{C}" text="C" xml:id="S2.F2.pic1.m8">
+                  <xmath xml:id="S2.F2.pic1.m8.1">
+                    <xmtok font="blackboard" role="UNKNOWN">C</xmtok>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(246.24,12.99)"><g transform="translate(0,9.03) scale(1,-1)"><foreignobject width="58.71" height="9.03" overflow="visible"><math mode="inline" tex="\mathbb{C}" text="C" xml:id="S2.F2.pic1.m9">
+                  <xmath xml:id="S2.F2.pic1.m9.1">
+                    <xmtok font="blackboard" role="UNKNOWN">C</xmtok>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(272.41,9.84)"><g transform="scale(1,-1)"><text xml:id="S2.F2.pic1.14">Dec.</text></g></g><g transform="translate(272.41,47.63)"><g transform="scale(1,-1)"><text xml:id="S2.F2.pic1.15">Dec.</text></g></g><g transform="translate(309.22,49.21)"><g transform="translate(0,9.43) scale(1,-1)"><foreignobject width="45.56" height="7.04" overflow="visible"><math mode="inline" tex="\mathbf{\mathcal{M}}_{1}(\tau)" text="M _ 1 * tau" xml:id="S2.F2.pic1.m10">
+                  <xmath xml:id="S2.F2.pic1.m10.2">
+                    <xmapp xml:id="S2.F2.pic1.m10.2.1">
+                      <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                      <xmapp xml:id="S2.F2.pic1.m10.2.1.2">
+                        <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                        <xmtok font="caligraphic" fontsize="70%" role="UNKNOWN">M</xmtok>
+                        <xmtok fontsize="49%" meaning="1" role="NUMBER">1</xmtok>
+                      </xmapp>
+                      <xmdual xml:id="S2.F2.pic1.m10.2.1.3">
+                        <xmref idref="S2.F2.pic1.m10.1" xml:id="S2.F2.pic1.m10.2.1.3.1"></xmref>
+                        <xmwrap xml:id="S2.F2.pic1.m10.2.1.3.2">
+                          <xmtok fontsize="70%" role="OPEN" stretchy="false">(</xmtok>
+                          <xmtok font="italic" fontsize="70%" name="tau" role="UNKNOWN" xml:id="S2.F2.pic1.m10.1">τ</xmtok>
+                          <xmtok fontsize="70%" role="CLOSE" stretchy="false">)</xmtok>
+                        </xmwrap>
+                      </xmdual>
+                    </xmapp>
+                  </xmath>
+                </math></foreignobject></g></g><g transform="translate(309.22,11.02)"><g transform="translate(0,9.43) scale(1,-1)"><foreignobject width="49.28" height="7.04" overflow="visible"><math mode="inline" tex="\mathbf{\mathcal{M}}_{M}(\tau)" text="M _ M * tau" xml:id="S2.F2.pic1.m11">
+                  <xmath xml:id="S2.F2.pic1.m11.2">
+                    <xmapp xml:id="S2.F2.pic1.m11.2.1">
+                      <xmtok meaning="times" role="MULOP">⁢</xmtok>
+                      <xmapp xml:id="S2.F2.pic1.m11.2.1.2">
+                        <xmtok role="SUBSCRIPTOP" scriptpos="post1"></xmtok>
+                        <xmtok font="caligraphic" fontsize="70%" role="UNKNOWN">M</xmtok>
+                        <xmtok font="italic" fontsize="49%" role="UNKNOWN">M</xmtok>
+                      </xmapp>
+                      <xmdual xml:id="S2.F2.pic1.m11.2.1.3">
+                        <xmref idref="S2.F2.pic1.m11.1" xml:id="S2.F2.pic1.m11.2.1.3.1"></xmref>
+                        <xmwrap xml:id="S2.F2.pic1.m11.2.1.3.2">
+                          <xmtok fontsize="70%" role="OPEN" stretchy="false">(</xmtok>
+                          <xmtok font="italic" fontsize="70%" name="tau" role="UNKNOWN" xml:id="S2.F2.pic1.m11.1">τ</xmtok>
+                          <xmtok fontsize="70%" role="CLOSE" stretchy="false">)</xmtok>
+                        </xmwrap>
+                      </xmdual>
+                    </xmapp>
+                  </xmath>
+                </math></foreignobject></g></g></g></svg>
