@@ -6,10 +6,11 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1805 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1806 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                      | Source |
 | ------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-04T12:04:31+00:00 | arxiv:2610.05155v1 | [UltraM2M: Leveraging Text Transcripts and Mixture Constraints for Weakly-Supervised Speech Enhancement](papers/arxiv-2610-05155v1--00130da5a8cf.md)                       | arxiv  |
 | 2026-10-02T14:35:12+00:00 | arxiv:2610.03381v1 | [Multiclass Speech Classification Under Noise Disparity](papers/arxiv-2610-03381v1--f608d09dc755.md)                                                                       | arxiv  |
 | 2026-09-30T08:05:42+00:00 | arxiv:2609.39237v1 | [DuSpaR: Dual-State Sparsifying Recurrent Unit with Feedback Modulation for Compute-Efficient Speech Processing](papers/arxiv-2609-39237v1--a1f9326ddd4b.md)               | arxiv  |
 | 2026-09-30T05:35:30+00:00 | arxiv:2609.39032v1 | [How Reliable Are Predicted MOS for Reproducing Human System-Level Preferences in Speech Enhancement?](papers/arxiv-2609-39032v1--643307a1a011.md)                         | arxiv  |
@@ -39,7 +40,6 @@ The 30 most recent of 1805 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-16T14:19:30+00:00 | arxiv:2609.18714v1 | [Absolute Quality Ratings of Speech Enhancement Systems by Listeners of Different Ages and Degrees of Hearing Loss](papers/arxiv-2609-18714v1--3b8d8431ba4b.md)            | arxiv  |
 | 2026-09-16T12:00:48+00:00 | arxiv:2609.18532v1 | [Mask-Based Speech Enhancement for Spatial Audio: A Comparison of Ambisonics, Beamforming, and Microphone Channels](papers/arxiv-2609-18532v1--0616665ef2dd.md)            | arxiv  |
 | 2026-09-16T02:00:09+00:00 | arxiv:2609.18009v2 | [SG-Mamba: Sparse Graph-Guided Mamba for Audio-Visual Speech Enhancement](papers/arxiv-2609-18009v2--064e72b93671.md)                                                      | arxiv  |
-| 2026-09-14T15:46:24+00:00 | arxiv:2609.15760v1 | [Directivity-Conditioned Low-Latency Neural Filtering for Speech Enhancement in Hearing Aids](papers/arxiv-2609-15760v1--ee8984a0f523.md)                                  | arxiv  |
 
 <!-- papers-index:end -->
 
