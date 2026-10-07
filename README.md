@@ -6,10 +6,12 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1806 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1808 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                      | Source |
 | ------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-06T15:52:30+00:00 | arxiv:2610.08579v1 | [Audiovisual joint learning for end-to-end hearing aids](papers/arxiv-2610-08579v1--9711727a1805.md)                                                                       | arxiv  |
+| 2026-10-05T16:24:50+00:00 | arxiv:2610.06632v1 | [AuraSE: Low-Hallucination Generative Speech Enhancement via Multimodal Flow Matching and Inference Policy Optimization](papers/arxiv-2610-06632v1--1c2baafc6cc3.md)       | arxiv  |
 | 2026-10-04T12:04:31+00:00 | arxiv:2610.05155v1 | [UltraM2M: Leveraging Text Transcripts and Mixture Constraints for Weakly-Supervised Speech Enhancement](papers/arxiv-2610-05155v1--00130da5a8cf.md)                       | arxiv  |
 | 2026-10-02T14:35:12+00:00 | arxiv:2610.03381v1 | [Multiclass Speech Classification Under Noise Disparity](papers/arxiv-2610-03381v1--f608d09dc755.md)                                                                       | arxiv  |
 | 2026-09-30T08:05:42+00:00 | arxiv:2609.39237v1 | [DuSpaR: Dual-State Sparsifying Recurrent Unit with Feedback Modulation for Compute-Efficient Speech Processing](papers/arxiv-2609-39237v1--a1f9326ddd4b.md)               | arxiv  |
@@ -38,8 +40,6 @@ The 30 most recent of 1806 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-18T15:26:30+00:00 | arxiv:2609.21898v1 | [BLINC: Blind Calibration For Training-Free Speech Enhancement Adaptation](papers/arxiv-2609-21898v1--3d10a733e838.md)                                                     | arxiv  |
 | 2026-09-18T00:33:56+00:00 | arxiv:2609.21171v1 | [HAMMER: Harmonic-Aware Parallel Context Modeling and Discriminator-Free Perceptual Optimization for Speech Enhancement](papers/arxiv-2609-21171v1--0b2c27a2f8a6.md)       | arxiv  |
 | 2026-09-16T14:19:30+00:00 | arxiv:2609.18714v1 | [Absolute Quality Ratings of Speech Enhancement Systems by Listeners of Different Ages and Degrees of Hearing Loss](papers/arxiv-2609-18714v1--3b8d8431ba4b.md)            | arxiv  |
-| 2026-09-16T12:00:48+00:00 | arxiv:2609.18532v1 | [Mask-Based Speech Enhancement for Spatial Audio: A Comparison of Ambisonics, Beamforming, and Microphone Channels](papers/arxiv-2609-18532v1--0616665ef2dd.md)            | arxiv  |
-| 2026-09-16T02:00:09+00:00 | arxiv:2609.18009v2 | [SG-Mamba: Sparse Graph-Guided Mamba for Audio-Visual Speech Enhancement](papers/arxiv-2609-18009v2--064e72b93671.md)                                                      | arxiv  |
 
 <!-- papers-index:end -->
 
