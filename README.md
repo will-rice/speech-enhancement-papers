@@ -6,10 +6,11 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1808 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1809 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                      | Source |
 | ------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-07T12:35:31+00:00 | arxiv:2610.09963v1 | [LIFT-SE: Linguistic Inference Followed by Flow Transformation for Generative Speech Enhancement](papers/arxiv-2610-09963v1--e18a8ac17d81.md)                              | arxiv  |
 | 2026-10-06T15:52:30+00:00 | arxiv:2610.08579v1 | [Audiovisual joint learning for end-to-end hearing aids](papers/arxiv-2610-08579v1--9711727a1805.md)                                                                       | arxiv  |
 | 2026-10-05T16:24:50+00:00 | arxiv:2610.06632v1 | [AuraSE: Low-Hallucination Generative Speech Enhancement via Multimodal Flow Matching and Inference Policy Optimization](papers/arxiv-2610-06632v1--1c2baafc6cc3.md)       | arxiv  |
 | 2026-10-04T12:04:31+00:00 | arxiv:2610.05155v1 | [UltraM2M: Leveraging Text Transcripts and Mixture Constraints for Weakly-Supervised Speech Enhancement](papers/arxiv-2610-05155v1--00130da5a8cf.md)                       | arxiv  |
@@ -39,7 +40,6 @@ The 30 most recent of 1808 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-19T06:54:32+00:00 | arxiv:2609.22824v1 | [Adaptive Depth and Expert Refinement for Efficient Speech Enhancement](papers/arxiv-2609-22824v1--241537fa9497.md)                                                        | arxiv  |
 | 2026-09-18T15:26:30+00:00 | arxiv:2609.21898v1 | [BLINC: Blind Calibration For Training-Free Speech Enhancement Adaptation](papers/arxiv-2609-21898v1--3d10a733e838.md)                                                     | arxiv  |
 | 2026-09-18T00:33:56+00:00 | arxiv:2609.21171v1 | [HAMMER: Harmonic-Aware Parallel Context Modeling and Discriminator-Free Perceptual Optimization for Speech Enhancement](papers/arxiv-2609-21171v1--0b2c27a2f8a6.md)       | arxiv  |
-| 2026-09-16T14:19:30+00:00 | arxiv:2609.18714v1 | [Absolute Quality Ratings of Speech Enhancement Systems by Listeners of Different Ages and Degrees of Hearing Loss](papers/arxiv-2609-18714v1--3b8d8431ba4b.md)            | arxiv  |
 
 <!-- papers-index:end -->
 
