@@ -6,10 +6,12 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1819 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1821 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-22T07:52:03+00:00 | arxiv:2610.30869v1 | [When Do Self-Supervised Representations Help Speech Restoration?](papers/arxiv-2610-30869v1--3b292f95f3b2.md)                                                                                | arxiv  |
+| 2026-10-22T06:45:48+00:00 | arxiv:2610.30818v1 | [HC-AINet: An Auditory-Inspired Network with Harmonic Compensation for Low-Complexity Speech Enhancement](papers/arxiv-2610-30818v1--d331cb6c885a.md)                                         | arxiv  |
 | 2026-10-21T03:55:18+00:00 | arxiv:2610.29164v1 | [XingChen-UniFE: A Unified Generative Speech Front-End via Complementary Acoustic-Semantic Modeling](papers/arxiv-2610-29164v1--2075f5f90ac9.md)                                              | arxiv  |
 | 2026-10-17T13:50:11+00:00 | arxiv:2610.24696v1 | [SpikeAid: A Streaming Spiking Hearing Aid Framework for Joint Noise Reduction and Wide Dynamic Range Compression](papers/arxiv-2610-24696v1--2659071e6e1f.md)                                | arxiv  |
 | 2026-10-16T04:52:26+00:00 | arxiv:2610.22936v1 | [AcousticAgent: A Floorplan-Centric Simulation Platform for Distributed Multi-Room Speech Processing](papers/arxiv-2610-22936v1--6764326214b6.md)                                             | arxiv  |
@@ -38,8 +40,6 @@ The 30 most recent of 1819 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-24T23:58:23+00:00 | arxiv:2609.31787v1 | [Optimal transport meets speech: a tutorial review](papers/arxiv-2609-31787v1--144802f89635.md)                                                                                               | arxiv  |
 | 2026-09-24T23:36:16+00:00 | arxiv:2609.30631v1 | [Adapting Personalized Speech Enhancement for Low-Latency Audio-Visual Target-Speaker Extraction](papers/arxiv-2609-30631v1--a00c6ae10856.md)                                                 | arxiv  |
 | 2026-09-24T14:25:00+00:00 | arxiv:2609.29867v1 | [Does per-frame early exit pay? A compute-matched study of dynamic depth for on-device speech enhancement](papers/arxiv-2609-29867v1--67b14e5dcf26.md)                                        | arxiv  |
-| 2026-09-24T14:24:43+00:00 | arxiv:2609.29866v1 | [Beyond Model Size: Redesigning LiSenNet for embedded speech enhancement](papers/arxiv-2609-29866v1--0659fd375d33.md)                                                                         | arxiv  |
-| 2026-09-24T13:01:20+00:00 | arxiv:2609.29749v1 | [DAMSEP: Distance-Aware Monaural Source Separation using Multi-RIR Estimation](papers/arxiv-2609-29749v1--5888f136c856.md)                                                                    | arxiv  |
 
 <!-- papers-index:end -->
 
