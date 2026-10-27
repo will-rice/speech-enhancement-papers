@@ -6,10 +6,13 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1821 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1824 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-26T03:59:51+00:00 | arxiv:2610.34814v1 | [TIMUSE: Text-Initialized Masked Semantic Token Modeling for Universal Speech Enhancement](papers/arxiv-2610-34814v1--3c50c792dbf9.md)                                                        | arxiv  |
+| 2026-10-23T16:42:00+00:00 | arxiv:2610.32870v1 | [Noisy Target Training Meets Drifting for Weakly-Supervised Speech Enhancement](papers/arxiv-2610-32870v1--8ed1d2421b81.md)                                                                   | arxiv  |
+| 2026-10-23T05:54:40+00:00 | arxiv:2610.32202v1 | [ICASSP 2026 Radar Acoustic Speech Enhancement (RASE) Challenge](papers/arxiv-2610-32202v1--36ccd4bb8de1.md)                                                                                  | arxiv  |
 | 2026-10-22T07:52:03+00:00 | arxiv:2610.30869v1 | [When Do Self-Supervised Representations Help Speech Restoration?](papers/arxiv-2610-30869v1--3b292f95f3b2.md)                                                                                | arxiv  |
 | 2026-10-22T06:45:48+00:00 | arxiv:2610.30818v1 | [HC-AINet: An Auditory-Inspired Network with Harmonic Compensation for Low-Complexity Speech Enhancement](papers/arxiv-2610-30818v1--d331cb6c885a.md)                                         | arxiv  |
 | 2026-10-21T03:55:18+00:00 | arxiv:2610.29164v1 | [XingChen-UniFE: A Unified Generative Speech Front-End via Complementary Acoustic-Semantic Modeling](papers/arxiv-2610-29164v1--2075f5f90ac9.md)                                              | arxiv  |
@@ -37,9 +40,6 @@ The 30 most recent of 1821 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-28T07:02:50+00:00 | arxiv:2609.34445v1 | [Prox-Friendly Log-Magnitude Prior on Complex-Valued Signal](papers/arxiv-2609-34445v1--eb8aa82bb07c.md)                                                                                      | arxiv  |
 | 2026-09-27T16:53:28+00:00 | arxiv:2609.33755v1 | [Transformer-based Neural Beamforming for Real-Time Speech Enhancement on Smart Low-Power Hearable Devices](papers/arxiv-2609-33755v1--79f7d4861447.md)                                       | arxiv  |
 | 2026-09-25T09:33:19+00:00 | arxiv:2609.31041v1 | [Room Impulse Response Embeddings for Speech Enhancement in Noisy and Reverberant Environments](papers/arxiv-2609-31041v1--27353434ab4f.md)                                                   | arxiv  |
-| 2026-09-24T23:58:23+00:00 | arxiv:2609.31787v1 | [Optimal transport meets speech: a tutorial review](papers/arxiv-2609-31787v1--144802f89635.md)                                                                                               | arxiv  |
-| 2026-09-24T23:36:16+00:00 | arxiv:2609.30631v1 | [Adapting Personalized Speech Enhancement for Low-Latency Audio-Visual Target-Speaker Extraction](papers/arxiv-2609-30631v1--a00c6ae10856.md)                                                 | arxiv  |
-| 2026-09-24T14:25:00+00:00 | arxiv:2609.29867v1 | [Does per-frame early exit pay? A compute-matched study of dynamic depth for on-device speech enhancement](papers/arxiv-2609-29867v1--67b14e5dcf26.md)                                        | arxiv  |
 
 <!-- papers-index:end -->
 
