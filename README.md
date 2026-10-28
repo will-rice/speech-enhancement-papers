@@ -6,10 +6,12 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1824 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1826 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-27T11:01:17+00:00 | arxiv:2610.37024v1 | [StreamSE: Neural Audio Codec-based Streaming Speech Enhancement for On-device Inference](papers/arxiv-2610-37024v1--f9a4edad9cbb.md)                                                         | arxiv  |
+| 2026-10-27T09:27:02+00:00 | arxiv:2610.36892v1 | [Perceptual Differences and Preferences in Speech Enhancement](papers/arxiv-2610-36892v1--518731d8037b.md)                                                                                    | arxiv  |
 | 2026-10-26T03:59:51+00:00 | arxiv:2610.34814v1 | [TIMUSE: Text-Initialized Masked Semantic Token Modeling for Universal Speech Enhancement](papers/arxiv-2610-34814v1--3c50c792dbf9.md)                                                        | arxiv  |
 | 2026-10-23T16:42:00+00:00 | arxiv:2610.32870v1 | [Noisy Target Training Meets Drifting for Weakly-Supervised Speech Enhancement](papers/arxiv-2610-32870v1--8ed1d2421b81.md)                                                                   | arxiv  |
 | 2026-10-23T05:54:40+00:00 | arxiv:2610.32202v1 | [ICASSP 2026 Radar Acoustic Speech Enhancement (RASE) Challenge](papers/arxiv-2610-32202v1--36ccd4bb8de1.md)                                                                                  | arxiv  |
@@ -38,8 +40,6 @@ The 30 most recent of 1824 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-28T11:06:49+00:00 | arxiv:2609.34901v1 | [Domain-Incremental Learning for Generative Speech Enhancement](papers/arxiv-2609-34901v1--54be38602f24.md)                                                                                   | arxiv  |
 | 2026-09-28T09:02:12+00:00 | arxiv:2609.34662v1 | [Unsupervised Speech Enhancement via Drifting](papers/arxiv-2609-34662v1--e9b960ccb524.md)                                                                                                    | arxiv  |
 | 2026-09-28T07:02:50+00:00 | arxiv:2609.34445v1 | [Prox-Friendly Log-Magnitude Prior on Complex-Valued Signal](papers/arxiv-2609-34445v1--eb8aa82bb07c.md)                                                                                      | arxiv  |
-| 2026-09-27T16:53:28+00:00 | arxiv:2609.33755v1 | [Transformer-based Neural Beamforming for Real-Time Speech Enhancement on Smart Low-Power Hearable Devices](papers/arxiv-2609-33755v1--79f7d4861447.md)                                       | arxiv  |
-| 2026-09-25T09:33:19+00:00 | arxiv:2609.31041v1 | [Room Impulse Response Embeddings for Speech Enhancement in Noisy and Reverberant Environments](papers/arxiv-2609-31041v1--27353434ab4f.md)                                                   | arxiv  |
 
 <!-- papers-index:end -->
 
