@@ -6,10 +6,11 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1826 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1827 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-28T10:40:26+00:00 | arxiv:2610.38619v1 | [MiDiff: MIDI-Conditioned Diffusion Models for Drum Audio Enhancement](papers/arxiv-2610-38619v1--74b89f0c39ca.md)                                                                            | arxiv  |
 | 2026-10-27T11:01:17+00:00 | arxiv:2610.37024v1 | [StreamSE: Neural Audio Codec-based Streaming Speech Enhancement for On-device Inference](papers/arxiv-2610-37024v1--f9a4edad9cbb.md)                                                         | arxiv  |
 | 2026-10-27T09:27:02+00:00 | arxiv:2610.36892v1 | [Perceptual Differences and Preferences in Speech Enhancement](papers/arxiv-2610-36892v1--518731d8037b.md)                                                                                    | arxiv  |
 | 2026-10-26T03:59:51+00:00 | arxiv:2610.34814v1 | [TIMUSE: Text-Initialized Masked Semantic Token Modeling for Universal Speech Enhancement](papers/arxiv-2610-34814v1--3c50c792dbf9.md)                                                        | arxiv  |
@@ -39,7 +40,6 @@ The 30 most recent of 1826 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-28T12:50:06+00:00 | arxiv:2609.35054v1 | [Perceptual Quality Loss or Loss of Perceptual Quality?](papers/arxiv-2609-35054v1--fd72de986333.md)                                                                                          | arxiv  |
 | 2026-09-28T11:06:49+00:00 | arxiv:2609.34901v1 | [Domain-Incremental Learning for Generative Speech Enhancement](papers/arxiv-2609-34901v1--54be38602f24.md)                                                                                   | arxiv  |
 | 2026-09-28T09:02:12+00:00 | arxiv:2609.34662v1 | [Unsupervised Speech Enhancement via Drifting](papers/arxiv-2609-34662v1--e9b960ccb524.md)                                                                                                    | arxiv  |
-| 2026-09-28T07:02:50+00:00 | arxiv:2609.34445v1 | [Prox-Friendly Log-Magnitude Prior on Complex-Valued Signal](papers/arxiv-2609-34445v1--eb8aa82bb07c.md)                                                                                      | arxiv  |
 
 <!-- papers-index:end -->
 
