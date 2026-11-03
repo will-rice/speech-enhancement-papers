@@ -6,10 +6,11 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1827 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1828 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-10-31T15:07:41+00:00 | arxiv:2611.01023v1 | [Continual Residual Memory for Gradient-Free Test-Time Adaptation in Speech Enhancement](papers/arxiv-2611-01023v1--ef3c3c68a54e.md)                                                          | arxiv  |
 | 2026-10-28T10:40:26+00:00 | arxiv:2610.38619v1 | [MiDiff: MIDI-Conditioned Diffusion Models for Drum Audio Enhancement](papers/arxiv-2610-38619v1--74b89f0c39ca.md)                                                                            | arxiv  |
 | 2026-10-27T11:01:17+00:00 | arxiv:2610.37024v1 | [StreamSE: Neural Audio Codec-based Streaming Speech Enhancement for On-device Inference](papers/arxiv-2610-37024v1--f9a4edad9cbb.md)                                                         | arxiv  |
 | 2026-10-27T09:27:02+00:00 | arxiv:2610.36892v1 | [Perceptual Differences and Preferences in Speech Enhancement](papers/arxiv-2610-36892v1--518731d8037b.md)                                                                                    | arxiv  |
@@ -39,7 +40,6 @@ The 30 most recent of 1827 papers. Every paper is listed in [papers.csv](papers.
 | 2026-09-28T13:17:10+00:00 | arxiv:2609.35118v1 | [RemixIT-TSE: Progressive Synthetic-to-Real Adaptation for Target Speech Extraction via Target-Aware Supervision and Remixing](papers/arxiv-2609-35118v1--283cf633992a.md)                    | arxiv  |
 | 2026-09-28T12:50:06+00:00 | arxiv:2609.35054v1 | [Perceptual Quality Loss or Loss of Perceptual Quality?](papers/arxiv-2609-35054v1--fd72de986333.md)                                                                                          | arxiv  |
 | 2026-09-28T11:06:49+00:00 | arxiv:2609.34901v1 | [Domain-Incremental Learning for Generative Speech Enhancement](papers/arxiv-2609-34901v1--54be38602f24.md)                                                                                   | arxiv  |
-| 2026-09-28T09:02:12+00:00 | arxiv:2609.34662v1 | [Unsupervised Speech Enhancement via Drifting](papers/arxiv-2609-34662v1--e9b960ccb524.md)                                                                                                    | arxiv  |
 
 <!-- papers-index:end -->
 
