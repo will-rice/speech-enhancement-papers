@@ -6,10 +6,14 @@ Standalone paper discovery and conversion for Research papers on speech enhancem
 
 # Papers
 
-The 30 most recent of 1830 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1834 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-11-09T21:14:56+00:00 | arxiv:2611.13243v1 | [GigaEdge Spench: An SDK for Practical Streaming Speech Enhancement](papers/arxiv-2611-13243v1--0e75f0663bf0.md)                                                                              | arxiv  |
+| 2026-11-09T14:41:24+00:00 | arxiv:2611.12493v1 | [Textraction: Unified Text-Guided Speaker Extraction and Enhancement for Single- and Multi-Channel Audio](papers/arxiv-2611-12493v1--821abfd041be.md)                                         | arxiv  |
+| 2026-11-08T04:38:22+00:00 | arxiv:2611.11130v1 | [Virtual-Flow: Virtual Microphone-based Speech Enhancement via Semi-supervised Flow Matching](papers/arxiv-2611-11130v1--620834954577.md)                                                     | arxiv  |
+| 2026-11-07T08:05:00+00:00 | arxiv:2611.10561v1 | [BAmbiDrop: Array-Agnostic Speech Enhancement with Zero-Shot binaural Reproduction using Multi-center Ambisonics Encoding](papers/arxiv-2611-10561v1--24c3e5794c3d.md)                        | arxiv  |
 | 2026-11-05T02:56:11+00:00 | arxiv:2611.07361v1 | [Design of a Speech Enhancement-Based Deep Semantic Autoencoder for Wireless Communications](papers/arxiv-2611-07361v1--871fc7f3e54a.md)                                                      | arxiv  |
 | 2026-11-04T11:05:33+00:00 | arxiv:2611.06345v1 | [The Hearpiece Database of Binaural Room Impulse Responses and Driver Responses on KEMAR](papers/arxiv-2611-06345v1--1d9ecad03095.md)                                                         | arxiv  |
 | 2026-10-31T15:07:41+00:00 | arxiv:2611.01023v1 | [Continual Residual Memory for Gradient-Free Test-Time Adaptation in Speech Enhancement](papers/arxiv-2611-01023v1--ef3c3c68a54e.md)                                                          | arxiv  |
@@ -36,10 +40,6 @@ The 30 most recent of 1830 papers. Every paper is listed in [papers.csv](papers.
 | 2026-10-05T16:24:50+00:00 | arxiv:2610.06632v1 | [AuraSE: Low-Hallucination Generative Speech Enhancement via Multimodal Flow Matching and Inference Policy Optimization](papers/arxiv-2610-06632v1--1c2baafc6cc3.md)                          | arxiv  |
 | 2026-10-04T12:04:31+00:00 | arxiv:2610.05155v1 | [UltraM2M: Leveraging Text Transcripts and Mixture Constraints for Weakly-Supervised Speech Enhancement](papers/arxiv-2610-05155v1--00130da5a8cf.md)                                          | arxiv  |
 | 2026-10-02T14:35:12+00:00 | arxiv:2610.03381v1 | [Multiclass Speech Classification Under Noise Disparity](papers/arxiv-2610-03381v1--f608d09dc755.md)                                                                                          | arxiv  |
-| 2026-09-30T08:05:42+00:00 | arxiv:2609.39237v1 | [DuSpaR: Dual-State Sparsifying Recurrent Unit with Feedback Modulation for Compute-Efficient Speech Processing](papers/arxiv-2609-39237v1--a1f9326ddd4b.md)                                  | arxiv  |
-| 2026-09-30T05:35:30+00:00 | arxiv:2609.39032v1 | [How Reliable Are Predicted MOS for Reproducing Human System-Level Preferences in Speech Enhancement?](papers/arxiv-2609-39032v1--643307a1a011.md)                                            | arxiv  |
-| 2026-09-30T05:33:40+00:00 | arxiv:2609.39028v1 | [Improving Predicted MOS Scores, Not Perceived Quality: Multi-Predictor Test-Time Optimization of Enhanced Speech](papers/arxiv-2609-39028v1--8388d1d2dc1a.md)                                | arxiv  |
-| 2026-09-28T13:17:10+00:00 | arxiv:2609.35118v1 | [RemixIT-TSE: Progressive Synthetic-to-Real Adaptation for Target Speech Extraction via Target-Aware Supervision and Remixing](papers/arxiv-2609-35118v1--283cf633992a.md)                    | arxiv  |
 
 <!-- papers-index:end -->
 
