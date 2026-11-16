@@ -2,6 +2,9 @@
 
 Standalone paper discovery and conversion for Research papers on speech enhancement, denoising, dereverberation, and restoration.
 
+Browse the collection on alphaXiv:
+https://www.alphaxiv.org/shared/folder/01a08d8c-e1fe-736a-b232-c6a6ae947202
+
 <!-- papers-index:start -->
 
 # Papers
