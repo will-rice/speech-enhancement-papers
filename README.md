@@ -9,10 +9,12 @@ https://www.alphaxiv.org/shared/folder/01a08d8c-e1fe-736a-b232-c6a6ae947202
 
 # Papers
 
-The 30 most recent of 1834 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1836 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-11-17T11:45:52+00:00 | arxiv:2611.22628v1 | [Back to Mel: Learning to Bridge Fidelity and Perception in Generative Speech Enhancement](papers/arxiv-2611-22628v1--bf5b6f50b312.md)                                                        | arxiv  |
+| 2026-11-17T11:35:20+00:00 | arxiv:2611.22620v1 | [Personalized Causal Low-Bitrate Coded Speech Restoration with Speaker Embeddings](papers/arxiv-2611-22620v1--b3fd1f0c010e.md)                                                                | arxiv  |
 | 2026-11-09T21:14:56+00:00 | arxiv:2611.13243v1 | [GigaEdge Spench: An SDK for Practical Streaming Speech Enhancement](papers/arxiv-2611-13243v1--0e75f0663bf0.md)                                                                              | arxiv  |
 | 2026-11-09T14:41:24+00:00 | arxiv:2611.12493v1 | [Textraction: Unified Text-Guided Speaker Extraction and Enhancement for Single- and Multi-Channel Audio](papers/arxiv-2611-12493v1--821abfd041be.md)                                         | arxiv  |
 | 2026-11-08T04:38:22+00:00 | arxiv:2611.11130v1 | [Virtual-Flow: Virtual Microphone-based Speech Enhancement via Semi-supervised Flow Matching](papers/arxiv-2611-11130v1--620834954577.md)                                                     | arxiv  |
@@ -41,8 +43,6 @@ The 30 most recent of 1834 papers. Every paper is listed in [papers.csv](papers.
 | 2026-10-07T12:35:31+00:00 | arxiv:2610.09963v1 | [LIFT-SE: Linguistic Inference Followed by Flow Transformation for Generative Speech Enhancement](papers/arxiv-2610-09963v1--e18a8ac17d81.md)                                                 | arxiv  |
 | 2026-10-06T15:52:30+00:00 | arxiv:2610.08579v1 | [Audiovisual joint learning for end-to-end hearing aids](papers/arxiv-2610-08579v1--9711727a1805.md)                                                                                          | arxiv  |
 | 2026-10-05T16:24:50+00:00 | arxiv:2610.06632v1 | [AuraSE: Low-Hallucination Generative Speech Enhancement via Multimodal Flow Matching and Inference Policy Optimization](papers/arxiv-2610-06632v1--1c2baafc6cc3.md)                          | arxiv  |
-| 2026-10-04T12:04:31+00:00 | arxiv:2610.05155v1 | [UltraM2M: Leveraging Text Transcripts and Mixture Constraints for Weakly-Supervised Speech Enhancement](papers/arxiv-2610-05155v1--00130da5a8cf.md)                                          | arxiv  |
-| 2026-10-02T14:35:12+00:00 | arxiv:2610.03381v1 | [Multiclass Speech Classification Under Noise Disparity](papers/arxiv-2610-03381v1--f608d09dc755.md)                                                                                          | arxiv  |
 
 <!-- papers-index:end -->
 
