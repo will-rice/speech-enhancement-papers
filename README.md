@@ -9,10 +9,11 @@ https://www.alphaxiv.org/shared/folder/01a08d8c-e1fe-736a-b232-c6a6ae947202
 
 # Papers
 
-The 30 most recent of 1836 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
+The 30 most recent of 1837 papers. Every paper is listed in [papers.csv](papers.csv) and converted under [papers/](papers/).
 
 | Published                 | Identifier         | Title                                                                                                                                                                                         | Source |
 | ------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| 2026-11-24T16:29:52+00:00 | arxiv:2611.32910v1 | [Mask-Based Speech Enhancement for Spatial Audio: Effects of Signal Representation and Channel-Specific Masking](papers/arxiv-2611-32910v1--32a72d006949.md)                                  | arxiv  |
 | 2026-11-17T11:45:52+00:00 | arxiv:2611.22628v1 | [Back to Mel: Learning to Bridge Fidelity and Perception in Generative Speech Enhancement](papers/arxiv-2611-22628v1--bf5b6f50b312.md)                                                        | arxiv  |
 | 2026-11-17T11:35:20+00:00 | arxiv:2611.22620v1 | [Personalized Causal Low-Bitrate Coded Speech Restoration with Speaker Embeddings](papers/arxiv-2611-22620v1--b3fd1f0c010e.md)                                                                | arxiv  |
 | 2026-11-09T21:14:56+00:00 | arxiv:2611.13243v1 | [GigaEdge Spench: An SDK for Practical Streaming Speech Enhancement](papers/arxiv-2611-13243v1--0e75f0663bf0.md)                                                                              | arxiv  |
@@ -42,7 +43,6 @@ The 30 most recent of 1836 papers. Every paper is listed in [papers.csv](papers.
 | 2026-10-08T23:03:32+00:00 | arxiv:2610.12796v1 | [Efficient Audio-Visual Speech Enhancement via Reinforcement Learning-Based Neural Architecture Search](papers/arxiv-2610-12796v1--06c72696efd3.md)                                           | arxiv  |
 | 2026-10-07T12:35:31+00:00 | arxiv:2610.09963v1 | [LIFT-SE: Linguistic Inference Followed by Flow Transformation for Generative Speech Enhancement](papers/arxiv-2610-09963v1--e18a8ac17d81.md)                                                 | arxiv  |
 | 2026-10-06T15:52:30+00:00 | arxiv:2610.08579v1 | [Audiovisual joint learning for end-to-end hearing aids](papers/arxiv-2610-08579v1--9711727a1805.md)                                                                                          | arxiv  |
-| 2026-10-05T16:24:50+00:00 | arxiv:2610.06632v1 | [AuraSE: Low-Hallucination Generative Speech Enhancement via Multimodal Flow Matching and Inference Policy Optimization](papers/arxiv-2610-06632v1--1c2baafc6cc3.md)                          | arxiv  |
 
 <!-- papers-index:end -->
 
